@@ -43,7 +43,8 @@ public class EApplication extends Application {
         mixpanelAPI = MixpanelAPI.getInstance(application, BuildConfig.MIXPANEL_API_TOKEN);
 
         // Configure Realm
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).deleteRealmIfMigrationNeeded().build();
+        Realm.init(getApplicationContext());
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(realmConfiguration);
         Realm.getDefaultInstance();
 

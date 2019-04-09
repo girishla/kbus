@@ -20,7 +20,7 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
-//apply plugin: 'realm-android'
+apply plugin: 'realm-android'
 // SwipeRefreshLayout
 //apply plugin: 'com.android.application'
 
