@@ -156,14 +156,14 @@ public class SignUpActivity extends BaseActivity {
 
             Log.d(TAG, "Sign up check Users: " + result);
 
-            // Check if username already used
-            if (result.getJSONArray("results").length() != 0) {
+            if(result.has("username")){
                 errorMessageTextView.setText(getString(R.string.username_used));
                 errorMessageRelativeLayout.setVisibility(View.VISIBLE);
-            } else {
+            }else{
                 setStepTwo();
                 errorMessageRelativeLayout.setVisibility(View.INVISIBLE);
             }
+
 
             return null;
         }
@@ -213,6 +213,8 @@ public class SignUpActivity extends BaseActivity {
                 errorMessageRelativeLayout.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
             } else {
+                Log.e(TAG, "Calling Login ........." + emailOrPhone + password);
+
                 SyncUser.login(emailOrPhone, password).onSuccess(onLoginSuccess, Task.UI_THREAD_EXECUTOR);
             }
             return null;

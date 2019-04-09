@@ -34,7 +34,7 @@ public class User implements RealmModel{
     private static final String TAG = User.class.getSimpleName();
 
     // Keys in JSON response
-    public static final String OBJECT_ID_JSON_KEY = "objectId";
+    public static final String OBJECT_ID_JSON_KEY = "username";
     public static final String USERNAME_JSON_KEY = "username";
     public static final String FULLNAME_JSON_KEY = "fullname";
     public static final String FIRST_NAME_JSON_KEY = "firstName";
@@ -146,6 +146,9 @@ public class User implements RealmModel{
 
     public void mapFromJSON(JSONObject jsonObject) {
         try {
+
+
+            Log.d(TAG,jsonObject.toString());
             this.id = jsonObject.getString(OBJECT_ID_JSON_KEY);
             this.username = jsonObject.getString(USERNAME_JSON_KEY);
             this.firstName = jsonObject.optString(FIRST_NAME_JSON_KEY);

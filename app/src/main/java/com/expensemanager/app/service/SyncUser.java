@@ -100,6 +100,7 @@ public class SyncUser {
                 }
 
                 JSONObject result = task.getResult();
+
                 if (result == null) {
                     throw new Exception("Empty response.");
                 }
@@ -213,6 +214,7 @@ public class SyncUser {
         NetworkRequest networkRequest = new NetworkRequest(requestTemplate, taskCompletionSource);
 
         Log.d(TAG, "Start downloading users by user email");
+
         return networkRequest.send();
     }
 

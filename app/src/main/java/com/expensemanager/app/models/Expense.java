@@ -34,7 +34,7 @@ public class Expense implements RealmModel {
     public static final String OBJECT_ID_JSON_KEY = "objectId";
     public static final String AMOUNT_JSON_KEY = "amount";
     public static final String NOTE_JSON_KEY = "note";
-    public static final String CREATED_AT_JSON_KEY = "createdAt";
+    public static final String CREATED_AT_JSON_KEY = "createdDate";
     public static final String EXPENSE_DATE_JSON_KEY = "spentAt";   // Different from local
     public static final String ISO_EXPENSE_DATE_JSON_KEY = "iso";
     public static final String CATEGORY_JSON_KEY = "categoryId";

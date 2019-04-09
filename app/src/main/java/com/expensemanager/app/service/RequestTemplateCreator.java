@@ -26,7 +26,7 @@ import java.util.TimeZone;
 public class RequestTemplateCreator {
     private static final String TAG = RequestTemplateCreator.class.getSimpleName();
 
-    private static final String BASE_URL = "https://e-manager.herokuapp.com/parse/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
 
     public static final String GET = "GET";
     public static final String POST = "POST";
@@ -46,13 +46,13 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate login(String username, String password) {
-        String url = BASE_URL + "login";
+        String url = BASE_URL + "auth";
         Map<String, String> params = new HashMap<>();
 
         params.put(User.USERNAME_JSON_KEY, username);
         params.put(User.PASSWORD_JSON_KEY, password);
 
-        return new RequestTemplate(GET, url, params);
+        return new RequestTemplate(POST, url, params);
     }
 
     public static RequestTemplate signUp(String email, String password, String firstName, String lastName, String phone) {
@@ -81,9 +81,9 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate logout() {
-        String url = BASE_URL + "logout";
+        String url = BASE_URL + "user";
 
-        return new RequestTemplate(POST, url, null);
+        return new RequestTemplate(GET, url, null);
     }
 
     public static RequestTemplate getAllExpenses() {
@@ -480,7 +480,7 @@ public class RequestTemplateCreator {
             return null;
         }
 
-        String url = BASE_URL + "users";
+        String url = BASE_URL + "users/search/findByEmail";
         Map<String, String> params = new HashMap<>();
 
         JSONObject userNameObj=new JSONObject();
@@ -491,7 +491,8 @@ public class RequestTemplateCreator {
             Log.e(TAG, "Error creating user email object for where in getAllUsersByUserEmail", e);
         }
 
-        params.put(WHERE, Helpers.encodeURIComponent(userNameObj.toString()));
+//        params.put(WHERE, Helpers.encodeURIComponent(userNameObj.toString()));
+        params.put(User.EMAIL_JSON_KEY, Helpers.encodeURIComponent(userEmail));
 
         return new RequestTemplate(GET, url, params);
     }

@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
@@ -26,6 +27,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
+import okio.Buffer;
+import okio.BufferedSource;
 
 /**
  * Created by Girish Lakshmanan on 8/17/16.
@@ -140,10 +144,22 @@ public class NetworkRequest {
                             .connectTimeout(10, TimeUnit.SECONDS)
                             .writeTimeout(10, TimeUnit.SECONDS)
                             .readTimeout(30, TimeUnit.SECONDS)
+                            .followRedirects(true)
                             .build();
+
+
                     Response response = client.newCall(builder.build()).execute();
+
+                    if(response.code()==201){
+                        if(response.header("Location")!=null){
+                            Request.Builder builderRedirect = getBasicBuilder(response.header("Location"), "GET", null)   ;
+                            response = client.newCall(builderRedirect.build()).execute();
+
+                        }
+                    }
+
+
                     String responseString = response.body().string();
-                    Log.d(TAG, "Response: \n" + responseString);
                     // If response is empty or JSONArray, we convert to JSONObject
                     if (responseString.isEmpty()) {
                         responseString = "{}";

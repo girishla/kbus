@@ -117,7 +117,7 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-    implementation 'com.squareup.okhttp:okhttp:2.2.0'
+    implementation 'com.squareup.okhttp:okhttp:2.7.2'
     implementation 'com.github.bumptech.glide:okhttp-integration:1.4.0'
 
     // Butter Knife
