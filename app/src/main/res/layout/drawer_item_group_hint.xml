@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawer_item_primary"
+
+    android:paddingEnd="@dimen/drawer_vertical_padding"
+    android:paddingLeft="@dimen/drawer_vertical_padding"
+    android:paddingRight="@dimen/drawer_vertical_padding"
+    android:paddingStart="@dimen/drawer_vertical_padding">
+
+    <TextView
+        android:id="@+id/drawer_name_text_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/space_small"
+        android:layout_marginBottom="@dimen/space_small"
+
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center|start"
+        android:lines="1"
+        android:singleLine="true"
+        android:text="@string/select_a_group"
+        android:textDirection="anyRtl"
+        android:textSize="@dimen/drawer_item_primary_text"
+        android:background="@drawable/background_bottom_line_gray_light"/>
+</RelativeLayout>

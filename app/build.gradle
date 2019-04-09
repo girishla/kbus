@@ -1,0 +1,184 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+
+        // We recommend changing it to the latest version from our changelog:
+        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+//apply plugin: 'realm-android'
+// SwipeRefreshLayout
+//apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.expensemanager.app"
+        minSdkVersion 26
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        File secretsPropertiesFile = new File("secrets.properties")
+        if (secretsPropertiesFile.exists()) {
+            def secretsFile = rootProject.file("secrets.properties")
+            def secrets = new Properties()
+            secrets.load(new FileInputStream(secretsFile))
+
+            buildConfigField "String", "APP_ID", secrets.getProperty('APP_ID')
+            buildConfigField "String", "MASTER_KEY", secrets.getProperty('MASTER_KEY')
+            buildConfigField "String", "INSTABUG_KEY", secrets.getProperty('INSTABUG_KEY')
+            buildConfigField "String", "MIXPANEL_API_TOKEN", secrets.getProperty('MIXPANEL_API_TOKEN')
+
+            manifestPlaceholders = [manifestApplicationId: "${applicationId}",
+                                    onesignal_app_id: secrets.getProperty('ONESIGNAL_APP_ID'),
+                                    onesignal_google_project_number: secrets.getProperty('ONESIGNAL_GOOGLE_PROJECT_NUMBER')]
+        } else {
+            buildConfigField "String", "APP_ID", "\"PUT APP ID HERE\""
+            buildConfigField "String", "MASTER_KEY", "\"PUT MASTER KEY HERE\""
+            buildConfigField "String", "INSTABUG_KEY", "\"PUT MASTER KEY HERE\""
+
+            buildConfigField "String", "MIXPANEL_API_TOKEN", "\"PUT MASTER KEY HERE\""
+
+        }
+
+        manifestPlaceholders = [manifestApplicationId: "${applicationId}",
+                                onesignal_app_id: "",
+                                onesignal_google_project_number: ""]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.txt' // Picks the JavaMail license file
+    }
+
+    // Java 8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:support-v13:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0';
+    implementation 'com.android.support:support-annotations:28.0.0'
+
+
+    // SwipeRefreshLayout
+
+    // Realm
+    implementation 'io.realm:android-adapters:1.3.0'
+
+    // OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+
+    // Bolts
+    implementation 'com.parse.bolts:bolts-tasks:1.4.0'
+    implementation 'com.parse.bolts:bolts-applinks:1.4.0'
+
+    // RxJava
+    implementation 'io.reactivex:rxjava:1.1.6'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+
+    // RxBinding
+    implementation 'com.jakewharton.rxbinding:rxbinding-design:0.4.0'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.squareup.okhttp:okhttp:2.2.0'
+    implementation 'com.github.bumptech.glide:okhttp-integration:1.4.0'
+
+    // Butter Knife
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    // Circle image
+    implementation 'de.hdodenhof:circleimageview:1.3.0'
+
+    // for RoundedCorner effect
+    implementation 'jp.wasabeef:glide-transformations:2.0.1'
+
+    // MPAndroidChartMPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+
+    // Ahoy! Onboarding
+    implementation 'com.codemybrainsout.onboarding:onboarder:1.0.0'
+
+    // OneSignal
+    implementation 'com.onesignal:OneSignal:3.1.0'
+    // Required for OneSignal, even if you have added FCM.
+    implementation 'com.google.android.gms:play-services-gcm:9.4.0'
+    // Required for geotagging
+    implementation "com.google.android.gms:play-services-location:9.4.0"
+
+    // PagerSlidingTabStrip
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+    implementation 'com.sun.mail:android-mail:1.5.5'
+    implementation 'com.sun.mail:android-activation:1.5.5'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:9.4.0'
+    implementation 'com.google.firebase:firebase-crash:9.4.0'
+
+    // Mixpanel 
+    implementation "com.mixpanel.android:mixpanel-android:4.9.2"
+
+    // InstaBug
+    implementation 'com.instabug.library:instabug:2.6.1'
+
+    // LeakCanary
+    debugCompile 'com.squareup.haha:haha:2.0.3'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+
+    // Facebook
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    // JazzyListView
+    implementation 'com.twotoasters.jazzylistview:library:1.2.1'
+    implementation 'com.twotoasters.jazzylistview:library-recyclerview:1.2.1'
+
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.4'
+
+    // Retrolambda, make sure to apply this line last.
+//    apply plugin: 'me.tatarka.retrolambda'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.9@aar') {
+        transitive = true;
+    }
+}
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,76 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_tiny">4sp</dimen>
+    <dimen name="text_ultra_small">12sp</dimen>
+    <dimen name="text_really_small">14sp</dimen>
+    <dimen name="text_small">16sp</dimen>
+    <dimen name="text_medium_small">18sp</dimen>
+    <dimen name="text_medium_less_small">20sp</dimen>
+    <dimen name="text_medium">22sp</dimen>
+    <dimen name="text_medium_large">26sp</dimen>
+    <dimen name="text_large">30sp</dimen>
+    <dimen name="text_really_large">36sp</dimen>
+    <dimen name="text_ultra_large">42sp</dimen>
+
+    <!-- Space sizes -->
+    <dimen name="space_ultra_small">4dp</dimen>
+    <dimen name="space_really_small">4dp</dimen>
+    <dimen name="space_small">6dp</dimen>
+    <dimen name="space_medium_small">8dp</dimen>
+    <dimen name="space_medium">12dp</dimen>
+    <dimen name="space_medium_large">16dp</dimen>
+    <dimen name="space_large">20dp</dimen>
+    <dimen name="space_large_large">22dp</dimen>
+    <dimen name="space_really_large">28dp</dimen>
+    <dimen name="space_ultra_large">36dp</dimen>
+    <dimen name="space_super_large">66dp</dimen>
+    <dimen name="space_crazy_large">106dp</dimen>
+
+    <dimen name="login_sign_up_widget_width">300dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="button_width">80dp</dimen>
+    <dimen name="category_color_width_very_large">106dp</dimen>
+    <dimen name="category_color_width_large">56dp</dimen>
+    <dimen name="category_color_width">56dp</dimen>
+    <dimen name="category_color_width_small">30dp</dimen>
+    <dimen name="notification_color_width_small">9dp</dimen>
+
+    <dimen name="chart_height">220dp</dimen>
+
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="drawer_vertical_padding">16dp</dimen>
+
+    <dimen name="profile_image_size_large">80dp</dimen>
+
+    <!-- Definition for the primary item -->
+    <dimen name="drawer_item_primary">48dp</dimen>
+    <dimen name="drawer_item_primary_icon">50dp</dimen>
+    <dimen name="drawer_item_primary_icon_padding">12dp</dimen>
+    <dimen name="drawer_item_primary_icon_padding_right">32dp</dimen>
+    <dimen name="drawer_item_primary_text">14sp</dimen>
+    <dimen name="drawer_item_primary_description">14sp</dimen>
+
+    <!-- General padding value -->
+    <dimen name="drawer_padding">8dp</dimen>
+
+    <dimen name="drawer_account_header_height_compact">72dp</dimen>
+    <dimen name="drawer_account_header_compact">56dp</dimen>
+    <dimen name="drawer_account_header_selected">50dp</dimen>
+
+    <dimen name="drawer_account_header_height">80dp</dimen>
+    <!--<dimen name="drawer_account_header_height">174dp</dimen>-->
+    <dimen name="drawer_account_header_text">14sp</dimen>
+    <dimen name="drawer_account_header_dropdown">30dp</dimen>
+    <dimen name="drawer_account_header_dropdown_padding">5dp</dimen>
+    <dimen name="drawer_account_header_dropdown_margin_bottom">14dp</dimen>
+
+    <dimen name="overview_recycler_view_height_group">540dp</dimen>
+    <dimen name="overview_recycler_view_height_personal">310dp</dimen>
+</resources>

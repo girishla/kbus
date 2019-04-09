@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/cyan</color>
+    <color name="colorPrimaryDark">@color/cyan_deep</color>
+    <color name="colorAccent">@color/yellow</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange">#F89400</color>
+    <color name="white_transparent">#55FFFFFF</color>
+    <color name="white_transparent_80">#CCFFFFFF</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="gray_dark">#757575</color>
+    <color name="blue">#1DA1F2</color>
+    <color name="red">#F44336</color>
+    <color name="green">#00ff7f</color>
+    <color name="gray_really_light">#F3F3F3</color>
+    <color name="gray_light">#BDBDBD</color>
+    <color name="gray_light_alpha_88">#88BDBDBD</color>
+    <color name="gray_really_dark">#424242</color>
+    <color name="dark_blue">#1976D2</color>
+    <color name="transparent_gray">#269E9E9E</color>
+    <color name="teal">#009688</color>
+    <color name="cyan">#28C8EC</color>
+    <!--<color name="cyan_deep">#28BEEC</color>-->
+    <color name="cyan_deep">#01A4BD</color>
+    <color name="blue_a_400">#00B0FF</color>
+
+    <color name="yellow">#F1D42D</color>
+
+    <!-- Custom color-->
+    <color name="soft_default">@color/colorPrimary</color>
+    <color name="soft_blue">#67ABF5</color>
+    <color name="soft_blue_gray">#848EA5</color>
+    <color name="soft_brown">#916A6A</color>
+    <color name="soft_cyan_like">#66BFB3</color>
+    <color name="soft_deep_purple">#A17AFF</color>
+    <color name="soft_green">#6FBF43</color>
+    <color name="soft_indigo">#819DD8</color>
+    <color name="soft_orange">#FF8D36</color>
+    <color name="soft_purple">#ED72D7</color>
+    <color name="soft_purple_deep">#9551A5</color>
+    <color name="soft_purple_deep_light">#9E88B2</color>
+    <color name="soft_red">#F17071</color>
+    <color name="soft_yellow">#F7B314</color>
+
+    <color name="notification_red">#E84F5F</color>
+    <color name="report_tab_text_default_color">#C5EDFC</color>
+    <!--<color name="report_tab_text_default_color">#B2E7FA</color>-->
+    <!--<color name="report_tab_text_default_color">#A3E2F9</color>-->
+</resources>

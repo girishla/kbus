@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.expensemanager.app.profile.ProfileActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer_id"
+        android:layout_below="@id/toolbar_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/profile_activity_profile_photo_relative_layout_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/space_large">
+
+                <ImageView
+                    android:id="@+id/profile_activity_profile_photo_image_view_id"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+
+                <TextView
+                    android:id="@+id/profile_activity_change_photo_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/profile_activity_profile_photo_image_view_id"
+                    android:layout_marginTop="@dimen/space_medium"
+
+                    android:text="@string/change_photo"
+                    android:textColor="@color/blue"
+                    android:visibility="invisible"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/profile_activity_user_info_relative_layout_id"
+                android:layout_below="@+id/profile_activity_profile_photo_relative_layout_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/profile_activity_profile_info_linear_layout_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/space_medium"
+                    android:layout_marginEnd="@dimen/space_medium"
+                    android:layout_marginBottom="@dimen/space_medium">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/space_small">
+
+                        <!-- First name label -->
+                        <TextView
+                            android:id="@+id/profile_activity_first_name_label_text_view_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:paddingLeft="@dimen/space_small"
+                            android:text="@string/first_name"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_really_small"
+                            android:textAllCaps="false"/>
+
+                        <EditText
+                            android:id="@+id/profile_activity_first_name_edit_text_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:padding="@dimen/space_small"
+                            android:text="Zhaolong"
+                            android:textSize="@dimen/text_small"
+                            android:background="@drawable/background_round_small_corner_white"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <!-- Last name label -->
+                        <TextView
+                            android:id="@+id/profile_activity_last_name_label_text_view_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:paddingLeft="@dimen/space_small"
+                            android:text="@string/last_name"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_really_small"
+                            android:textAllCaps="false"/>
+
+                        <EditText
+                            android:id="@+id/profile_activity_last_name_edit_text_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:padding="@dimen/space_small"
+                            android:text="Zhong"
+                            android:textSize="@dimen/text_small"
+                            android:background="@drawable/background_round_small_corner_white"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Email -->
+                <LinearLayout
+                    android:id="@+id/profile_activity_email_linear_layout_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/profile_activity_profile_info_linear_layout_id"
+                    android:layout_marginStart="@dimen/space_medium"
+                    android:layout_marginEnd="@dimen/space_medium"
+                    android:layout_marginBottom="@dimen/space_medium">
+
+                    <!-- Email label -->
+                    <TextView
+                        android:id="@+id/profile_activity_email_label_text_view_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:paddingLeft="@dimen/space_small"
+                        android:paddingTop="@dimen/space_small"
+                        android:text="@string/email"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_really_small"
+                        android:textAllCaps="false"/>
+
+                    <EditText
+                        android:id="@+id/profile_activity_email_edit_text_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:padding="@dimen/space_small"
+                        android:text="zztg2@mail.missouri.edu"
+                        android:textSize="@dimen/text_small"
+                        android:background="@drawable/background_round_small_corner_white"/>
+
+                </LinearLayout>
+
+                <!-- Mobile -->
+                <LinearLayout
+                    android:id="@+id/profile_activity_mobile_linear_layout_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/profile_activity_email_linear_layout_id"
+                    android:layout_marginStart="@dimen/space_medium"
+                    android:layout_marginEnd="@dimen/space_medium"
+                    android:layout_marginBottom="@dimen/space_medium">
+
+                    <!-- Mobile label -->
+                    <TextView
+                        android:id="@+id/profile_activity_mobile_label_text_view_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:paddingLeft="@dimen/space_small"
+                        android:paddingTop="@dimen/space_small"
+                        android:text="@string/mobile"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text_really_small"
+                        android:textAllCaps="false"/>
+
+                    <EditText
+                        android:id="@+id/profile_activity_mobile_edit_text_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:padding="@dimen/space_small"
+                        android:text="(573)825-8473"
+                        android:textSize="@dimen/text_small"
+                        android:background="@drawable/background_round_small_corner_white"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/profile_activity_progress_bar_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:visibility="gone"
+                style="?android:attr/progressBarStyleLarge"/>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

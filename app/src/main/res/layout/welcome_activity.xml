@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimaryDark"
+    tools:context="com.expensemanager.app.welcome.WelcomeActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/welcome_activity_title_text_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/space_crazy_large"
+        android:layout_marginLeft="@dimen/space_medium"
+        android:layout_marginRight="@dimen/space_medium"
+
+        android:text="@string/welcome_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_really_large"/>
+
+    <!-- Sub Title -->
+    <TextView
+        android:id="@+id/welcome_activity_sub_title_text_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome_activity_title_text_view_id"
+        android:layout_marginTop="@dimen/space_really_large"
+        android:layout_marginLeft="@dimen/space_medium"
+        android:layout_marginRight="@dimen/space_medium"
+
+        android:text="@string/welcome_sub_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_medium_small"/>
+
+    <!-- Sign up -->
+    <Button
+        android:id="@+id/welcome_activity_sign_up_button_id"
+        android:layout_width="160dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/welcome_activity_login_button_id"
+        android:layout_margin="@dimen/space_medium"
+
+        android:text="@string/sign_up"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_medium_small"
+        android:textAllCaps="false"
+        android:background="@drawable/background_round_corner_white"/>
+
+    <!-- Login -->
+    <Button
+        android:id="@+id/welcome_activity_login_button_id"
+        android:layout_width="160dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/welcome_activity_sign_up_button_id"
+        android:layout_marginTop="@dimen/space_medium_small"
+        android:layout_marginBottom="@dimen/space_crazy_large"
+
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_medium_small"
+        android:textAllCaps="false"
+        android:background="@drawable/background_round_corner_border_white"/>
+
+</RelativeLayout>

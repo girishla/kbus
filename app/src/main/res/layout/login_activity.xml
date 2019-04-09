@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/login_activity_relative_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="120dp"
+
+        android:background="@color/colorPrimaryDark"
+        tools:context="com.expensemanager.app.welcome.LoginActivity">
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/login_activity_email_edit_text_id"
+            android:layout_width="@dimen/login_sign_up_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/space_medium"
+
+            android:padding="@dimen/space_medium"
+            android:textSize="@dimen/text_really_small"
+            android:hint="@string/email"
+            android:background="@color/gray_really_light"/>
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/login_activity_password_edit_text_id"
+            android:layout_width="@dimen/login_sign_up_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_activity_email_edit_text_id"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/space_medium"
+            android:layout_marginRight="@dimen/space_medium"
+            android:layout_marginBottom="@dimen/space_medium"
+
+            android:padding="@dimen/space_medium"
+            android:textSize="@dimen/text_really_small"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:fontFamily="sans-serif"
+            android:background="@color/gray_really_light"/>
+
+        <!-- Login -->
+        <Button
+            android:id="@+id/login_activity_login_button_id"
+            android:layout_width="@dimen/login_sign_up_widget_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_below="@+id/login_activity_password_edit_text_id"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/space_medium"
+
+            android:text="@string/login"
+            android:textColor="@drawable/button_text_color"
+            android:textSize="@dimen/text_medium_small"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background_white"/>
+
+        <!-- Forget login details -->
+        <RelativeLayout
+            android:id="@+id/login_activity_forget_login_details_relative_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_activity_login_button_id">
+
+            <LinearLayout
+                android:id="@+id/login_activity_forget_login_details_linear_layout_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/login_activity_forget_password_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/forget_your_login_details"
+                    android:textSize="@dimen/text_ultra_small"/>
+
+                <TextView
+                    android:id="@+id/login_activity_get_help_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_medium_small"
+
+                    android:text="@string/get_help_signing_in"
+                    android:textSize="@dimen/text_ultra_small"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/login_activity_facebook_login_details_relative_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_activity_forget_login_details_relative_layout_id"
+
+            android:gravity="center"
+            android:visibility="gone">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_activity_facebook_login_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"/>
+
+        </RelativeLayout>
+
+        <!-- Error Message -->
+        <RelativeLayout
+            android:id="@+id/login_activity_error_relative_layout_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginLeft="@dimen/space_ultra_large"
+            android:layout_marginRight="@dimen/space_ultra_large"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/login_activity_forget_login_details_relative_layout_id"
+
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/login_activity_error_image_view_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_alert_circle_outline"
+                android:layout_marginRight="@dimen/space_small"/>
+            <TextView
+                android:id="@+id/login_activity_error_text_view_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/login_activity_error_image_view_id"
+
+                android:visibility="visible"
+                tools:text="Error Message MMMMMMMMMMMMM"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/red"/>
+        </RelativeLayout>
+
+        <!-- Sign up -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:background="@color/transparent_gray">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:alpha="0.4"
+                android:background="@color/gray"/>
+
+            <LinearLayout
+                android:id="@+id/login_activity_sign_up_linear_layout_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/login_activity_no_account_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/no_account"
+                    android:textSize="@dimen/text_ultra_small"/>
+
+                <TextView
+                    android:id="@+id/login_activity_sign_up_text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_medium_small"
+
+                    android:text="@string/sign_up"
+                    android:textSize="@dimen/text_ultra_small"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <include layout="@layout/progress_bar" />
+
+    </RelativeLayout>
+</ScrollView>

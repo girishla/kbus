@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawer_item_primary"
+    android:orientation="horizontal"
+    android:paddingEnd="@dimen/drawer_vertical_padding"
+    android:paddingLeft="@dimen/drawer_vertical_padding"
+    android:paddingRight="@dimen/drawer_vertical_padding"
+    android:paddingStart="@dimen/drawer_vertical_padding">
+
+    <ImageView
+        android:id="@+id/drawer_icon_image_view_id"
+        android:layout_width="@dimen/drawer_item_primary_icon"
+        android:layout_height="@dimen/drawer_item_primary"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="@dimen/drawer_item_primary_icon_padding"
+        android:paddingEnd="@dimen/drawer_item_primary_icon_padding_right"
+        android:paddingLeft="0dp"
+        android:paddingRight="@dimen/drawer_item_primary_icon_padding_right"
+        android:paddingStart="0dp"
+        android:paddingTop="@dimen/drawer_item_primary_icon_padding"
+        android:tint="@color/gray_dark"/>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/drawer_name_text_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:textDirection="anyRtl"
+            android:tint="@color/gray_really_dark"
+            android:textSize="@dimen/drawer_item_primary_text"
+            android:textColor="@color/gray_really_dark"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical|start"
+            android:lines="1"
+            android:maxLines="1"
+            tools:text="Some drawer text" />
+
+        <TextView
+            android:id="@+id/drawer_badge_text_view_id"
+            android:layout_width="26dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="@dimen/space_small"
+            android:layout_marginStart="@dimen/space_small"
+            android:layout_centerVertical="true"
+
+            android:paddingTop="2dp"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/space_medium"
+            android:background="@drawable/notification_badge_background"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</LinearLayout>
