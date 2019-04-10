@@ -45,7 +45,7 @@ public class User implements RealmModel{
     public static final String URL_JSON_KEY = "url";
     public static final String PASSWORD_JSON_KEY = "password";
     public static final String RESULTS = "results";
-    public static final String SESSION_TOKEN = "sessionToken";
+    public static final String SESSION_TOKEN = "token";
     public static final String USER_ID = "userId";
     public static final String GROUP_JSON_KEY = "groupId";
     public static final String ERROR = "error";

@@ -150,7 +150,7 @@ public class SyncUser {
 
                 JSONObject logoutJsonObj = task.getResult();
 
-                if (logoutJsonObj != null && logoutJsonObj.toString().equals("{}")) {
+                if (logoutJsonObj != null) {
                     return null;
                 } else {
                     throw new Exception("Incorrect logout response");

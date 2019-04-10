@@ -448,7 +448,7 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getLoginUser() {
-        String url = BASE_URL + "users/me";
+        String url = BASE_URL + "user";
 
         return new RequestTemplate(GET, url, null, true);
     }
