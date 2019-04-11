@@ -59,7 +59,7 @@ public class SyncUser {
 
                 String sessionToken = result.optString(User.SESSION_TOKEN);
                 Log.d(TAG, "login sessionToken:" + sessionToken);
-                String userId = result.optString(User.OBJECT_ID_JSON_KEY);
+                String userId = result.getJSONObject("user").optString(User.OBJECT_ID_JSON_KEY);
 
                 if (!TextUtils.isEmpty(sessionToken)) {
                     Context context = EApplication.getInstance();
@@ -73,7 +73,7 @@ public class SyncUser {
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
                 User user = new User();
-                user.mapFromJSON(result);
+                user.mapFromJSON(result.getJSONObject("user"));
                 realm.copyToRealmOrUpdate(user);
                 realm.commitTransaction();
                 realm.close();
@@ -186,7 +186,7 @@ public class SyncUser {
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
                 User user = new User();
-                user.mapFromJSON(result);
+                user.mapFromJSON(result.getJSONObject("user"));
                 realm.copyToRealmOrUpdate(user);
                 realm.commitTransaction();
                 realm.close();

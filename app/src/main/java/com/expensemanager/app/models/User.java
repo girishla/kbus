@@ -34,7 +34,7 @@ public class User implements RealmModel{
     private static final String TAG = User.class.getSimpleName();
 
     // Keys in JSON response
-    public static final String OBJECT_ID_JSON_KEY = "username";
+    public static final String OBJECT_ID_JSON_KEY = "id";
     public static final String USERNAME_JSON_KEY = "username";
     public static final String FULLNAME_JSON_KEY = "fullname";
     public static final String FIRST_NAME_JSON_KEY = "firstName";
@@ -164,10 +164,11 @@ public class User implements RealmModel{
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.US);
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-            this.createdAt = simpleDateFormat.parse(jsonObject.getString(CREATED_AT_JSON_KEY));
+//            this.createdAt = simpleDateFormat.parse(jsonObject.getString(CREATED_AT_JSON_KEY));
+            this.createdAt=new Date();
         } catch (JSONException e) {
             Log.e(TAG, "Error in parsing User.", e);
-        } catch (ParseException e) {
+        } catch (Exception e) {
             Log.e(TAG, "Error parsing createdAt.", e);
         }
     }

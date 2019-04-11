@@ -16,7 +16,7 @@ public class RequestTemplate {
     private boolean useToken;
 
     public RequestTemplate(String method, String url, Map<String, String> params) {
-        this(method, url, params, false);
+        this(method, url, params, url.contains("/auth")?false:true);
     }
 
     public RequestTemplate(String method, String url, Map<String, String> params, boolean useToken) {

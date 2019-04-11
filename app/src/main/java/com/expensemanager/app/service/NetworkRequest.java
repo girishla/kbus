@@ -116,7 +116,7 @@ public class NetworkRequest {
 
                     jsonBuilder.append('}');
                     requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonBuilder.toString());
-                    Log.d(TAG, "request params: " + jsonBuilder.toString());
+                    Log.d(TAG, "request params: " + url + jsonBuilder.toString());
                 }
 
                 // Add headers
@@ -125,18 +125,7 @@ public class NetworkRequest {
                     builder.addHeader("Content-Type", "image/jpeg");
                 }
 
-                if(requestTemplate.isUseToken()) {
-                    Context context = EApplication.getInstance();
-                    SharedPreferences sharedPreferences = context.getSharedPreferences(
-                            context.getString(R.string.shared_preferences_session_key), 0);
-                    String sessionToken = sharedPreferences.getString(User.SESSION_TOKEN, null);
-
-                    if (sessionToken == null) {
-                        Log.e(TAG, "Error getting session token.");
-                        return null;
-                    }
-                    builder.addHeader("X-Parse-Session-Token", sessionToken);
-                }
+                if (!setToken(builder)) return null;
 
                 // Send request
                 try {
@@ -150,16 +139,25 @@ public class NetworkRequest {
 
                     Response response = client.newCall(builder.build()).execute();
 
+
+
                     if(response.code()==201){
                         if(response.header("Location")!=null){
                             Request.Builder builderRedirect = getBasicBuilder(response.header("Location"), "GET", null)   ;
+                            if (!setToken(builderRedirect)) return null;
+
                             response = client.newCall(builderRedirect.build()).execute();
+
 
                         }
                     }
 
 
                     String responseString = response.body().string();
+
+
+                    Log.d(TAG,responseString);
+
                     // If response is empty or JSONArray, we convert to JSONObject
                     if (responseString.isEmpty()) {
                         responseString = "{}";
@@ -182,6 +180,22 @@ public class NetworkRequest {
         }, NETWORK_EXECUTOR);
 
         return taskCompletionSource.getTask();
+    }
+
+    private boolean setToken(Request.Builder builder) {
+        if(requestTemplate.isUseToken()) {
+            Context context = EApplication.getInstance();
+            SharedPreferences sharedPreferences = context.getSharedPreferences(
+                    context.getString(R.string.shared_preferences_session_key), 0);
+            String sessionToken = sharedPreferences.getString(User.SESSION_TOKEN, null);
+
+            if (sessionToken == null) {
+                Log.e(TAG, "Error getting session token.");
+                return false;
+            }
+            builder.addHeader("X-Auth-Token", sessionToken);
+        }
+        return true;
     }
 
     private Request.Builder getBasicBuilder(String url, String method, RequestBody requestBody) {

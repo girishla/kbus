@@ -34,11 +34,13 @@ public class Group implements RealmModel {
     private static final String TAG = Group.class.getSimpleName();
 
     // Keys in JSON response
-    public static final String OBJECT_ID_JSON_KEY = "objectId";
+    public static final String OBJECT_ID_JSON_KEY = "id";
     public static final String GROUPNAME_JSON_KEY = "groupname";
     public static final String NAME_JSON_KEY = "name";
     public static final String ABOUT_JSON_KEY = "about";
-    public static final String USER_ID_JSON_KEY = "userId";
+    public static final String USER_ID_JSON_KEY = "userid";
+    public static final String USER_KEY = "user";
+
     public static final String WEEKLY_BUDGET_JSON_KEY = "weeklyBudget";
     public static final String MONTHLY_BUDGET_JSON_KEY = "monthlyBudget";
 
@@ -150,8 +152,8 @@ public class Group implements RealmModel {
             this.weeklyBudget = jsonObject.optDouble(WEEKLY_BUDGET_JSON_KEY, 0);
             this.monthlyBudget = jsonObject.optDouble(MONTHLY_BUDGET_JSON_KEY, 0);
 
-            JSONObject userIdJSON = jsonObject.getJSONObject(USER_ID_JSON_KEY);
-            this.userId = userIdJSON.getString(OBJECT_ID_JSON_KEY);
+//            JSONObject userIdJSON = jsonObject.getJSONObject(USER_ID_JSON_KEY);
+            this.userId = jsonObject.getString(OBJECT_ID_JSON_KEY);
 
             // Parse createdAt and convert UTC time to local time
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.US);

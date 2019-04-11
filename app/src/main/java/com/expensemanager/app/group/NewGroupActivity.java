@@ -97,10 +97,12 @@ public class NewGroupActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.shared_preferences_session_key), 0);
         String loginUserId = sharedPreferences.getString(User.USER_ID, null);
-        if (loginUserId == null) {
+        if (loginUserId == null || loginUserId.equals("")) {
             Log.i(TAG, "Error getting login user id.");
             return;
         }
+        Log.i(TAG, "login user id is.=" + loginUserId);
+
         group.setUserId(loginUserId);
         String uuid = UUID.randomUUID().toString();
         group.setId(uuid);

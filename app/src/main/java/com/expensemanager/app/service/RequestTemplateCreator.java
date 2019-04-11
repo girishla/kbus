@@ -605,7 +605,7 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getAllGroupByUserId(String userId) {
-        String url = BASE_URL + "classes/Group";
+        String url = BASE_URL + "groups";
         Map<String, String> params = new HashMap<>();
         JSONObject subUserIdObj = new JSONObject();
         JSONObject userIdObj=new JSONObject();
@@ -627,7 +627,7 @@ public class RequestTemplateCreator {
 
 
     public static RequestTemplate getGroupByGroupname(String groupname) {
-        String url = BASE_URL + "classes/Group";
+        String url = BASE_URL + "groups";
 
         Map<String, String> params = new HashMap<>();
         JSONObject groupnameJSON = new JSONObject();
@@ -644,13 +644,13 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getGroupById(String id) {
-        String url = BASE_URL + "classes/Group" + "/" + id;
+        String url = BASE_URL + "groups" + "/" + id;
 
         return new RequestTemplate(GET, url, null);
     }
 
     public static RequestTemplate createGroup(Group group) {
-        String url = BASE_URL + "classes/Group";
+        String url = BASE_URL + "groups";
         Map<String, String> params = new HashMap<>();
 
         params.put(Group.GROUPNAME_JSON_KEY, group.getGroupname());
@@ -665,23 +665,25 @@ public class RequestTemplateCreator {
 
         params.put(Group.WEEKLY_BUDGET_JSON_KEY, String.valueOf(group.getWeeklyBudget()));
         params.put(Group.MONTHLY_BUDGET_JSON_KEY, String.valueOf(group.getMonthlyBudget()));
+        params.put(Group.USER_ID_JSON_KEY,group.getUserId());
 
-        JSONObject userIdObj=new JSONObject();
 
-        try {
-            userIdObj.put("__type", "Pointer");
-            userIdObj.put("className", "_User");
-            userIdObj.put("objectId", group.getUserId());
-            params.put("userId", userIdObj.toString());
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user pointer in createGroup");
-        }
+//        JSONObject userIdObj=new JSONObject();
+//
+//        try {
+//            userIdObj.put("__type", "Pointer");
+//            userIdObj.put("className", "_User");
+//            userIdObj.put("objectId", group.getUserId());
+//            params.put("userId", userIdObj.toString());
+//        } catch (JSONException e) {
+//            Log.e(TAG, "Error creating user pointer in createGroup");
+//        }
 
         return new RequestTemplate(POST, url, params);
     }
 
     public static RequestTemplate updateGroup(Group group) {
-        String url = BASE_URL + "classes/Group/" + group.getId();
+        String url = BASE_URL + "groups/" + group.getId();
         Map<String, String> params = new HashMap<>();
 
         params.put(Group.GROUPNAME_JSON_KEY, group.getGroupname());
@@ -701,7 +703,7 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate deleteGroup(String groupId) {
-        String url = BASE_URL + "classes/Group/" + groupId;
+        String url = BASE_URL + "groups/" + groupId;
 
         return new RequestTemplate(DELETE, url, null);
     }
