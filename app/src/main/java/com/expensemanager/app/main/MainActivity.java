@@ -422,6 +422,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setupGroupListItems(GroupDrawerAdapter groupDrawerAdapter) {
+
+
+
         groupDrawerAdapter.clear();
         List<Member> newMembers = Member.getAllMembersByUserId(loginUserId);
 
@@ -437,12 +440,16 @@ public class MainActivity extends BaseActivity {
         });
 
         if (groupId == null && newMembers.size() > 0) {
+
+            Log.d(TAG,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>setupGroupListItems Group Id is NULL");
+
             int index = getFirstAcceptedGroup(newMembers, 0, newMembers.size() - 1);
             if (index != -1) {
                 groupId = newMembers.get(index).getGroupId();
                 saveGroupId();
             }
         }
+
         if (groupId != null) {
             // Load notification settings
             SettingsFragment.loadSetting();
@@ -470,6 +477,10 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setupGroupList() {
+
+
+        Log.d(TAG,"Setup Groups for " + groupId);
+
         setupGroupListItems(groupDrawerAdapter);
         drawRecyclerView.setAdapter(groupDrawerAdapter);
 
@@ -536,6 +547,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void saveGroupId() {
+
+        Log.d(TAG,">>>>>>>>>>>>>>>> Attempting to save Group Id " + groupId);
+
         SharedPreferences.Editor sharedPreferencesEditor = getSharedPreferences(getString(R.string.shared_preferences_session_key), 0).edit();
         sharedPreferencesEditor.putString(Group.ID_KEY, groupId);
         sharedPreferencesEditor.apply();

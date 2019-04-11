@@ -707,6 +707,9 @@ public class Helpers {
         Context context = EApplication.getInstance();
         SharedPreferences sharedPreferences =
                 context.getSharedPreferences(context.getString(R.string.shared_preferences_session_key), 0);
+
+
+        Log.d(TAG,"^^^^^^^^^^getCurrentGroupId()" + sharedPreferences.getString(Group.ID_KEY, null));
         return sharedPreferences.getString(Group.ID_KEY, null);
     }
 

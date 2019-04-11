@@ -709,18 +709,18 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getMemberByMemberId(String memberId) {
-        String url = BASE_URL + "classes/Member" + "/" + memberId;
+        String url = BASE_URL + "members/" + memberId;
         Map<String, String> params = new HashMap<>();
 
-        params.put(INCLUDE, "groupId,userId,createdBy");
+//        params.put(INCLUDE, "groupId,userId,createdBy");
 
         return new RequestTemplate(GET, url, params);
     }
 
     public static RequestTemplate getMembersByUserId(String userId) {
-        String url = BASE_URL + "classes/Member";
+        String url = BASE_URL + "members/search/findByUserId?userid=" +  userId + "&projection=groupMemberProjection";
         Map<String, String> params = new HashMap<>();
-        JSONObject subUserIdObj = new JSONObject();
+  /*      JSONObject subUserIdObj = new JSONObject();
         JSONObject userIdObj=new JSONObject();
 
         try {
@@ -733,15 +733,15 @@ public class RequestTemplateCreator {
         }
 
         params.put(INCLUDE, "groupId,userId,createdBy");
-        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));
+        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));*/
 
-        return new RequestTemplate(GET, url, params);
+        return new RequestTemplate(GET, url, null);
     }
 
     public static RequestTemplate getMembersByGroupId(String groupId) {
-        String url = BASE_URL + "classes/Member";
+        String url = BASE_URL + "members/search/findByGroupId?groupid=" +  groupId + "&projection=groupMemberProjection";
         Map<String, String> params = new HashMap<>();
-        JSONObject subGroupIdObj = new JSONObject();
+    /*    JSONObject subGroupIdObj = new JSONObject();
         JSONObject groupIdObj=new JSONObject();
 
         try {
@@ -754,14 +754,14 @@ public class RequestTemplateCreator {
         }
 
         params.put(INCLUDE, "groupId,userId,createdBy");
-        params.put(WHERE, Helpers.encodeURIComponent(groupIdObj.toString()));
+        params.put(WHERE, Helpers.encodeURIComponent(groupIdObj.toString()));*/
 
-        return new RequestTemplate(GET, url, params);
+        return new RequestTemplate(GET, url, null);
     }
 
     // Join a group or invite a user
     public static RequestTemplate createMember(Member member) {
-        String url = BASE_URL + "classes/Member";
+        String url = BASE_URL + "members";
         Map<String, String> params = new HashMap<>();
         JSONObject groupIdObject = new JSONObject();
         JSONObject userIdObj=new JSONObject();
@@ -769,28 +769,30 @@ public class RequestTemplateCreator {
 
         try {
             // Group pointer
-            groupIdObject.put("__type", "Pointer");
+/*            groupIdObject.put("__type", "Pointer");
             groupIdObject.put("className", "Group");
             groupIdObject.put("objectId", member.getGroupId());
-            params.put(Member.GROUP_ID_KEY, groupIdObject.toString());
+            params.put(Member.GROUP_ID_KEY, groupIdObject.toString());*/
+
+            params.put(Member.GROUP_ID_KEY, BASE_URL + "groups/" + member.getGroupId());
 
             // Reseiver User pointer
-            userIdObj.put("__type", "Pointer");
+/*            userIdObj.put("__type", "Pointer");
             userIdObj.put("className", "_User");
-            userIdObj.put("objectId", member.getUserId());
-            params.put(Member.USER_ID_KEY, userIdObj.toString());
+            userIdObj.put("objectId", member.getUserId());*/
+            params.put(Member.USER_ID_KEY, BASE_URL + "users/" + member.getUserId());
 
-            // Reseiver User pointer
-            createdByObj.put("__type", "Pointer");
-            createdByObj.put("className", "_User");
-            createdByObj.put("objectId", member.getCreatedBy().getId());
-            params.put(Member.CREATED_BY_KEY, createdByObj.toString());
+//            // Reseiver User pointer
+//            createdByObj.put("__type", "Pointer");
+//            createdByObj.put("className", "_User");
+//            createdByObj.put("objectId", member.getCreatedBy().getId());
+//            params.put(Member.CREATED_BY_KEY, createdByObj.toString());
 
             params.put(Member.IS_ACCEPTED_KEY, String.valueOf(member.isAccepted()));
 
             return new RequestTemplate(POST, url, params);
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
             Log.e(TAG, "Error creating groupId or userId or createdBy pointer object for where in createMember()", e);
         }
 
@@ -798,7 +800,7 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate updateMember(Member member) {
-        String url = BASE_URL + "classes/Member/" + member.getId();
+        String url = BASE_URL + "members/" + member.getId();
         Map<String, String> params = new HashMap<>();
 
         params.put(Member.IS_ACCEPTED_KEY, String.valueOf(member.isAccepted()));
@@ -807,7 +809,7 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate deleteMember(String memberId) {
-        String url = BASE_URL + "classes/Member/" + memberId;
+        String url = BASE_URL + "members/" + memberId;
 
         return new RequestTemplate(DELETE, url, null);
     }

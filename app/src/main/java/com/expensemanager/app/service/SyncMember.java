@@ -46,7 +46,7 @@ public class SyncMember {
 
                 Log.d(TAG, "Member: " + jsonObject.toString());
                 try {
-                    JSONArray memberArray = jsonObject.getJSONArray("results");
+                    JSONArray memberArray = jsonObject.getJSONObject("_embedded").getJSONArray("members");
                     Member.mapFromJSONArray(memberArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting member JSONArray.", e);
@@ -82,7 +82,7 @@ public class SyncMember {
 
                 Log.d(TAG, "getMembersByUserId: Member: " + jsonObject.toString());
                 try {
-                    JSONArray memberArray = jsonObject.getJSONArray("results");
+                    JSONArray memberArray = jsonObject.getJSONObject("_embedded").getJSONArray("members");
                     Member.mapFromJSONArray(memberArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting member JSONArray.", e);
@@ -107,7 +107,7 @@ public class SyncMember {
                 if (task.isFaulted()) {
                     Exception exception = task.getError();
                     Log.e(TAG, "Error in downloading member.", exception);
-                    throw  exception;
+                    throw exception;
                 }
 
                 JSONObject result = task.getResult();
@@ -213,7 +213,7 @@ public class SyncMember {
                 if (task.isFaulted()) {
                     Exception exception = task.getError();
                     Log.e(TAG, "Error in deleting member.", exception);
-                    throw  exception;
+                    throw exception;
                 }
 
                 JSONObject result = task.getResult();

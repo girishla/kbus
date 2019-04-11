@@ -128,6 +128,9 @@ public class SyncGroup {
                 }
 
                 String groupId = jsonObject.getString(Group.OBJECT_ID_JSON_KEY);
+
+                Log.d(TAG,"^^^^^^^^^^^^^^^^^^Group Id:" + groupId);
+
                 // Sync new added group.
                 getGroupById(groupId);
 

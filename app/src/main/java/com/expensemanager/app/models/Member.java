@@ -32,12 +32,14 @@ public class Member implements RealmModel {
     private static final String TAG = Member.class.getSimpleName();
 
     // Keys in JSON response
-    public static final String OBJECT_ID_JSON_KEY = "objectId";
+    public static final String OBJECT_ID_JSON_KEY = "id";
 
     // Property name key
     public static final String ID_KEY = "id";
     public static final String GROUP_ID_KEY = "groupId";
     public static final String USER_ID_KEY = "userId";
+    public static final String GROUP_KEY = "group";
+    public static final String USER_KEY = "user";
     public static final String IS_ACCEPTED_KEY = "isAccepted";
     public static final String CREATED_BY_KEY = "createdBy";
     public static final String CREATED_AT_KEY = "createdAt";
@@ -113,9 +115,9 @@ public class Member implements RealmModel {
             this.user = new User();
             this.createdBy = new User();
 
-            this.group.mapFromJSON(jsonObject.getJSONObject(GROUP_ID_KEY));
-            this.user.mapFromJSON(jsonObject.getJSONObject(USER_ID_KEY));
-            this.createdBy.mapFromJSON(jsonObject.getJSONObject(CREATED_BY_KEY));
+            this.group.mapFromJSON(jsonObject.getJSONObject(GROUP_KEY));
+            this.user.mapFromJSON(jsonObject.getJSONObject(USER_KEY));
+            this.createdBy.mapFromJSON(jsonObject.getJSONObject(USER_KEY));
 
             this.isAccepted = jsonObject.getBoolean(IS_ACCEPTED_KEY);
 
