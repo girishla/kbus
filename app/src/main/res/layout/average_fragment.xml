@@ -133,7 +133,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/space_really_small"
 
-                android:text="$0"
+                android:text="₹0"
                 android:textColor="@color/white"
                 android:gravity="center"/>
 
@@ -209,7 +209,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/space_really_small"
 
-                android:text="$0"
+                android:text="₹0"
                 android:textColor="@color/white"
                 android:gravity="center"/>
 

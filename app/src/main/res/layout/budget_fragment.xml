@@ -34,7 +34,7 @@
 
             android:textColor="@color/white"
             android:textSize="@dimen/text_large"
-            tools:text="$ 123"/>
+            tools:text="₹ 123"/>
 
         <TextView
             android:id="@+id/circle_month_text_view_id"
@@ -83,7 +83,7 @@
 
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_large"
-                tools:text="$ 123"/>
+                tools:text="₹ 123"/>
 
             <TextView
                 android:layout_width="100dp"
@@ -112,7 +112,7 @@
 
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_large"
-                tools:text="$ 123"/>
+                tools:text="₹ 123"/>
 
             <TextView
                 android:layout_width="100dp"

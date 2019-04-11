@@ -192,7 +192,7 @@
                         android:layout_alignParentEnd="true"
 
                         android:padding="@dimen/space_medium_large"
-                        android:text="$800"/>
+                        android:text="₹800"/>
 
                 </RelativeLayout>
                 
@@ -232,7 +232,7 @@
                         android:layout_alignParentEnd="true"
 
                         android:padding="@dimen/space_medium_large"
-                        android:text="$2600"/>
+                        android:text="₹2600"/>
 
                 </RelativeLayout>
 

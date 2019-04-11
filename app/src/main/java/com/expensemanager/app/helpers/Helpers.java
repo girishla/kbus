@@ -683,7 +683,7 @@ public class Helpers {
     }
 
     public static String doubleToCurrency(double amount) {
-        return String.format("$%,.2f", amount);
+        return String.format("₹%,.2f", amount);
     }
 
     public static PhotoSourceAdapter getPhotoSourceAdapter(Context context) {
