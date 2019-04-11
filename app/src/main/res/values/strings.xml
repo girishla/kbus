@@ -63,9 +63,9 @@
     <string name="change_password">Change password</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_out_string">Sign out</string>
-    <string name="left_to_spend">LEFT TO SPEND</string>
-    <string name="spendable_monthly">SPENDABLE MONTHLY</string>
-    <string name="spendable_weekly">SPENDABLE WEEKLY</string>
+    <string name="to_target">To Achieve Collection Target</string>
+    <string name="target_collection_monthly">Monthly Target</string>
+    <string name="target_collection_weekly">Weekly Target</string>
     <string name="title_activity_expense_detail">Expense details</string>
     <string name="title_activity_category_detail">Category details</string>
     <string name="title_activity_new_expense">New Expense</string>

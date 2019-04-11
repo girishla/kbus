@@ -57,7 +57,7 @@
             android:textColor="@color/white"
             android:alpha="0.8"
             android:textSize="@dimen/text_small"
-            android:text="@string/left_to_spend"/>
+            android:text="@string/to_target"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -95,7 +95,7 @@
                 android:textColor="@color/white"
                 android:alpha="0.8"
                 android:textSize="@dimen/text_really_small"
-                android:text="@string/spendable_monthly"/>
+                android:text="@string/target_collection_monthly"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -124,7 +124,7 @@
                 android:textColor="@color/white"
                 android:alpha="0.8"
                 android:textSize="@dimen/text_really_small"
-                android:text="@string/spendable_weekly"/>
+                android:text="@string/target_collection_weekly"/>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
