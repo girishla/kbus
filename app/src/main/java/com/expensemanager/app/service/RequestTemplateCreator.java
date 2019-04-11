@@ -26,7 +26,8 @@ import java.util.TimeZone;
 public class RequestTemplateCreator {
     private static final String TAG = RequestTemplateCreator.class.getSimpleName();
 
-    private static final String BASE_URL = "http://10.0.2.2:8080/";
+//    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    private static final String BASE_URL = "http://192.168.56.38:8080/";
 
     public static final String GET = "GET";
     public static final String POST = "POST";
@@ -318,6 +319,8 @@ public class RequestTemplateCreator {
             params.put(Category.USER_JSON_KEY, category.getUserId());
 
             params.put(Category.GROUP_JSON_KEY, category.getGroupId());
+            params.put(Category.ICON_JSON_KEY, category.getIcon());
+
 
         } catch (Exception e) {
             Log.e(TAG, "Error pointer object for 'where' in createExpense", e);

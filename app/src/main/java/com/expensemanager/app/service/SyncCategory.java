@@ -36,7 +36,8 @@ public class SyncCategory {
                 Log.d(TAG, "Categories: \n" + categories);
 
                 try {
-                    JSONArray categoriesArray = categories.getJSONArray("results");
+
+                    JSONArray categoriesArray = categories.getJSONObject("_embedded").getJSONArray("categories");
                     Category.mapFromJSONArray(categoriesArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting category JSONArray.", e);
@@ -72,7 +73,7 @@ public class SyncCategory {
                 Log.d(TAG, "Categories: \n" + categories);
 
                 try {
-                    JSONArray categoriesArray = categories.getJSONArray("results");
+                    JSONArray categoriesArray = categories.getJSONObject("_embedded").getJSONArray("categories");
                     Category.mapFromJSONArray(categoriesArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting category JSONArray.", e);
@@ -108,7 +109,7 @@ public class SyncCategory {
                 Log.d(TAG, "Categories: \n" + categories);
 
                 try {
-                    JSONArray categoriesArray = categories.getJSONArray("results");
+                    JSONArray categoriesArray = categories.getJSONObject("_embedded").getJSONArray("categories");
                     Category.mapFromJSONArray(categoriesArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting category JSONArray.", e);
