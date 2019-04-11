@@ -22,7 +22,7 @@ public class Category implements RealmModel {
     private static final String TAG = Category.class.getSimpleName();
 
     // Keys in JSON response
-    public static final String OBJECT_ID_JSON_KEY = "objectId";
+    public static final String OBJECT_ID_JSON_KEY = "id";
     public static final String NAME_JSON_KEY = "name";
     public static final String COLOR_JSON_KEY = "color";
     public static final String ICON_JSON_KEY = "icon";
@@ -101,12 +101,10 @@ public class Category implements RealmModel {
             this.icon = jsonObject.getString(ICON_JSON_KEY);
 
             if (jsonObject.has(USER_JSON_KEY)) {
-                // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-                this.userId = jsonObject.getJSONObject(USER_JSON_KEY).getString(OBJECT_ID_JSON_KEY);
+                this.userId = jsonObject.getString(USER_JSON_KEY);
             }
             if (jsonObject.has(GROUP_JSON_KEY)) {
-                // {"__type":"Pointer","className":"Group","objectId":"2ZutGFhpA3"}
-                this.groupId = jsonObject.getJSONObject(GROUP_JSON_KEY).getString(OBJECT_ID_JSON_KEY);
+                this.groupId = jsonObject.getString(GROUP_JSON_KEY);
             }
         } catch (JSONException e) {
             Log.e(TAG, "Error in parsing category.", e);

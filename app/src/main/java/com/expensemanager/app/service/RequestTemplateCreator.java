@@ -102,7 +102,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "classes/Expense";
         Map<String, String> params = new HashMap<>();
         JSONObject subUserIdObj = new JSONObject();
-        JSONObject userIdObj=new JSONObject();
+        JSONObject userIdObj = new JSONObject();
 
         try {
             subUserIdObj.put("__type", "Pointer");
@@ -126,7 +126,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "classes/Expense";
         Map<String, String> params = new HashMap<>();
         JSONObject subGroupIdObj = new JSONObject();
-        JSONObject groupIdObj=new JSONObject();
+        JSONObject groupIdObj = new JSONObject();
 
         try {
             subGroupIdObj.put("__type", "Pointer");
@@ -164,21 +164,21 @@ public class RequestTemplateCreator {
         try {
             // User pointer
             // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj=new JSONObject();
+            JSONObject userIdObj = new JSONObject();
             userIdObj.put("__type", "Pointer");
             userIdObj.put("className", "_User");
             userIdObj.put("objectId", expense.getUserId());
             params.put(Expense.USER_JSON_KEY, userIdObj.toString());
 
             // Category pointer
-            JSONObject categoryIdObj=new JSONObject();
+            JSONObject categoryIdObj = new JSONObject();
             categoryIdObj.put("__type", "Pointer");
             categoryIdObj.put("className", "Category");
             categoryIdObj.put("objectId", expense.getCategoryId());
             params.put(Expense.CATEGORY_JSON_KEY, categoryIdObj.toString());
 
             // Group pointer
-            JSONObject subGroupIdObj=new JSONObject();
+            JSONObject subGroupIdObj = new JSONObject();
             subGroupIdObj.put("__type", "Pointer");
             subGroupIdObj.put("className", "Group");
             subGroupIdObj.put("objectId", expense.getGroupId());
@@ -190,7 +190,7 @@ public class RequestTemplateCreator {
             timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             String time = timezoneFormat.format(expense.getExpenseDate());
 
-            JSONObject dateObj=new JSONObject();
+            JSONObject dateObj = new JSONObject();
             dateObj.put("__type", "Date");
             dateObj.put(Expense.ISO_EXPENSE_DATE_JSON_KEY, time);
             params.put(Expense.EXPENSE_DATE_JSON_KEY, dateObj.toString());
@@ -214,21 +214,21 @@ public class RequestTemplateCreator {
         try {
             // User pointer
             // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj=new JSONObject();
+            JSONObject userIdObj = new JSONObject();
             userIdObj.put("__type", "Pointer");
             userIdObj.put("className", "_User");
             userIdObj.put("objectId", expense.getUserId());
             params.put(Expense.USER_JSON_KEY, userIdObj.toString());
 
             // Category pointer
-            JSONObject categoryIdObj=new JSONObject();
+            JSONObject categoryIdObj = new JSONObject();
             categoryIdObj.put("__type", "Pointer");
             categoryIdObj.put("className", "Category");
             categoryIdObj.put("objectId", expense.getCategoryId());
             params.put(Expense.CATEGORY_JSON_KEY, categoryIdObj.toString());
 
             // Group pointer
-            JSONObject subGroupIdObj=new JSONObject();
+            JSONObject subGroupIdObj = new JSONObject();
             subGroupIdObj.put("__type", "Pointer");
             subGroupIdObj.put("className", "Group");
             subGroupIdObj.put("objectId", expense.getGroupId());
@@ -240,7 +240,7 @@ public class RequestTemplateCreator {
             timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             String time = timezoneFormat.format(expense.getExpenseDate());
 
-            JSONObject dateObj=new JSONObject();
+            JSONObject dateObj = new JSONObject();
             dateObj.put("__type", "Date");
             dateObj.put(Expense.ISO_EXPENSE_DATE_JSON_KEY, time);
             params.put(Expense.EXPENSE_DATE_JSON_KEY, dateObj.toString());
@@ -258,7 +258,7 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getAllCategories() {
-        String url = BASE_URL + "classes/Category";
+        String url = BASE_URL + "categories";
         Map<String, String> params = new HashMap<>();
         //todo: getAllCategoriesByUserId
 
@@ -270,16 +270,13 @@ public class RequestTemplateCreator {
             return null;
         }
 
-        String url = BASE_URL + "classes/Category";
+        String url = BASE_URL + "categories/search/findByUserId";
         Map<String, String> params = new HashMap<>();
-        JSONObject subUserIdObj = new JSONObject();
-        JSONObject userIdObj=new JSONObject();
+        JSONObject userIdObj = new JSONObject();
 
         try {
-            subUserIdObj.put("__type", "Pointer");
-            subUserIdObj.put("className", "_User");
-            subUserIdObj.put("objectId", userId);
-            userIdObj.put("userId", subUserIdObj);
+
+            userIdObj.put("userId", userId);
         } catch (JSONException e) {
             Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
         }
@@ -294,16 +291,13 @@ public class RequestTemplateCreator {
             return null;
         }
 
-        String url = BASE_URL + "classes/Category";
+        String url = BASE_URL + "categories/search/findByGroupId";
         Map<String, String> params = new HashMap<>();
-        JSONObject subGroupIdObj = new JSONObject();
-        JSONObject groupIdObj=new JSONObject();
+        JSONObject groupIdObj = new JSONObject();
 
         try {
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", groupId);
-            groupIdObj.put(Category.GROUP_JSON_KEY, subGroupIdObj);
+
+            groupIdObj.put(Category.GROUP_JSON_KEY, groupId);
         } catch (JSONException e) {
             Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
         }
@@ -314,29 +308,18 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate createCategory(Category category) {
-        String url = BASE_URL + "classes/Category";
+        String url = BASE_URL + "categories";
         Map<String, String> params = new HashMap<>();
 
-        params.put(Category.NAME_JSON_KEY, category.getName());
-        params.put(Category.COLOR_JSON_KEY, category.getColor());
-
         try {
-            // User pointer
-            // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj=new JSONObject();
-            userIdObj.put("__type", "Pointer");
-            userIdObj.put("className", "_User");
-            userIdObj.put("objectId", category.getUserId());
-            params.put(Category.USER_JSON_KEY, userIdObj.toString());
+            params.put(Category.NAME_JSON_KEY, category.getName());
+            params.put(Category.COLOR_JSON_KEY, category.getColor());
 
-            // Group pointer
-            JSONObject subGroupIdObj=new JSONObject();
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", category.getGroupId());
-            params.put(Category.GROUP_JSON_KEY, subGroupIdObj.toString());
+            params.put(Category.USER_JSON_KEY, category.getUserId());
 
-        } catch (JSONException e) {
+            params.put(Category.GROUP_JSON_KEY, category.getGroupId());
+
+        } catch (Exception e) {
             Log.e(TAG, "Error pointer object for 'where' in createExpense", e);
         }
 
@@ -353,14 +336,14 @@ public class RequestTemplateCreator {
         try {
             // User pointer
             // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj=new JSONObject();
+            JSONObject userIdObj = new JSONObject();
             userIdObj.put("__type", "Pointer");
             userIdObj.put("className", "_User");
             userIdObj.put("objectId", category.getUserId());
             params.put(Category.USER_JSON_KEY, userIdObj.toString());
 
             // Group pointer
-            JSONObject subGroupIdObj=new JSONObject();
+            JSONObject subGroupIdObj = new JSONObject();
             subGroupIdObj.put("__type", "Pointer");
             subGroupIdObj.put("className", "Group");
             subGroupIdObj.put("objectId", category.getGroupId());
@@ -380,6 +363,7 @@ public class RequestTemplateCreator {
 
     /**
      * Upload photo to File table
+     *
      * @param photoName
      * @param content
      * @return
@@ -402,7 +386,7 @@ public class RequestTemplateCreator {
         Map<String, String> params = new HashMap<>();
 
         JSONObject expensePointerObj = new JSONObject();
-        JSONObject expenseIdObj=new JSONObject();
+        JSONObject expenseIdObj = new JSONObject();
         try {
             expensePointerObj.put("__type", "Pointer");
             expensePointerObj.put("className", "Expense");
@@ -461,7 +445,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj=new JSONObject();
+        JSONObject userNameObj = new JSONObject();
 
         try {
             userNameObj.put(User.FULLNAME_JSON_KEY, userFullName);
@@ -483,7 +467,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users/search/findByEmail";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj=new JSONObject();
+        JSONObject userNameObj = new JSONObject();
 
         try {
             userNameObj.put(User.EMAIL_JSON_KEY, userEmail);
@@ -506,7 +490,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj=new JSONObject();
+        JSONObject userNameObj = new JSONObject();
 
         try {
             userNameObj.put(User.PHONE_JSON_KEY, userPhoneNumber);
@@ -527,7 +511,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj=new JSONObject();
+        JSONObject userNameObj = new JSONObject();
 
         try {
             userNameObj.put(User.USERNAME_JSON_KEY, username);
@@ -558,7 +542,7 @@ public class RequestTemplateCreator {
 
         if (user.getEmail() != null && Helpers.isValidEmail(user.getEmail())) {
             params.put(User.EMAIL_JSON_KEY, user.getEmail());
-            if (user.getUsername().contains("@") ) {
+            if (user.getUsername().contains("@")) {
                 params.put(User.USERNAME_JSON_KEY, user.getEmail());
             }
         }
@@ -608,7 +592,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "groups";
         Map<String, String> params = new HashMap<>();
         JSONObject subUserIdObj = new JSONObject();
-        JSONObject userIdObj=new JSONObject();
+        JSONObject userIdObj = new JSONObject();
 
         try {
             subUserIdObj.put("__type", "Pointer");
@@ -623,7 +607,6 @@ public class RequestTemplateCreator {
 
         return new RequestTemplate(GET, url, params);
     }
-
 
 
     public static RequestTemplate getGroupByGroupname(String groupname) {
@@ -665,7 +648,7 @@ public class RequestTemplateCreator {
 
         params.put(Group.WEEKLY_BUDGET_JSON_KEY, String.valueOf(group.getWeeklyBudget()));
         params.put(Group.MONTHLY_BUDGET_JSON_KEY, String.valueOf(group.getMonthlyBudget()));
-        params.put(Group.USER_ID_JSON_KEY,group.getUserId());
+        params.put(Group.USER_ID_JSON_KEY, group.getUserId());
 
 
 //        JSONObject userIdObj=new JSONObject();
@@ -712,49 +695,21 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "members/" + memberId;
         Map<String, String> params = new HashMap<>();
 
-//        params.put(INCLUDE, "groupId,userId,createdBy");
-
         return new RequestTemplate(GET, url, params);
     }
 
     public static RequestTemplate getMembersByUserId(String userId) {
-        String url = BASE_URL + "members/search/findByUserId?userid=" +  userId + "&projection=groupMemberProjection";
+        String url = BASE_URL + "members/search/findByUserId?userid=" + userId + "&projection=groupMemberProjection";
         Map<String, String> params = new HashMap<>();
-  /*      JSONObject subUserIdObj = new JSONObject();
-        JSONObject userIdObj=new JSONObject();
 
-        try {
-            subUserIdObj.put("__type", "Pointer");
-            subUserIdObj.put("className", "_User");
-            subUserIdObj.put("objectId", userId);
-            userIdObj.put("userId", subUserIdObj);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getMembersByUserId", e);
-        }
-
-        params.put(INCLUDE, "groupId,userId,createdBy");
-        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));*/
 
         return new RequestTemplate(GET, url, null);
     }
 
     public static RequestTemplate getMembersByGroupId(String groupId) {
-        String url = BASE_URL + "members/search/findByGroupId?groupid=" +  groupId + "&projection=groupMemberProjection";
+        String url = BASE_URL + "members/search/findByGroupId?groupid=" + groupId + "&projection=groupMemberProjection";
         Map<String, String> params = new HashMap<>();
-    /*    JSONObject subGroupIdObj = new JSONObject();
-        JSONObject groupIdObj=new JSONObject();
 
-        try {
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", groupId);
-            groupIdObj.put("groupId", subGroupIdObj);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getMembersByGroupId", e);
-        }
-
-        params.put(INCLUDE, "groupId,userId,createdBy");
-        params.put(WHERE, Helpers.encodeURIComponent(groupIdObj.toString()));*/
 
         return new RequestTemplate(GET, url, null);
     }
@@ -764,30 +719,13 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "members";
         Map<String, String> params = new HashMap<>();
         JSONObject groupIdObject = new JSONObject();
-        JSONObject userIdObj=new JSONObject();
-        JSONObject createdByObj=new JSONObject();
+        JSONObject userIdObj = new JSONObject();
+        JSONObject createdByObj = new JSONObject();
 
         try {
-            // Group pointer
-/*            groupIdObject.put("__type", "Pointer");
-            groupIdObject.put("className", "Group");
-            groupIdObject.put("objectId", member.getGroupId());
-            params.put(Member.GROUP_ID_KEY, groupIdObject.toString());*/
 
             params.put(Member.GROUP_ID_KEY, BASE_URL + "groups/" + member.getGroupId());
-
-            // Reseiver User pointer
-/*            userIdObj.put("__type", "Pointer");
-            userIdObj.put("className", "_User");
-            userIdObj.put("objectId", member.getUserId());*/
             params.put(Member.USER_ID_KEY, BASE_URL + "users/" + member.getUserId());
-
-//            // Reseiver User pointer
-//            createdByObj.put("__type", "Pointer");
-//            createdByObj.put("className", "_User");
-//            createdByObj.put("objectId", member.getCreatedBy().getId());
-//            params.put(Member.CREATED_BY_KEY, createdByObj.toString());
-
             params.put(Member.IS_ACCEPTED_KEY, String.valueOf(member.isAccepted()));
 
             return new RequestTemplate(POST, url, params);
