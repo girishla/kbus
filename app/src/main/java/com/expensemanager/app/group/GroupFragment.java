@@ -30,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Girish Lakshmanan on 9/15/16.
+ * Created by Girish Lakshmanan on 9/15/19.
  */
 
 public class GroupFragment extends Fragment {

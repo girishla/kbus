@@ -26,7 +26,7 @@ import io.realm.annotations.RealmClass;
 import static com.expensemanager.app.models.Expense.CREATED_AT_JSON_KEY;
 
 /**
- * Created by Girish Lakshmanan on 8/19/16.
+ * Created by Girish Lakshmanan on 8/19/19.
  */
 
 @RealmClass

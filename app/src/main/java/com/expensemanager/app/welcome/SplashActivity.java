@@ -13,7 +13,7 @@ import com.expensemanager.app.main.MainActivity;
 import com.expensemanager.app.models.User;
 
 /**
- * Created by Girish Lakshmanan on 8/18/16.
+ * Created by Girish Lakshmanan on 8/18/19.
  */
 
 public class SplashActivity extends AppCompatActivity {

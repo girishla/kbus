@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 /**
- * Created by Girish Lakshmanan on 9/1/16.
+ * Created by Girish Lakshmanan on 9/1/19.
  *
  * Reference: http://stackoverflow.com/a/2033124/2427211
  */

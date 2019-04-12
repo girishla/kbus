@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.expensemanager.app.R;
 
 /**
- * Created by Girish Lakshmanan on 8/20/16.
+ * Created by Girish Lakshmanan on 8/20/19.
  */
 
 public class BaseActivity extends AppCompatActivity {

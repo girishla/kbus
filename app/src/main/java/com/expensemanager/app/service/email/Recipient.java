@@ -1,7 +1,7 @@
 package com.expensemanager.app.service.email;
 
 /**
- * Created by Girish Lakshmanan on 9/1/16.
+ * Created by Girish Lakshmanan on 9/1/19.
  *
  * Reference:
  * https://github.com/enrichman/androidmail

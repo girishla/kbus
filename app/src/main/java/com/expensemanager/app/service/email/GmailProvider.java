@@ -3,7 +3,7 @@ package com.expensemanager.app.service.email;
 import java.util.Properties;
 
 /**
- * Created by Girish Lakshmanan on 9/1/16.
+ * Created by Girish Lakshmanan on 9/1/19.
  */
 
 public class GmailProvider implements MailProvider {

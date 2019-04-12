@@ -22,7 +22,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 /**
- * Created by Girish Lakshmanan on 8/16/16.
+ * Created by Girish Lakshmanan on 8/16/19.
  */
 
 public class EApplication extends Application {

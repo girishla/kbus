@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.expensemanager.app.helpers.Helpers;
+import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.models.Category;
 import com.expensemanager.app.models.Expense;
 import com.expensemanager.app.models.Group;
@@ -20,7 +21,7 @@ import java.util.Map;
 import java.util.TimeZone;
 
 /**
- * Created by Girish Lakshmanan on 8/17/16.
+ * Created by Girish Lakshmanan on 8/17/19.
  */
 
 public class RequestTemplateCreator {
@@ -200,6 +201,172 @@ public class RequestTemplateCreator {
 
         return new RequestTemplate(DELETE, url, null);
     }
+
+
+
+
+
+
+    public static RequestTemplate getAllBusDailySummaries() {
+        String url = BASE_URL + "busdailysummaries";
+        Map<String, String> params = new HashMap<>();
+        //todo: getAllBusDailySummariesByUserId
+        params.put("projection", "busDailySummaryProjection");
+
+        return new RequestTemplate(GET, url, params);
+    }
+
+
+    public static RequestTemplate getAllBusDailySummariesByUserId(String userId) {
+        String url = BASE_URL + "busdailysummaries/search/findByUserId";
+        Map<String, String> params = new HashMap<>();
+        params.put("projection", "busDailySummaryProjection");
+        params.put("userId", "userId");
+
+        return new RequestTemplate(GET, url, null);
+    }
+
+    public static RequestTemplate getAllBusDailySummariesByGroupId(String groupId) {
+        String url = BASE_URL + "busdailysummaries/search/findByGroupId";
+        Map<String, String> params = new HashMap<>();
+        params.put("projection", "busDailySummaryProjection");
+        params.put("groupId", "groupId");
+
+
+        return new RequestTemplate(GET, url, null);
+    }
+
+
+    public static RequestTemplate getBusDailySummaryById(String id) {
+        String url = BASE_URL + "busdailysummaries" + "/" + id;
+        Map<String, String> params = new HashMap<>();
+
+        params.put("projection", "busDailySummaryProjection");
+
+        return new RequestTemplate(GET, url, params);
+    }
+
+    public static RequestTemplate createBusDailySummary(BusDailySummary busDailySummary) {
+        String url = BASE_URL + "busdailysummaries";
+        Map<String, String> params = new HashMap<>();
+
+        params.put(BusDailySummary.SINGLE1COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle1Collection()));
+        params.put(BusDailySummary.SINGLE2COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle2Collection()));
+        params.put(BusDailySummary.SINGLE3COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle3Collection()));
+        params.put(BusDailySummary.SINGLE4COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle4Collection()));
+        params.put(BusDailySummary.SINGLE5COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle5Collection()));
+        params.put(BusDailySummary.SINGLE6COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle6Collection()));
+        params.put(BusDailySummary.SINGLE7COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle7Collection()));
+        params.put(BusDailySummary.SINGLE8COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle8Collection()));
+        params.put(BusDailySummary.SINGLE9COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle9Collection()));
+        params.put(BusDailySummary.SINGLE10COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle10Collection()));
+
+        params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDieselExpense()));
+        params.put(BusDailySummary.OILEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOilExpense()));
+        params.put(BusDailySummary.WATEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getWaterExpense()));
+        params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverPathaExpense()));
+        params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorPathaExpense()));
+        params.put(BusDailySummary.CONDUCTORSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CHECKINGPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCheckingPathaExpense()));
+        params.put(BusDailySummary.COMMISSIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCommissionExpense()));
+        params.put(BusDailySummary.OTHEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOtherExpense()));
+        params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getUnionExpense()));
+        params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCleanerExpense()));
+
+
+        params.put(BusDailySummary.SUBMITTEDBY_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getSubmittedById());
+        params.put(BusDailySummary.DRIVER_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getDriverId());
+        params.put(BusDailySummary.CONDUCTOR_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getConductorId());
+        params.put(BusDailySummary.GROUP_OBJ_KEY, BASE_URL + "groups/" + busDailySummary.getGroupId());
+
+
+        SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
+        timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String time = timezoneFormat.format(busDailySummary.getSummaryDate());
+
+        SimpleDateFormat timezoneFormat2 = new SimpleDateFormat("yyyyMMdd", Locale.US);
+        timezoneFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String time2 = timezoneFormat2.format(busDailySummary.getSummaryDate());
+
+        params.put(BusDailySummary.SUMMARY_DATE_KEY, time);
+        params.put(BusDailySummary.DATEID_JSON_KEY, time2);
+
+        return new RequestTemplate(POST, url, params);
+    }
+
+    public static RequestTemplate updateBusDailySummary(BusDailySummary busDailySummary) {
+
+        String url = BASE_URL + "busdailysummaries/" + busDailySummary.getId();
+        Map<String, String> params = new HashMap<>();
+
+        params.put(BusDailySummary.SINGLE1COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle1Collection()));
+        params.put(BusDailySummary.SINGLE2COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle2Collection()));
+        params.put(BusDailySummary.SINGLE3COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle3Collection()));
+        params.put(BusDailySummary.SINGLE4COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle4Collection()));
+        params.put(BusDailySummary.SINGLE5COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle5Collection()));
+        params.put(BusDailySummary.SINGLE6COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle6Collection()));
+        params.put(BusDailySummary.SINGLE7COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle7Collection()));
+        params.put(BusDailySummary.SINGLE8COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle8Collection()));
+        params.put(BusDailySummary.SINGLE9COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle9Collection()));
+        params.put(BusDailySummary.SINGLE10COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle10Collection()));
+
+        params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDieselExpense()));
+        params.put(BusDailySummary.OILEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOilExpense()));
+        params.put(BusDailySummary.WATEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getWaterExpense()));
+        params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverPathaExpense()));
+        params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorPathaExpense()));
+        params.put(BusDailySummary.CONDUCTORSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CHECKINGPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCheckingPathaExpense()));
+        params.put(BusDailySummary.COMMISSIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCommissionExpense()));
+        params.put(BusDailySummary.OTHEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOtherExpense()));
+        params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getUnionExpense()));
+        params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCleanerExpense()));
+
+
+        params.put(BusDailySummary.SUBMITTEDBY_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getSubmittedById());
+        params.put(BusDailySummary.DRIVER_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getDriverId());
+        params.put(BusDailySummary.CONDUCTOR_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getConductorId());
+        params.put(BusDailySummary.GROUP_OBJ_KEY, BASE_URL + "groups/" + busDailySummary.getGroupId());
+
+
+        SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
+        timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String time = timezoneFormat.format(busDailySummary.getSummaryDate());
+
+        SimpleDateFormat timezoneFormat2 = new SimpleDateFormat("yyyyMMdd", Locale.US);
+        timezoneFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String time2 = timezoneFormat2.format(busDailySummary.getSummaryDate());
+
+        params.put(BusDailySummary.SUMMARY_DATE_KEY, time);
+        params.put(BusDailySummary.DATEID_JSON_KEY, time2);
+
+
+        return new RequestTemplate(PUT, url, params);
+    }
+
+    public static RequestTemplate deleteBusDailySummary(String busDailySummaryId) {
+        String url = BASE_URL + "busdailysummaries/" + busDailySummaryId;
+
+        return new RequestTemplate(DELETE, url, null);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static RequestTemplate getAllCategories() {
         String url = BASE_URL + "categories";

@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Girish Lakshmanan on 9/19/16.
+ * Created by Girish Lakshmanan on 9/19/19.
  */
 
 public class IconPickerSheetAdapter extends RecyclerView.Adapter<IconPickerSheetAdapter.ViewHolder> {

@@ -20,7 +20,7 @@ import bolts.TaskCompletionSource;
 import io.realm.Realm;
 
 /**
- * Created by Girish Lakshmanan on 8/19/16.
+ * Created by Girish Lakshmanan on 8/19/19.
  */
 
 public class SyncUser {

@@ -6,7 +6,7 @@ import android.view.View;
 import com.expensemanager.app.R;
 
 /**
- * Created by Girish Lakshmanan on 8/22/16.
+ * Created by Girish Lakshmanan on 8/22/19.
  *
  * Reference: http://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/
  */

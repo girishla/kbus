@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by Girish Lakshmanan on 9/19/16.
+ * Created by Girish Lakshmanan on 9/19/19.
  */
 
 public class IconPickerFragment extends DialogFragment {

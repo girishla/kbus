@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Girish Lakshmanan on 9/15/16.
+ * Created by Girish Lakshmanan on 9/15/19.
  */
 
 public class ColorPickerSheetAdapter extends RecyclerView.Adapter<ColorPickerSheetAdapter.ViewHolder> {

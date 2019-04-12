@@ -12,7 +12,7 @@ import bolts.Task;
 import bolts.TaskCompletionSource;
 
 /**
- * Created by Girish Lakshmanan on 8/21/16.
+ * Created by Girish Lakshmanan on 8/21/19.
  */
 
 public class SyncPhoto {

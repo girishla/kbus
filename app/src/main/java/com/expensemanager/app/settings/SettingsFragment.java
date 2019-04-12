@@ -50,7 +50,7 @@ import io.realm.Realm;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Created by Girish Lakshmanan on 9/10/16.
+ * Created by Girish Lakshmanan on 9/10/19.
  */
 
 public class SettingsFragment extends Fragment {

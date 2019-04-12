@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * Created by Girish Lakshmanan on 9/1/16.
+ * Created by Girish Lakshmanan on 9/1/19.
  */
 
 public class EGlideModule implements GlideModule {

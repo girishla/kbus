@@ -14,7 +14,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 
 /**
- * Created by Girish Lakshmanan on 8/25/16.
+ * Created by Girish Lakshmanan on 8/25/19.
  */
 
 @RealmClass

@@ -8,7 +8,7 @@ import com.expensemanager.app.main.EApplication;
 import com.expensemanager.app.service.font.Font;
 
 /**
- * Created by Girish Lakshmanan on 9/18/16.
+ * Created by Girish Lakshmanan on 9/18/19.
  */
 
 public class ETextViewBold extends TextView {

@@ -28,7 +28,7 @@ import io.realm.Realm;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
- * Created by Girish Lakshmanan on 9/9/16.
+ * Created by Girish Lakshmanan on 9/9/19.
  */
 
 public class CategoryFragment extends Fragment {

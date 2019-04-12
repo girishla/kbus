@@ -23,7 +23,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 
 /**
- * Created by Girish Lakshmanan on 8/16/16.
+ * Created by Girish Lakshmanan on 8/16/19.
  */
 
 @RealmClass

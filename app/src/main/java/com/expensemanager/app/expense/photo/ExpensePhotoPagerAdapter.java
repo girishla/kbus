@@ -20,7 +20,7 @@ import com.expensemanager.app.service.Constant;
 import java.util.ArrayList;
 
 /**
- * Created by Girish Lakshmanan on 8/25/16.
+ * Created by Girish Lakshmanan on 8/25/19.
  */
 
 public class ExpensePhotoPagerAdapter extends PagerAdapter {

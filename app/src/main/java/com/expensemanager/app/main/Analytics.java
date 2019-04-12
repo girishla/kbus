@@ -12,7 +12,7 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import io.fabric.sdk.android.Fabric;
 
 /**
- * Created by Girish Lakshmanan on 9/6/16.
+ * Created by Girish Lakshmanan on 9/6/19.
  */
 
 public class Analytics {
