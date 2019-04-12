@@ -26,7 +26,7 @@ import java.util.TimeZone;
 public class RequestTemplateCreator {
     private static final String TAG = RequestTemplateCreator.class.getSimpleName();
 
-//    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    //    private static final String BASE_URL = "http://10.0.2.2:8080/";
     private static final String BASE_URL = "http://192.168.56.38:8080/";
 
     public static final String GET = "GET";
@@ -88,68 +88,46 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getAllExpenses() {
-        String url = BASE_URL + "classes/Expense";
+        String url = BASE_URL + "expenses";
         Map<String, String> params = new HashMap<>();
         //todo: getAllExpensesByUserId
+        params.put("projection", "expenseProjection");
 
         return new RequestTemplate(GET, url, params);
     }
+
 
     public static RequestTemplate getAllExpensesByUserId(String userId) {
-        if (userId == null) {
-            return null;
-        }
-
-        String url = BASE_URL + "classes/Expense";
+        String url = BASE_URL + "expenses/search/findByUserId";
         Map<String, String> params = new HashMap<>();
-        JSONObject subUserIdObj = new JSONObject();
-        JSONObject userIdObj = new JSONObject();
-
-        try {
-            subUserIdObj.put("__type", "Pointer");
-            subUserIdObj.put("className", "_User");
-            subUserIdObj.put("objectId", userId);
-            userIdObj.put("userId", subUserIdObj);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
-        }
-
-        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));
-
-        return new RequestTemplate(GET, url, params);
-    }
-
-    public static RequestTemplate getAllExpensesByGroupId(String groupId) {
-        if (groupId == null) {
-            return null;
-        }
-
-        String url = BASE_URL + "classes/Expense";
-        Map<String, String> params = new HashMap<>();
-        JSONObject subGroupIdObj = new JSONObject();
-        JSONObject groupIdObj = new JSONObject();
-
-        try {
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", groupId);
-            groupIdObj.put(Expense.GROUP_JSON_KEY, subGroupIdObj);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
-        }
-
-        params.put(WHERE, Helpers.encodeURIComponent(groupIdObj.toString()));
-        return new RequestTemplate(GET, url, params);
-    }
-
-    public static RequestTemplate getExpenseById(String id) {
-        String url = BASE_URL + "classes/Expense" + "/" + id;
+        params.put("projection", "expenseProjection");
+        params.put("userId", "userId");
 
         return new RequestTemplate(GET, url, null);
     }
 
+    public static RequestTemplate getAllExpensesByGroupId(String groupId) {
+        String url = BASE_URL + "expenses/search/findByGroupId";
+        Map<String, String> params = new HashMap<>();
+        params.put("projection", "expenseProjection");
+        params.put("groupId", "groupId");
+
+
+        return new RequestTemplate(GET, url, null);
+    }
+
+
+    public static RequestTemplate getExpenseById(String id) {
+        String url = BASE_URL + "expenses" + "/" + id;
+        Map<String, String> params = new HashMap<>();
+
+        params.put("projection", "expenseProjection");
+
+        return new RequestTemplate(GET, url, params);
+    }
+
     public static RequestTemplate createExpense(ExpenseBuilder expenseBuilder) {
-        String url = BASE_URL + "classes/Expense";
+        String url = BASE_URL + "expenses";
         Map<String, String> params = new HashMap<>();
 
         Expense expense = expenseBuilder.getExpense();
@@ -162,28 +140,15 @@ public class RequestTemplateCreator {
             params.put(Expense.NOTE_JSON_KEY, expense.getNote());
         }
 
+
+        params.put(Expense.USER_OBJ_KEY, BASE_URL + "users/" + expense.getUserId());
+        params.put(Expense.GROUP_OBJ_KEY, BASE_URL + "groups/" + expense.getGroupId());
+        if (expense.getCategoryId() != null) {
+            params.put(Expense.CATEGORY_OBJ_KEY, BASE_URL + "categories/" + expense.getCategoryId());
+
+        }
+
         try {
-            // User pointer
-            // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj = new JSONObject();
-            userIdObj.put("__type", "Pointer");
-            userIdObj.put("className", "_User");
-            userIdObj.put("objectId", expense.getUserId());
-            params.put(Expense.USER_JSON_KEY, userIdObj.toString());
-
-            // Category pointer
-            JSONObject categoryIdObj = new JSONObject();
-            categoryIdObj.put("__type", "Pointer");
-            categoryIdObj.put("className", "Category");
-            categoryIdObj.put("objectId", expense.getCategoryId());
-            params.put(Expense.CATEGORY_JSON_KEY, categoryIdObj.toString());
-
-            // Group pointer
-            JSONObject subGroupIdObj = new JSONObject();
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", expense.getGroupId());
-            params.put(Expense.GROUP_JSON_KEY, subGroupIdObj.toString());
 
             // Date pointer
             // "spentAt" -> "{"__type":"Date","iso":"2016-08-04T21:48:00.000Z"}"
@@ -191,11 +156,9 @@ public class RequestTemplateCreator {
             timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             String time = timezoneFormat.format(expense.getExpenseDate());
 
-            JSONObject dateObj = new JSONObject();
-            dateObj.put("__type", "Date");
-            dateObj.put(Expense.ISO_EXPENSE_DATE_JSON_KEY, time);
-            params.put(Expense.EXPENSE_DATE_JSON_KEY, dateObj.toString());
-        } catch (JSONException e) {
+
+            params.put(Expense.EXPENSE_DATE_JSON_KEY, time);
+        } catch (Exception e) {
             Log.e(TAG, "Error pointer object for 'where' in createExpense", e);
         }
 
@@ -205,55 +168,35 @@ public class RequestTemplateCreator {
     public static RequestTemplate updateExpense(ExpenseBuilder expenseBuilder) {
         Expense expense = expenseBuilder.getExpense();
 
-        String url = BASE_URL + "classes/Expense/" + expense.getId();
+        String url = BASE_URL + "expenses/" + expense.getId();
         Map<String, String> params = new HashMap<>();
 
         params.put(Expense.AMOUNT_JSON_KEY, String.valueOf(expense.getAmount()));
         Log.i(TAG, String.valueOf(expense.getNote().length()));
         params.put(Expense.NOTE_JSON_KEY, expense.getNote());
         // todo: able to update with categoryId
-        try {
-            // User pointer
-            // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj = new JSONObject();
-            userIdObj.put("__type", "Pointer");
-            userIdObj.put("className", "_User");
-            userIdObj.put("objectId", expense.getUserId());
-            params.put(Expense.USER_JSON_KEY, userIdObj.toString());
 
-            // Category pointer
-            JSONObject categoryIdObj = new JSONObject();
-            categoryIdObj.put("__type", "Pointer");
-            categoryIdObj.put("className", "Category");
-            categoryIdObj.put("objectId", expense.getCategoryId());
-            params.put(Expense.CATEGORY_JSON_KEY, categoryIdObj.toString());
+        params.put(Expense.USER_OBJ_KEY, BASE_URL + "users/" + expense.getUserId());
+        params.put(Expense.GROUP_OBJ_KEY, BASE_URL + "groups/" + expense.getGroupId());
+        if (expense.getCategoryId() != null) {
+            params.put(Expense.CATEGORY_OBJ_KEY, BASE_URL + "categories/" + expense.getCategoryId());
 
-            // Group pointer
-            JSONObject subGroupIdObj = new JSONObject();
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", expense.getGroupId());
-            params.put(Expense.GROUP_JSON_KEY, subGroupIdObj.toString());
-
-            // Date pointer
-            // "spentAt" -> "{"__type":"Date","iso":"2016-08-04T21:48:00.000Z"}"
-            SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
-            timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-            String time = timezoneFormat.format(expense.getExpenseDate());
-
-            JSONObject dateObj = new JSONObject();
-            dateObj.put("__type", "Date");
-            dateObj.put(Expense.ISO_EXPENSE_DATE_JSON_KEY, time);
-            params.put(Expense.EXPENSE_DATE_JSON_KEY, dateObj.toString());
-        } catch (JSONException e) {
-            Log.e(TAG, "Error pointer object for 'where' in createExpense", e);
         }
+
+        // Date pointer
+        // "spentAt" -> "{"__type":"Date","iso":"2016-08-04T21:48:00.000Z"}"
+        SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
+        timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String time = timezoneFormat.format(expense.getExpenseDate());
+
+        params.put(Expense.EXPENSE_DATE_JSON_KEY, time);
+
 
         return new RequestTemplate(PUT, url, params);
     }
 
     public static RequestTemplate deleteExpense(String expenseId) {
-        String url = BASE_URL + "classes/Expense/" + expenseId;
+        String url = BASE_URL + "expenses/" + expenseId;
 
         return new RequestTemplate(DELETE, url, null);
     }
@@ -273,16 +216,11 @@ public class RequestTemplateCreator {
 
         String url = BASE_URL + "categories/search/findByUserId";
         Map<String, String> params = new HashMap<>();
-        JSONObject userIdObj = new JSONObject();
 
-        try {
+        params.put("userid", userId);
 
-            userIdObj.put("userId", userId);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
-        }
 
-        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));
+//        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -296,14 +234,11 @@ public class RequestTemplateCreator {
         Map<String, String> params = new HashMap<>();
         JSONObject groupIdObj = new JSONObject();
 
-        try {
 
-            groupIdObj.put(Category.GROUP_JSON_KEY, groupId);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
-        }
+        params.put("groupid", groupId);
 
-        params.put(WHERE, Helpers.encodeURIComponent(groupIdObj.toString()));
+
+//        params.put(WHERE, Helpers.encodeURIComponent(groupIdObj.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -330,36 +265,22 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate updateCategory(Category category) {
-        String url = BASE_URL + "classes/Category/" + category.getId();
+        String url = BASE_URL + "categories/" + category.getId();
         Map<String, String> params = new HashMap<>();
 
         params.put(Category.NAME_JSON_KEY, category.getName());
         params.put(Category.COLOR_JSON_KEY, category.getColor());
 
-        try {
-            // User pointer
-            // {"__type":"Pointer","className":"_User","objectId":"2ZutGFhpA3"}
-            JSONObject userIdObj = new JSONObject();
-            userIdObj.put("__type", "Pointer");
-            userIdObj.put("className", "_User");
-            userIdObj.put("objectId", category.getUserId());
-            params.put(Category.USER_JSON_KEY, userIdObj.toString());
+        params.put(Category.USER_JSON_KEY, category.getUserId());
 
-            // Group pointer
-            JSONObject subGroupIdObj = new JSONObject();
-            subGroupIdObj.put("__type", "Pointer");
-            subGroupIdObj.put("className", "Group");
-            subGroupIdObj.put("objectId", category.getGroupId());
-            params.put(Category.GROUP_JSON_KEY, subGroupIdObj.toString());
-        } catch (JSONException e) {
-            Log.e(TAG, "Error pointer object for 'where' in createExpense", e);
-        }
+        params.put(Category.GROUP_JSON_KEY, category.getGroupId());
+        params.put(Category.ICON_JSON_KEY, category.getIcon());
 
         return new RequestTemplate(PUT, url, params);
     }
 
     public static RequestTemplate deleteCategory(String categoryId) {
-        String url = BASE_URL + "classes/Category/" + categoryId;
+        String url = BASE_URL + "categories" + categoryId;
 
         return new RequestTemplate(DELETE, url, null);
     }
@@ -448,15 +369,9 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj = new JSONObject();
 
-        try {
-            userNameObj.put(User.FULLNAME_JSON_KEY, userFullName);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user full name object for where in getAllUsersByUserFullName", e);
-        }
+        params.put(User.FULLNAME_JSON_KEY, userFullName);
 
-        params.put(WHERE, Helpers.encodeURIComponent(userNameObj.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -493,15 +408,8 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj = new JSONObject();
+        params.put(User.PHONE_JSON_KEY, userPhoneNumber);
 
-        try {
-            userNameObj.put(User.PHONE_JSON_KEY, userPhoneNumber);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user phone object for where in getAllUsersByUserPhoneNumber", e);
-        }
-
-        params.put(WHERE, Helpers.encodeURIComponent(userNameObj.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -514,15 +422,8 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "users";
         Map<String, String> params = new HashMap<>();
 
-        JSONObject userNameObj = new JSONObject();
+        params.put(User.USERNAME_JSON_KEY, username);
 
-        try {
-            userNameObj.put(User.USERNAME_JSON_KEY, username);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating username object for where in getUserByUsername", e);
-        }
-
-        params.put(WHERE, Helpers.encodeURIComponent(userNameObj.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -594,19 +495,11 @@ public class RequestTemplateCreator {
     public static RequestTemplate getAllGroupByUserId(String userId) {
         String url = BASE_URL + "groups";
         Map<String, String> params = new HashMap<>();
-        JSONObject subUserIdObj = new JSONObject();
-        JSONObject userIdObj = new JSONObject();
 
-        try {
-            subUserIdObj.put("__type", "Pointer");
-            subUserIdObj.put("className", "_User");
-            subUserIdObj.put("objectId", userId);
-            userIdObj.put("userId", subUserIdObj);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating user id pointer object for where in getGroupUsersByUserId", e);
-        }
 
-        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));
+        params.put("userId", userId);
+
+//        params.put(WHERE, Helpers.encodeURIComponent(userIdObj.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -616,15 +509,11 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "groups";
 
         Map<String, String> params = new HashMap<>();
-        JSONObject groupnameJSON = new JSONObject();
 
-        try {
-            groupnameJSON.put("groupname", groupname);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error creating expense id pointer object for where in getGroupByGroupname", e);
-        }
+        params.put("groupname", groupname);
 
-        params.put(WHERE, Helpers.encodeURIComponent(groupnameJSON.toString()));
+
+//        params.put(WHERE, Helpers.encodeURIComponent(groupnameJSON.toString()));
 
         return new RequestTemplate(GET, url, params);
     }
@@ -702,19 +591,23 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getMembersByUserId(String userId) {
-        String url = BASE_URL + "members/search/findByUserId?userid=" + userId + "&projection=groupMemberProjection";
+        String url = BASE_URL + "members/search/findByUserId";
         Map<String, String> params = new HashMap<>();
+        params.put("userid", userId);
+        params.put("projection", "groupMemberProjection");
 
 
-        return new RequestTemplate(GET, url, null);
+        return new RequestTemplate(GET, url, params);
     }
 
     public static RequestTemplate getMembersByGroupId(String groupId) {
-        String url = BASE_URL + "members/search/findByGroupId?groupid=" + groupId + "&projection=groupMemberProjection";
+        String url = BASE_URL + "members/search/findByGroupId";
         Map<String, String> params = new HashMap<>();
+        params.put("groupid", groupId);
+        params.put("projection", "groupMemberProjection");
 
 
-        return new RequestTemplate(GET, url, null);
+        return new RequestTemplate(GET, url, params);
     }
 
     // Join a group or invite a user

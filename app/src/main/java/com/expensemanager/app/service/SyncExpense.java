@@ -49,7 +49,7 @@ public class SyncExpense {
                 Log.d(TAG, "Expenses: \n" + expenses);
 
                 try {
-                    JSONArray expenseArray = expenses.getJSONArray("results");
+                    JSONArray expenseArray = expenses.getJSONObject("_embedded").getJSONArray("expenses");
                     Expense.mapFromJSONArray(expenseArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting expense JSONArray.", e);
@@ -85,7 +85,7 @@ public class SyncExpense {
                 Log.d(TAG, "Expenses: \n" + expenses);
 
                 try {
-                    JSONArray expenseArray = expenses.getJSONArray("results");
+                    JSONArray expenseArray = expenses.getJSONObject("_embedded").getJSONArray("expenses");
                     Expense.mapFromJSONArray(expenseArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting expense JSONArray.", e);
@@ -121,7 +121,7 @@ public class SyncExpense {
                 Log.d(TAG, "Expenses: \n" + expenses);
 
                 try {
-                    JSONArray expenseArray = expenses.getJSONArray("results");
+                    JSONArray expenseArray = expenses.getJSONObject("_embedded").getJSONArray("expenses");
                     Expense.mapFromJSONArray(expenseArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting expense JSONArray.", e);
