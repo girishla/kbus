@@ -324,11 +324,23 @@ public class RequestTemplateCreator {
         params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getUnionExpense()));
         params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCleanerExpense()));
 
+        if((busDailySummary.getSubmittedById()!=null)){
+            params.put(BusDailySummary.SUBMITTEDBY_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getSubmittedById());
 
-        params.put(BusDailySummary.SUBMITTEDBY_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getSubmittedById());
-        params.put(BusDailySummary.DRIVER_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getDriverId());
-        params.put(BusDailySummary.CONDUCTOR_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getConductorId());
-        params.put(BusDailySummary.GROUP_OBJ_KEY, BASE_URL + "groups/" + busDailySummary.getGroupId());
+        }
+        if(busDailySummary.getDriverId()!=null){
+            params.put(BusDailySummary.DRIVER_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getDriverId());
+
+        }
+        if(busDailySummary.getConductorId()!=null){
+            params.put(BusDailySummary.CONDUCTOR_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getConductorId());
+
+        }
+        if(busDailySummary.getGroupId()!=null){
+            params.put(BusDailySummary.GROUP_OBJ_KEY, BASE_URL + "groups/" + busDailySummary.getGroupId());
+
+        }
+
 
 
         SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
@@ -591,6 +603,14 @@ public class RequestTemplateCreator {
 
         params.put(User.USERNAME_JSON_KEY, username);
 
+
+        return new RequestTemplate(GET, url, params);
+    }
+
+    public static RequestTemplate getAllUsers() {
+
+        String url = BASE_URL + "users";
+        Map<String, String> params = new HashMap<>();
 
         return new RequestTemplate(GET, url, params);
     }

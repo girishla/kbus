@@ -98,7 +98,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
     public static final String DATE_PICKER = "date_picker";
     public static final String TIME_PICKER = "time_picker";
-    private static final String EXPENSE_ID = "EXPENSE_ID";
+    private static final String BUS_DAILY_SUMMARY_ID = "BUS_DAILY_SUMMARY_ID";
     private static final int PROGRESS_BAR_DISPLAY_LENGTH = 6000;
 
     private Handler handler;
@@ -171,7 +171,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
     public static void newInstance(Context context, String id) {
         Intent intent = new Intent(context, BusDailySummaryDetailActivity.class);
-        intent.putExtra(EXPENSE_ID, id);
+        intent.putExtra(BUS_DAILY_SUMMARY_ID, id);
         context.startActivity(intent);
     }
 
@@ -187,7 +187,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         group = Group.getGroupById(groupId);
 
-        busdailysummaryId = getIntent().getStringExtra(EXPENSE_ID);
+        busdailysummaryId = getIntent().getStringExtra(BUS_DAILY_SUMMARY_ID);
         busdailysummary = BusDailySummary.getBusDailySummaryById(busdailysummaryId);
         if (busdailysummary != null) {
             createdBy = User.getUserById(busdailysummary.getSubmittedById());

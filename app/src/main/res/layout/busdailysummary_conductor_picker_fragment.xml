@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/busdailysummary_conductor_fragment_recycler_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="@dimen/space_medium_small"
+        android:paddingBottom="@dimen/space_medium_small"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"/>
+
+    <!-- Close icon -->
+    <ImageView
+        android:id="@+id/busdailysummary_conductor_fragment_close_image_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+
+        android:paddingLeft="10dp"
+        android:paddingTop="@dimen/space_medium_large"
+        android:src="@drawable/ic_window_close"
+        android:tint="@color/colorAccent"
+        android:background="@android:color/transparent"/>
+
+</RelativeLayout>

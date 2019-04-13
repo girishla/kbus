@@ -32,7 +32,7 @@ public class UserPickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public UserPickerAdapter(Context context, ArrayList<User> conductors) {
         this.context = context;
-        this.users = users;
+        this.users = conductors;
     }
 
     private Context getContext() {
@@ -57,16 +57,16 @@ public class UserPickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         switch (viewType) {
             case VIEW_TYPE_DEFAULT:
-                view = inflater.inflate(R.layout.category_picker_item, parent, false);
+                view = inflater.inflate(R.layout.user_picker_item, parent, false);
                 viewHolder = new ViewHolderDefault(view);
                 break;
             case VIEW_TYPE_NULL:
-                view = inflater.inflate(R.layout.category_picker_item_null, parent, false);
+                view = inflater.inflate(R.layout.user_picker_item_null, parent, false);
                 viewHolder = new ViewHolderDefault(view);
                 break;
 
             default:
-                View defaultView = inflater.inflate(R.layout.category_picker_item, parent, false);
+                View defaultView = inflater.inflate(R.layout.user_picker_item, parent, false);
                 viewHolder = new ViewHolderDefault(defaultView);
                 break;
         }
@@ -119,15 +119,15 @@ public class UserPickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         notifyDataSetChanged();
     }
 
-    public void add(User category) {
-        this.users.add(category);
+    public void add(User user) {
+        this.users.add(user);
         notifyDataSetChanged();
     }
 
     public static class ViewHolderDefault extends RecyclerView.ViewHolder {
-        @BindView(R.id.category_picker_item_color_image_view_id) CircleImageView colorImageView;
-        @BindView(R.id.category_picker_item_icon_image_view_id) ImageView iconImageView;
-        @BindView(R.id.category_picker_item_name_text_view_id) TextView nameTextView;
+        @BindView(R.id.user_picker_item_color_image_view_id) CircleImageView colorImageView;
+        @BindView(R.id.user_picker_item_icon_image_view_id) ImageView iconImageView;
+        @BindView(R.id.user_picker_item_name_text_view_id) TextView nameTextView;
 
         private View itemView;
 

@@ -18,6 +18,8 @@ import com.expensemanager.app.models.User;
 import com.expensemanager.app.models.Group;
 import com.expensemanager.app.models.User;
 import com.expensemanager.app.tripsheet.UserPickerAdapter;
+import com.expensemanager.app.models.User;
+import com.expensemanager.app.tripsheet.UserPickerAdapter;
 
 import java.util.ArrayList;
 
@@ -34,8 +36,10 @@ public class ConductorPickerFragment extends DialogFragment {
     private UserPickerAdapter userPickerAdapter;
     private String groupId;
 
-    @BindView(R.id.expense_category_fragment_close_image_view_id) ImageView closeImageView;
-    @BindView(R.id.expense_category_fragment_recycler_view_id) RecyclerView conductorRecyclerView;
+    @BindView(R.id.busdailysummary_conductor_fragment_close_image_view_id)
+    public ImageView closeImageView;
+    @BindView(R.id.busdailysummary_conductor_fragment_recycler_view_id)
+    public RecyclerView conductorRecyclerView;
 
     public ConductorPickerFragment() {}
 
@@ -57,7 +61,7 @@ public class ConductorPickerFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.expense_category_filter_fragment, container);
+        View view = inflater.inflate(R.layout.busdailysummary_conductor_picker_fragment, container);
         unbinder = ButterKnife.bind(this, view);
 
         return view;
@@ -91,7 +95,8 @@ public class ConductorPickerFragment extends DialogFragment {
         // Add no conductor option
         userPickerAdapter.add(null);
         // Add all categories
-        userPickerAdapter.addAll(User.getAllUsersByGroupId(groupId));
+//        userPickerAdapter.addAll(User.getAllUsersByGroupId(groupId));
+        userPickerAdapter.addAll(User.getAllUsers());
     }
 
     private void setupRecyclerView() {

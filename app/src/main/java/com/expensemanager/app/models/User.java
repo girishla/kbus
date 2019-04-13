@@ -217,4 +217,15 @@ public class User implements RealmModel{
 
         return users;
     }
+
+    /**
+     * @return all userss by group id
+     */
+    public static RealmResults<User> getAllUsers() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<User> users = realm.where(User.class).findAllSorted(FIRST_NAME_KEY, Sort.ASCENDING);
+        realm.close();
+
+        return users;
+    }
 }

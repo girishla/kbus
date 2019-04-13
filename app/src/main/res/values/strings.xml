@@ -37,6 +37,7 @@
     <string name="user">User</string>
     <string name="date">Date</string>
     <string name="no_category">No Category</string>
+    <string name="no_user">No User</string>
     <string name="no_driver">Select Driver</string>
     <string name="no_conductor">Select Conductor</string>
     <string name="expense_date">Expense Date</string>

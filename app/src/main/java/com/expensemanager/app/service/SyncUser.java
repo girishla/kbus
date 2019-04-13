@@ -208,6 +208,16 @@ public class SyncUser {
         return networkRequest.send();
     }
 
+    public static Task<JSONObject> getAllUsers() {
+        TaskCompletionSource<JSONObject> taskCompletionSource = new TaskCompletionSource<>();
+        RequestTemplate requestTemplate = RequestTemplateCreator.getAllUsers();
+
+        NetworkRequest networkRequest = new NetworkRequest(requestTemplate, taskCompletionSource);
+
+        Log.d(TAG, "Start downloading allusers");
+        return networkRequest.send();
+    }
+
     public static Task<JSONObject> getAllUsersByUserEmail(String userEmail) {
         TaskCompletionSource<JSONObject> taskCompletionSource = new TaskCompletionSource<>();
         RequestTemplate requestTemplate = RequestTemplateCreator.getAllUsersByUserEmail(userEmail);

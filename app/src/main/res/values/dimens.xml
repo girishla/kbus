@@ -41,6 +41,7 @@
     <dimen name="category_color_width_small">30dp</dimen>
 
 
+
     <dimen name="notification_color_width_small">9dp</dimen>
 
     <dimen name="chart_height">220dp</dimen>

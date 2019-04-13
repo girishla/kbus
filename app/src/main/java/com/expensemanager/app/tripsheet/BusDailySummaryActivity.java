@@ -25,7 +25,7 @@ import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.helpers.Helpers;
 import com.expensemanager.app.main.Analytics;
 import com.expensemanager.app.main.BaseActivity;
-import com.expensemanager.app.models.Category;
+import com.expensemanager.app.models.User;
 import com.expensemanager.app.models.Member;
 import com.expensemanager.app.models.User;
 import com.expensemanager.app.service.SyncBusDailySummary;
@@ -46,18 +46,18 @@ public class BusDailySummaryActivity extends BaseActivity {
 
     private static final String TAG = BusDailySummaryActivity.class.getSimpleName();
 
-    public static final String CATEGORY_ID = "category_id";
+    public static final String CONDUCTOR_ID = "conductor_id";
     public static final String START_END_DATE = "startEnd";
-    public static final String IS_CATEGORY_FILTERED = "is_category_filtered";
-    public static final String CATEGORY_FRAGMENT = "Category_Fragment";
+    public static final String IS_CONDUCTOR_FILTERED = "is_conductor_filtered";
+    public static final String CONDUCTOR_FRAGMENT = "Conductor_Fragment";
     public static final String DATE_FRAGMENT = "Date_Fragment";
     public static final String USER_FRAGMENT = "User_Fragment";
 
     private ArrayList<BusDailySummary> busdailysummaries;
     private Member member;
     private boolean isMemberFiltered;
-    private Category category;
-    private boolean isCategoryFiltered;
+    private User conductor;
+    private boolean isConductorFiltered;
     private Date startDate;
     private Date endDate;
     private boolean isDateFiltered;
@@ -80,9 +80,9 @@ public class BusDailySummaryActivity extends BaseActivity {
         ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
-    public static void newInstance(Context context, String categoryId) {
+    public static void newInstance(Context context, String conductorId) {
         Intent intent = new Intent(context, BusDailySummaryActivity.class);
-        intent.putExtra(CATEGORY_ID, categoryId);
+        intent.putExtra(CONDUCTOR_ID, conductorId);
         context.startActivity(intent);
         ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
@@ -96,12 +96,12 @@ public class BusDailySummaryActivity extends BaseActivity {
         ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
-    public static void newInstance(Context context, String categoryId, Date[] startEnd) {
+    public static void newInstance(Context context, String conductorId, Date[] startEnd) {
         Intent intent = new Intent(context, BusDailySummaryActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(START_END_DATE, startEnd);
         intent.putExtras(bundle);
-        intent.putExtra(CATEGORY_ID, categoryId);
+        intent.putExtra(CONDUCTOR_ID, conductorId);
         context.startActivity(intent);
         ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
@@ -126,10 +126,10 @@ public class BusDailySummaryActivity extends BaseActivity {
             startDate = startEnd[0];
             endDate = startEnd[1];
         }
-        if (getIntent().hasExtra(CATEGORY_ID)) {
-            isCategoryFiltered = true;
-            String categoryId = getIntent().getStringExtra(CATEGORY_ID);
-            category = Category.getCategoryById(categoryId);
+        if (getIntent().hasExtra(CONDUCTOR_ID)) {
+            isConductorFiltered = true;
+            String conductorId = getIntent().getStringExtra(CONDUCTOR_ID);
+            conductor = User.getUserById(conductorId);
         }
 
         busdailysummaries = new ArrayList<>();
@@ -139,8 +139,8 @@ public class BusDailySummaryActivity extends BaseActivity {
 
 
 
-        if (isCategoryFiltered && category != null) {
-            BusDailySummaryActivity.this.toolbar.setBackgroundColor(Color.parseColor(category.getColor()));
+        if (isConductorFiltered && conductor != null) {
+            BusDailySummaryActivity.this.toolbar.setBackgroundColor(Color.BLACK);
         }
     }
 
@@ -161,8 +161,8 @@ public class BusDailySummaryActivity extends BaseActivity {
 
     private void invalidateViews() {
         busdailysummaryAdapter.clear();
-        busdailysummaryAdapter.setIsBackgroundPrimary(!isCategoryFiltered);
-        recyclerView.setBackgroundColor(ContextCompat.getColor(this, isCategoryFiltered? R.color.white : R.color.colorPrimaryDark));
+        busdailysummaryAdapter.setIsBackgroundPrimary(!isConductorFiltered);
+        recyclerView.setBackgroundColor(ContextCompat.getColor(this, isConductorFiltered? R.color.white : R.color.colorPrimaryDark));
 
         // Check size of group members
         if (Member.getAllAcceptedMembersByGroupId(groupId).size() > 1) {
@@ -243,7 +243,7 @@ public class BusDailySummaryActivity extends BaseActivity {
         realm.addChangeListener(v -> invalidateViews());
 
 //        setupMemberFilter(member);
-//        setupCategoryFilter(category);
+//        setupConductorFilter(conductor);
 
         invalidateViews();
     }
