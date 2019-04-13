@@ -33,10 +33,14 @@
     <string name="select_icon">Select icon</string>
     <string name="preview">Preview</string>
     <string name="category">Category</string>
+    <string name="conductor">Conductor</string>
     <string name="user">User</string>
     <string name="date">Date</string>
     <string name="no_category">No Category</string>
+    <string name="no_driver">Select Driver</string>
+    <string name="no_conductor">Select Conductor</string>
     <string name="expense_date">Expense Date</string>
+    <string name="busdailysummary_date">Expense Date</string>
     <string name="start_expense_date">Start Expense Date</string>
     <string name="notification">Notifications</string>
     <string name="weekly_notification">Weekly report</string>
@@ -49,6 +53,7 @@
     <string name="notification_time">Notification time</string>
     <string name="end_expense_date">End Expense Date</string>
     <string name="expense">Expense</string>
+    <string name="busdailysummary">Trip Sheet</string>
     <string name="group">Group</string>
     <string name="name">Name</string>
     <string name="filter">Filter</string>
@@ -67,6 +72,7 @@
     <string name="target_collection_monthly">Monthly Target</string>
     <string name="target_collection_weekly">Weekly Target</string>
     <string name="title_activity_expense_detail">Expense details</string>
+    <string name="title_activity_busdailysummary_detail">Trip Sheet details</string>
     <string name="title_activity_category_detail">Category details</string>
     <string name="title_activity_new_expense">New Expense</string>
     <string name="title_activity_new_category">New Category</string>
@@ -130,8 +136,10 @@
     <string name="delete_photo_message">Are you sure to delete this photo?</string>
     <string name="delete_profile_image_message">Are you sure to delete profile image?</string>
     <string name="delete_expense_title">Delete Expense</string>
+    <string name="delete_busdailysummary_title">Delete Trip Sheet</string>
     <string name="delete_category_title">Delete Category</string>
     <string name="delete_expense_message">Are you sure to delete this expense?</string>
+    <string name="delete_busdailysummary_message">Are you sure to delete this Trip Sheet?</string>
     <string name="delete_category_message">Are you sure to delete this category?</string>
     <string name="no_notifications">YOU HAVE NO NOTIFICATIONS</string>
     <string name="no_expense_hint">NO EXPENSE DATA AVAILABLE</string>
@@ -188,6 +196,7 @@
 
     <!-- Navigation -->
     <string name="nav_overview">Overview</string>
+    <string name="nav_tripsheet">Trip Sheet</string>
     <string name="nav_expense">Expense</string>
     <string name="nav_report">Report</string>
     <string name="nav_category">Category</string>

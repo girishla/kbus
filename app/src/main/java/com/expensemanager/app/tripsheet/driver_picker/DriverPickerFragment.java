@@ -1,4 +1,4 @@
-package com.expensemanager.app.tripsheet.category_picker;
+package com.expensemanager.app.tripsheet.driver_picker;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,8 +14,9 @@ import android.widget.ImageView;
 
 import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.ItemClickSupport;
-import com.expensemanager.app.models.Category;
 import com.expensemanager.app.models.Group;
+import com.expensemanager.app.models.User;
+import com.expensemanager.app.tripsheet.UserPickerAdapter;
 
 import java.util.ArrayList;
 
@@ -23,26 +24,26 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class CategoryPickerFragment extends DialogFragment {
-    private static final String TAG= CategoryPickerFragment.class.getSimpleName();
+public class DriverPickerFragment extends DialogFragment {
+    private static final String TAG= DriverPickerFragment.class.getSimpleName();
 
     private Unbinder unbinder;
-    private CategoryPickerListener categoryPickerListener;
-    private ArrayList<Category> categories;
-    private CategoryPickerAdapter categoryPickerAdapter;
+    private DriverPickerListener driverPickerListener;
+    private ArrayList<User> users;
+    private UserPickerAdapter userPickerAdapter;
     private String groupId;
 
     @BindView(R.id.expense_category_fragment_close_image_view_id) ImageView closeImageView;
-    @BindView(R.id.expense_category_fragment_recycler_view_id) RecyclerView categoryRecyclerView;
+    @BindView(R.id.expense_category_fragment_recycler_view_id) RecyclerView driverRecyclerView;
 
-    public CategoryPickerFragment() {}
+    public DriverPickerFragment() {}
 
-    public static CategoryPickerFragment newInstance() {
-        return new CategoryPickerFragment();
+    public static DriverPickerFragment newInstance() {
+        return new DriverPickerFragment();
     }
 
-    public void setListener(CategoryPickerListener categoryPickerListener) {
-        this.categoryPickerListener = categoryPickerListener;
+    public void setListener(DriverPickerListener driverPickerListener) {
+        this.driverPickerListener = driverPickerListener;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class CategoryPickerFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.expense_category_picker_fragment, container);
+        View view = inflater.inflate(R.layout.expense_category_filter_fragment, container);
         unbinder = ButterKnife.bind(this, view);
 
         return view;
@@ -76,8 +77,8 @@ public class CategoryPickerFragment extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        categories = new ArrayList<>();
-        categoryPickerAdapter = new CategoryPickerAdapter(getActivity(), categories);
+        users = new ArrayList<>();
+        userPickerAdapter = new UserPickerAdapter(getActivity(), users);
 
         closeImageView.setOnClickListener(v -> dismiss());
         setupRecyclerView();
@@ -85,20 +86,20 @@ public class CategoryPickerFragment extends DialogFragment {
     }
 
     private void invalidateViews() {
-        categoryPickerAdapter.clear();
-        // Add no category option
-        categoryPickerAdapter.add(null);
+        userPickerAdapter.clear();
+        // Add no driver option
+        userPickerAdapter.add(null);
         // Add all categories
-        categoryPickerAdapter.addAll(Category.getAllCategoriesByGroupId(groupId));
+        userPickerAdapter.addAll(User.getAllUsersByGroupId(groupId));
     }
 
     private void setupRecyclerView() {
-        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        categoryRecyclerView.setAdapter(categoryPickerAdapter);
-        ItemClickSupport.addTo(categoryRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+        driverRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        driverRecyclerView.setAdapter(userPickerAdapter);
+        ItemClickSupport.addTo(driverRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                categoryPickerListener.onFinishTripSheetCategoryDialog(categories.get(position));
+                driverPickerListener.onFinishTripSheetDriverDialog(users.get(position));
                 getDialog().dismiss();
             }
         });
@@ -110,7 +111,7 @@ public class CategoryPickerFragment extends DialogFragment {
         unbinder.unbind();
     }
 
-    public interface CategoryPickerListener {
-        void onFinishTripSheetCategoryDialog(Category category);
+    public interface DriverPickerListener {
+        void onFinishTripSheetDriverDialog(User driver);
     }
 }

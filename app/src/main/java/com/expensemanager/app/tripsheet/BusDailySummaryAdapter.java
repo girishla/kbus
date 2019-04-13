@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.Helpers;
 import com.expensemanager.app.models.BusDailySummary;
-import com.expensemanager.app.models.Category;
+import com.expensemanager.app.models.User;
 import com.expensemanager.app.models.User;
 import com.expensemanager.app.service.enums.EIcon;
 
@@ -27,21 +27,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class TripSheetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private static final String TAG= TripSheetAdapter.class.getSimpleName();
+public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    private static final String TAG= BusDailySummaryAdapter.class.getSimpleName();
 
-    public static final String NO_CATEGORY_ID = "No Category";
+    public static final String NO_CATEGORY_ID = "No User";
     public static final String NO_CATEGORY_COLOR = "#BDBDBD";
 
     private static final int VIEW_TYPE_DEFAULT = 0;
-    private ArrayList<BusDailySummary> expenses;
+    private ArrayList<BusDailySummary> busdailysummaries;
     private Context context;
     private boolean showMember;
     private boolean isBackgroundPrimary = true;
 
-    public TripSheetAdapter(Context context, ArrayList<BusDailySummary> expenses) {
+    public BusDailySummaryAdapter(Context context, ArrayList<BusDailySummary> busdailysummaries) {
         this.context = context;
-        this.expenses = expenses;
+        this.busdailysummaries = busdailysummaries;
     }
 
     private Context getContext() {
@@ -50,7 +50,7 @@ public class TripSheetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return this.expenses.size();
+        return this.busdailysummaries.size();
     }
 
     @Override
@@ -65,11 +65,11 @@ public class TripSheetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         switch (viewType) {
             case VIEW_TYPE_DEFAULT:
-                View view = inflater.inflate(R.layout.expense_item_default, parent, false);
+                View view = inflater.inflate(R.layout.busdailysummary_item_default, parent, false);
                 viewHolder = new ViewHolderDefault(view);
                 break;
             default:
-                View defaultView = inflater.inflate(R.layout.expense_item_default, parent, false);
+                View defaultView = inflater.inflate(R.layout.busdailysummary_item_default, parent, false);
                 viewHolder = new ViewHolderDefault(defaultView);
                 break;
         }
@@ -96,30 +96,30 @@ public class TripSheetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         viewHolder.userPhotoImageView.setVisibility(View.GONE);
         viewHolder.dividerView.setVisibility(View.GONE);
 
-        BusDailySummary expense = expenses.get(position);
-        Category category = expense.getCategory();
+        BusDailySummary busdailysummary = busdailysummaries.get(position);
+        User conductor = User.getUserById(busdailysummary.getConductorId());
 
-        viewHolder.spentAtTextView.setText(Helpers.formatCreateAt(expense.getTripSheetDate()));
-        viewHolder.amountTextView.setText(Helpers.doubleToCurrency(expense.getAmount()));
+        viewHolder.spentAtTextView.setText(Helpers.formatCreateAt(busdailysummary.getSummaryDate()));
+        viewHolder.amountTextView.setText(Helpers.doubleToCurrency(busdailysummary.getSingle1Collection()));
 
-        // Load category data or hide
-        if (category != null) {
-            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(category.getColor()));
-            viewHolder.categoryColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.categoryNameTextView.setText(category.getName());
+        // Load conductor data or hide
+        if (conductor != null) {
+            ColorDrawable colorDrawable = new ColorDrawable(Color.BLACK);
+            viewHolder.conductorColorImageView.setImageDrawable(colorDrawable);
+            viewHolder.conductorNameTextView.setText(conductor.getFullname());
 
-            EIcon eIcon = EIcon.instanceFromName(category.getIcon());
+            EIcon eIcon = EIcon.instanceFromName("face");
             if (eIcon != null) {
                 viewHolder.iconImageView.setImageResource(eIcon.getValueRes());
                 viewHolder.iconImageView.setVisibility(View.VISIBLE);
             }
         } else {
             ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(NO_CATEGORY_COLOR));
-            viewHolder.categoryColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.categoryNameTextView.setText(NO_CATEGORY_ID);
+            viewHolder.conductorColorImageView.setImageDrawable(colorDrawable);
+            viewHolder.conductorNameTextView.setText(NO_CATEGORY_ID);
         }
 
-        User user = User.getUserById(expense.getUserId());
+        User user = User.getUserById(busdailysummary.getSubmittedById());
         if (showMember && user != null) {
             Helpers.loadIconPhoto(viewHolder.userPhotoImageView, user.getPhotoUrl());
             viewHolder.userPhotoImageView.setOnClickListener(v -> {
@@ -136,7 +136,7 @@ public class TripSheetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         // Set item click listener
         viewHolder.cardView.setOnClickListener(v -> {
-            TripSheetDetailActivity.newInstance(context, expenses.get(position).getId());
+            BusDailySummaryDetailActivity.newInstance(context, busdailysummaries.get(position).getId());
             ((Activity)getContext()).overridePendingTransition(R.anim.right_in, R.anim.stay);
         });
     }
@@ -151,25 +151,25 @@ public class TripSheetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public void clear() {
-        expenses.clear();
+        busdailysummaries.clear();
         notifyDataSetChanged();
     }
 
-    public void addAll(List<BusDailySummary> expenses) {
-        this.expenses.addAll(expenses);
+    public void addAll(List<BusDailySummary> busdailysummaries) {
+        this.busdailysummaries.addAll(busdailysummaries);
         notifyDataSetChanged();
     }
 
     public static class ViewHolderDefault extends RecyclerView.ViewHolder {
-        @BindView(R.id.expense_item_default_spent_at_text_view_id) TextView spentAtTextView;
-        @BindView(R.id.expense_item_default_amount_text_view_id) TextView amountTextView;
-        @BindView(R.id.expense_item_default_category_color_image_view_id) CircleImageView categoryColorImageView;
-        @BindView(R.id.expense_item_default_icon_image_view_id) ImageView iconImageView;
-        @BindView(R.id.expense_item_default_user_photo_image_view_id) ImageView userPhotoImageView;
-        @BindView(R.id.expense_item_default_name_text_view_id) TextView userFullnameTextView;
-        @BindView(R.id.expense_item_default_view_id) View dividerView;
-        @BindView(R.id.expense_item_default_category_name_text_view_id) TextView categoryNameTextView;
-        @BindView(R.id.expense_item_default_card_view_id) CardView cardView;
+        @BindView(R.id.busdailysummary_item_default_spent_at_text_view_id) TextView spentAtTextView;
+        @BindView(R.id.busdailysummary_item_default_amount_text_view_id) TextView amountTextView;
+        @BindView(R.id.busdailysummary_item_default_conductor_color_image_view_id) CircleImageView conductorColorImageView;
+        @BindView(R.id.busdailysummary_item_default_icon_image_view_id) ImageView iconImageView;
+        @BindView(R.id.busdailysummary_item_default_user_photo_image_view_id) ImageView userPhotoImageView;
+        @BindView(R.id.busdailysummary_item_default_name_text_view_id) TextView userFullnameTextView;
+        @BindView(R.id.busdailysummary_item_default_view_id) View dividerView;
+        @BindView(R.id.busdailysummary_item_default_conductor_name_text_view_id) TextView conductorNameTextView;
+        @BindView(R.id.busdailysummary_item_default_card_view_id) CardView cardView;
 
         private View itemView;
 

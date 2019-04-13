@@ -48,7 +48,7 @@ public class SyncBusDailySummary {
                 Log.d(TAG, "BusDailySummaries: \n" + busDailySummaries);
 
                 try {
-                    JSONArray busDailySummaryArray = busDailySummaries.getJSONObject("_embedded").getJSONArray("busDailySummaries");
+                    JSONArray busDailySummaryArray = busDailySummaries.getJSONObject("_embedded").getJSONArray("busdailysummaries");
                     BusDailySummary.mapFromJSONArray(busDailySummaryArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting busDailySummary JSONArray.", e);
@@ -84,7 +84,7 @@ public class SyncBusDailySummary {
                 Log.d(TAG, "BusDailySummaries: \n" + busDailySummaries);
 
                 try {
-                    JSONArray busDailySummaryArray = busDailySummaries.getJSONObject("_embedded").getJSONArray("busDailySummaries");
+                    JSONArray busDailySummaryArray = busDailySummaries.getJSONObject("_embedded").getJSONArray("busdailysummaries");
                     BusDailySummary.mapFromJSONArray(busDailySummaryArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting busDailySummary JSONArray.", e);
@@ -120,7 +120,7 @@ public class SyncBusDailySummary {
                 Log.d(TAG, "BusDailySummaries: \n" + busDailySummaries);
 
                 try {
-                    JSONArray busDailySummaryArray = busDailySummaries.getJSONObject("_embedded").getJSONArray("busDailySummaries");
+                    JSONArray busDailySummaryArray = busDailySummaries.getJSONObject("_embedded").getJSONArray("busdailysummaries");
                     BusDailySummary.mapFromJSONArray(busDailySummaryArray);
                 } catch (JSONException e) {
                     Log.e(TAG, "Error in getting busDailySummary JSONArray.", e);

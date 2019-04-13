@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 @SuppressWarnings("unused")
 public class UserPhotoBehavior extends CoordinatorLayout.Behavior<ImageView> {
-    private static final String TAG = TripSheetDetailActivity.class.getSimpleName();
+    private static final String TAG = BusDailySummaryDetailActivity.class.getSimpleName();
 
     private final static float MIN_AVATAR_PERCENTAGE_SIZE   = 0.3f;
     private final static int EXTRA_FINAL_AVATAR_PADDING     = 80;

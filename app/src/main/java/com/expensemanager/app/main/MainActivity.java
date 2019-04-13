@@ -1,6 +1,5 @@
 package com.expensemanager.app.main;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
@@ -40,7 +39,6 @@ import com.expensemanager.app.models.DrawerItem;
 import com.expensemanager.app.models.DrawerSubItem;
 import com.expensemanager.app.models.Group;
 import com.expensemanager.app.models.Member;
-import com.expensemanager.app.models.RNotification;
 import com.expensemanager.app.models.User;
 import com.expensemanager.app.notifications.AlarmReceiver;
 import com.expensemanager.app.notifications.NotificationFragment;
@@ -54,6 +52,7 @@ import com.expensemanager.app.service.SyncGroup;
 import com.expensemanager.app.service.SyncMember;
 import com.expensemanager.app.service.SyncUser;
 import com.expensemanager.app.settings.SettingsFragment;
+import com.expensemanager.app.tripsheet.BusDailySummaryFragment;
 import com.expensemanager.app.welcome.WelcomeActivity;
 
 import java.util.ArrayList;
@@ -74,11 +73,12 @@ public class MainActivity extends BaseActivity {
     public static String NOTIFICATION_KEY = "notificationKey";
     public static final String IS_FIRST_TIME = "is_first_time";
     private static final int OVERVIEW_POSITION = 1;
-    private static final int EXPENSE_POSITION = 2;
-    private static final int REPORT_POSITION = 3;
-    private static final int GROUP_POSITION = 4;
-    private static final int NOTIFICATION_POSITION = 5;
-    private static final int SETTINGS_POSITION = 6;
+    private static final int TRIPSHEET_POSITION = 2;
+    private static final int EXPENSE_POSITION = 3;
+    private static final int REPORT_POSITION = 4;
+    private static final int GROUP_POSITION = 5;
+    private static final int NOTIFICATION_POSITION = 6;
+    private static final int SETTINGS_POSITION = 7;
     private static final int SIGN_OUT_POSITION = 8;
 
     private ActionBarDrawerToggle drawerToggle;
@@ -265,9 +265,34 @@ public class MainActivity extends BaseActivity {
                     .replace(R.id.main_activity_frame_layout_id, OverviewMainFragment.newInstance())
                     .addToBackStack(OverviewMainFragment.class.getName())
                     .commit();
-                fab.setVisibility(View.VISIBLE);
+                fab.show();
                 fab.setOnClickListener(va -> setupFab());
 
+                break;
+            case TRIPSHEET_POSITION:
+                if (!Helpers.hasGroup()) {
+                    break;
+                }
+
+                if (currentPosition == TRIPSHEET_POSITION) {
+                    if (drawerLayout.isDrawerOpen(drawRecyclerView)) {
+                        drawerLayout.closeDrawers();
+                    }
+
+                    break;
+                } else {
+                    currentPosition = position;
+                }
+
+                removeAllBackStackFragment();
+                getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                        .replace(R.id.main_activity_frame_layout_id, BusDailySummaryFragment.newInstance())
+                        .addToBackStack(BusDailySummaryFragment.class.getName())
+                        .commit();
+                titleTextView.setText(getString(R.string.expense));
+                fab.show();
+                fab.setOnClickListener(v -> setupFab());
                 break;
             case EXPENSE_POSITION:
                 if (!Helpers.hasGroup()) {
@@ -291,7 +316,7 @@ public class MainActivity extends BaseActivity {
                     .addToBackStack(ExpenseFragment.class.getName())
                     .commit();
                 titleTextView.setText(getString(R.string.expense));
-                fab.setVisibility(View.VISIBLE);
+                fab.show();
                 fab.setOnClickListener(v -> setupFab());
                 break;
             case REPORT_POSITION:
@@ -316,7 +341,7 @@ public class MainActivity extends BaseActivity {
                     .addToBackStack(ReportMainFragment.class.getName())
                     .commit();
                 titleTextView.setText(getString(R.string.report));
-                fab.setVisibility(View.INVISIBLE);
+                fab.hide();
                 break;
             case GROUP_POSITION:
                 if (!Helpers.hasGroup()) {
@@ -340,7 +365,7 @@ public class MainActivity extends BaseActivity {
                     .addToBackStack(ReportMainFragment.class.getName())
                     .commit();
                 titleTextView.setText(getString(R.string.group));
-                fab.setVisibility(View.INVISIBLE);
+                fab.hide();
                 break;
             case NOTIFICATION_POSITION:
                 if (currentPosition == NOTIFICATION_POSITION) {
@@ -361,7 +386,7 @@ public class MainActivity extends BaseActivity {
                     .addToBackStack(NotificationFragment.class.getName())
                     .commit();
                 titleTextView.setText(getString(R.string.notification));
-                fab.setVisibility(View.INVISIBLE);
+                fab.hide();
                 break;
             case SETTINGS_POSITION:
                 if (currentPosition == SETTINGS_POSITION) {
@@ -381,7 +406,7 @@ public class MainActivity extends BaseActivity {
                         .addToBackStack(NotificationFragment.class.getName())
                         .commit();
                 titleTextView.setText(getString(R.string.settings));
-                fab.setVisibility(View.INVISIBLE);
+                fab.hide();
                 break;
             case SIGN_OUT_POSITION:
                 signOut();
@@ -410,6 +435,8 @@ public class MainActivity extends BaseActivity {
     private void setupDrawerListItems() {
         drawerItems.clear();
         drawerItems.add(new DrawerItem().setIcon(R.drawable.ic_home).setTitle(getString(R.string.nav_overview)));
+        drawerItems.add(new DrawerItem().setIcon(R.drawable.ic_credit_card).setTitle(getString(R.string.nav_tripsheet)));
+
         drawerItems.add(new DrawerItem().setIcon(R.drawable.ic_credit_card).setTitle(getString(R.string.nav_expense)));
         drawerItems.add(new DrawerItem().setIcon(R.drawable.ic_trending_up).setTitle(getString(R.string.nav_report)));
         drawerItems.add(new DrawerItem().setIcon(R.drawable.ic_account_multiple).setTitle(getString(R.string.nav_group)));

@@ -94,6 +94,7 @@ public class BusDailySummary implements RealmModel {
     @PrimaryKey
     private String id;
     private boolean isApproved = false;
+    private boolean isSynced = false;
 
     private Double single1Collection;
     private Double single2Collection;
@@ -182,6 +183,15 @@ public class BusDailySummary implements RealmModel {
 
     public void setApproved(boolean approved) {
         isApproved = approved;
+    }
+
+
+    public boolean isSynced() {
+        return isSynced;
+    }
+
+    public void setSynced(boolean synced) {
+        isSynced = synced;
     }
 
     public Double getSingle1Collection() {
