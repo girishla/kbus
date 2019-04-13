@@ -397,16 +397,25 @@ public class BusDailySummary implements RealmModel {
             this.id = jsonObject.getString(OBJECT_ID_JSON_KEY);
             this.single1Collection = jsonObject.getDouble(SINGLE1COLLECTION_JSON_KEY);
 
-
             this.groupId = jsonObject.getJSONObject(GROUP_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
-            this.driverId = jsonObject.getJSONObject(DRIVER_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
-            this.conductorId = jsonObject.getJSONObject(CONDUCTOR_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
+
+            if(!(jsonObject.getString(DRIVER_OBJ_KEY).equals("null"))){
+                this.driverId = jsonObject.getJSONObject(DRIVER_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
+
+            }
+
+            if(!(jsonObject.getString(CONDUCTOR_OBJ_KEY).equals("null"))){
+                this.conductorId = jsonObject.getJSONObject(CONDUCTOR_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
+
+            }
 
 
             // Parse createdDate and convert UTC time to local time
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.US);
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             this.createdDate = simpleDateFormat.parse(jsonObject.getString(CREATED_AT_JSON_KEY));
+            this.summaryDate = simpleDateFormat.parse(jsonObject.getString(SUMMARY_DATE_KEY));
+
             this.dateId = jsonObject.getLong(DATEID_JSON_KEY);
 
         } catch (JSONException e) {

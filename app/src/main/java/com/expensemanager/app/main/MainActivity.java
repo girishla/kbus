@@ -290,9 +290,9 @@ public class MainActivity extends BaseActivity {
                         .replace(R.id.main_activity_frame_layout_id, BusDailySummaryFragment.newInstance())
                         .addToBackStack(BusDailySummaryFragment.class.getName())
                         .commit();
-                titleTextView.setText(getString(R.string.expense));
-                fab.show();
-                fab.setOnClickListener(v -> setupFab());
+                titleTextView.setText(getString(R.string.busdailysummary));
+                fab.hide();
+//                fab.setOnClickListener(v -> setupFab());
                 break;
             case EXPENSE_POSITION:
                 if (!Helpers.hasGroup()) {

@@ -102,19 +102,19 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "expenses/search/findByUserId";
         Map<String, String> params = new HashMap<>();
         params.put("projection", "expenseProjection");
-        params.put("userId", "userId");
+        params.put("userId", userId);
 
-        return new RequestTemplate(GET, url, null);
+        return new RequestTemplate(GET, url, params);
     }
 
     public static RequestTemplate getAllExpensesByGroupId(String groupId) {
         String url = BASE_URL + "expenses/search/findByGroupId";
         Map<String, String> params = new HashMap<>();
         params.put("projection", "expenseProjection");
-        params.put("groupId", "groupId");
+        params.put("groupId", groupId);
 
 
-        return new RequestTemplate(GET, url, null);
+        return new RequestTemplate(GET, url, params);
     }
 
 
@@ -220,20 +220,20 @@ public class RequestTemplateCreator {
     public static RequestTemplate getAllBusDailySummariesByUserId(String userId) {
         String url = BASE_URL + "busdailysummaries/search/findByUserId";
         Map<String, String> params = new HashMap<>();
-        params.put("projection", "busDailySummaryProjection");
-        params.put("userId", "userId");
+        params.put("projection", "busdailysummaryProjection");
+        params.put("userId", userId);
 
-        return new RequestTemplate(GET, url, null);
+        return new RequestTemplate(GET, url, params);
     }
 
     public static RequestTemplate getAllBusDailySummariesByGroupId(String groupId) {
         String url = BASE_URL + "busdailysummaries/search/findByGroupId";
         Map<String, String> params = new HashMap<>();
-        params.put("projection", "busDailySummaryProjection");
-        params.put("groupId", "groupId");
+        params.put("projection", "busdailysummaryProjection");
+        params.put("groupId", groupId);
 
 
-        return new RequestTemplate(GET, url, null);
+        return new RequestTemplate(GET, url, params);
     }
 
 
@@ -241,7 +241,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "busdailysummaries" + "/" + id;
         Map<String, String> params = new HashMap<>();
 
-        params.put("projection", "busDailySummaryProjection");
+        params.put("projection", "busdailysummaryProjection");
 
         return new RequestTemplate(GET, url, params);
     }

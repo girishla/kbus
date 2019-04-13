@@ -150,7 +150,7 @@
                         android:textSize="@dimen/text_small"
                         android:text="Girish Lakshmanan"/>
 
-                    <com.busdailysummarymanager.app.helpers.ETextView
+                    <com.expensemanager.app.helpers.ETextView
                         android:id="@+id/busdailysummary_detail_activity_email_text_view_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
