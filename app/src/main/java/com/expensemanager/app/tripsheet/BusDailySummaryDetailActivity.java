@@ -80,7 +80,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import bolts.Continuation;
@@ -141,9 +143,11 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     @BindView(R.id.busdailysummary_detail_activity_email_text_view_id)
     TextView emailTextView;
     @BindView(R.id.busdailysummary_detail_activity_single1Collection_text_view_id)
-    EditText amountTextView;
-    @BindView(R.id.busdailysummary_detail_activity_note_text_view_id)
-    EditText noteTextView;
+    EditText single1CollectionTextView;
+
+    @BindView(R.id.busdailysummary_detail_activity_single2Collection_text_view_id)
+    EditText single2CollectionTextView;
+
     @BindView(R.id.busdailysummary_detail_activity_grid_view_id)
     GridView photoGridView;
     @BindView(R.id.busdailysummary_detail_activity_new_photo_grid_view_id)
@@ -163,10 +167,15 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     @BindView(R.id.busdailysummary_detail_activity_conductor_name_text_view_id)
     TextView conductorNameTextView;
 
-    @BindView(R.id.busdailysummary_detail_activity_busdailysummary_date_text_view_id) TextView busdailysummaryDateTextView;
+    @BindView(R.id.busdailysummary_detail_activity_busdailysummary_date_text_view_id)
+    TextView busdailysummaryDateTextView;
 
-    @BindView(R.id.busdailysummary_detail_activity_busdailysummary_time_text_view_id)
-    TextView busdailysummaryTimeTextView;
+//    @BindView(R.id.busdailysummary_detail_activity_busdailysummary_time_text_view_id)
+//    TextView busdailysummaryTimeTextView;
+
+
+    Map<String, Double> validatedAmounts = new HashMap<>();
+
 
     public static void newInstance(Context context, String id) {
         Intent intent = new Intent(context, BusDailySummaryDetailActivity.class);
@@ -211,7 +220,10 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         photoGridView.setFocusable(false);
         newPhotoGridView.setFocusable(false);
 
-        amountTextView.setText(String.valueOf(busdailysummary.getSingle1Collection()));
+        single1CollectionTextView.setText(String.valueOf(busdailysummary.getSingle1Collection()));
+        single2CollectionTextView.setText(String.valueOf(busdailysummary.getSingle2Collection()));
+
+
         setupConductor();
 
         if (createdBy != null && Member.getAllAcceptedMembersByGroupId(groupId).size() > 1) {
@@ -284,16 +296,16 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             }
         });
 
-        busdailysummaryTimeTextView.setOnClickListener(v -> {
-            if (isEditable) {
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute = calendar.get(Calendar.MINUTE);
-                TimePickerFragment timePickerFragment = TimePickerFragment
-                        .newInstance(hour, minute);
-                timePickerFragment.setListener(onTimeSetListener);
-                timePickerFragment.show(getSupportFragmentManager(), TIME_PICKER);
-            }
-        });
+//        busdailysummaryTimeTextView.setOnClickListener(v -> {
+//            if (isEditable) {
+//                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//                int minute = calendar.get(Calendar.MINUTE);
+//                TimePickerFragment timePickerFragment = TimePickerFragment
+//                        .newInstance(hour, minute);
+//                timePickerFragment.setListener(onTimeSetListener);
+//                timePickerFragment.show(getSupportFragmentManager(), TIME_PICKER);
+//            }
+//        });
     }
 
     private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -319,7 +331,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.US);
         // Parse date and set text
         busdailysummaryDateTextView.setText(dateFormat.format(date));
-        busdailysummaryTimeTextView.setText(timeFormat.format(date));
+//        busdailysummaryTimeTextView.setText(timeFormat.format(date));
     }
 
     private void setupToolbar() {
@@ -395,17 +407,19 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     }
 
     private void setupEditableViews(boolean isEditable) {
-        amountTextView.setFocusable(isEditable);
-        amountTextView.setFocusableInTouchMode(isEditable);
-        amountTextView.setClickable(isEditable);
+        setupEditField(single1CollectionTextView);
+        setupEditField(single2CollectionTextView);
 
-        noteTextView.setFocusable(isEditable);
-        noteTextView.setFocusableInTouchMode(isEditable);
-        noteTextView.setClickable(isEditable);
+    }
 
+    private void setupEditField(EditText editText) {
+        editText.setFocusable(isEditable);
+        editText.setFocusableInTouchMode(isEditable);
+        editText.setClickable(isEditable);
         if (isEditable) {
-            amountTextView.requestFocus();
-            amountTextView.setSelection(amountTextView.length());
+            editText.requestFocus();
+            editText.setSelection(editText.length());
+
         }
     }
 
@@ -413,7 +427,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         this.isEditable = isEditable;
         invalidateViews();
     }
-
 
 
     private Continuation<Void, Void> onUpdateSuccess = new Continuation<Void, Void>() {
@@ -439,18 +452,33 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
     };
 
-    private void save() {
-        double amount;
+    private void getValidatedAmount(String amountName, EditText editText) {
+
+        double amount = 0;
         try {
-            amount = Double.valueOf(amountTextView.getText().toString());
+            amount = Double.valueOf(editText.getText().toString());
             amount = Helpers.formatNumToDouble(amount);
             if (amount <= 0) {
-                Toast.makeText(this, "Amount cannot be zero.", Toast.LENGTH_SHORT).show();
-                return;
+                Toast.makeText(this, String.format("%s cannot be zero: ", amountName), Toast.LENGTH_SHORT).show();
+                throw new RuntimeException("Amount cannot be zero");
             }
         } catch (Exception e) {
-            Log.e(TAG, "Cannot convert amount to double.", e);
-            Toast.makeText(this, "Incorrect amount format.", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Cannot convert Amount to double. :" + amountName, e);
+            Toast.makeText(this, String.format("Incorrect %s format.",amountName), Toast.LENGTH_SHORT).show();
+            throw new RuntimeException("Incorrect Amount format.");
+        }
+
+        validatedAmounts.put(amountName, amount);
+    }
+
+    private void save() {
+
+        try {
+            getValidatedAmount("Single 1 Collection", single1CollectionTextView);
+            getValidatedAmount("Single 2 Collection", single2CollectionTextView);
+
+        } catch (Exception e) {
+            Log.d(TAG, "Amount Validation Error..", e);
             return;
         }
 
@@ -465,7 +493,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        busdailysummary.setSingle1Collection(amount);
+        busdailysummary.setSingle1Collection(validatedAmounts.get("Single 1 Collection"));
+        busdailysummary.setSingle2Collection(validatedAmounts.get("Single 2 Collection"));
         busdailysummary.setConductorId(conductor != null ? conductor.getId() : null);
         busdailysummary.setGroupId(groupId);
         busdailysummary.setSummaryDate(calendar.getTime());
@@ -482,9 +511,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         closeSoftKeyboard();
         invalidateViews();
     }
-
-
-
 
 
     private Continuation<Void, Void> onDeleteSuccess = new Continuation<Void, Void>() {

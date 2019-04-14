@@ -44,11 +44,6 @@ public class BusDailySummary implements RealmModel {
     public static final String SINGLE10COLLECTION_JSON_KEY = "single10Collection";
 
 
-
-
-
-
-
     public static final String DIESELEXPENSE_JSON_KEY = "dieselExpense";
     public static final String OILEXPENSE_JSON_KEY = "oilExpense";
     public static final String WATEREXPENSE_JSON_KEY = "waterExpense";
@@ -96,29 +91,29 @@ public class BusDailySummary implements RealmModel {
     private boolean isApproved = false;
     private boolean isSynced = false;
 
-    private Double single1Collection;
-    private Double single2Collection;
-    private Double single3Collection;
-    private Double single4Collection;
-    private Double single5Collection;
-    private Double single6Collection;
-    private Double single7Collection;
-    private Double single8Collection;
-    private Double single9Collection;
-    private Double single10Collection;
+    private double single1Collection;
+    private double single2Collection;
+    private double single3Collection;
+    private double single4Collection;
+    private double single5Collection;
+    private double single6Collection;
+    private double single7Collection;
+    private double single8Collection;
+    private double single9Collection;
+    private double single10Collection;
 
-    private Double dieselExpense;
-    private Double oilExpense;
-    private Double waterExpense;
-    private Double driverPathaExpense;
-    private Double driverSalaryAllowanceExpense;
-    private Double conductorPathaExpense;
-    private Double conductorSalaryAllowanceExpense;
-    private Double checkingPathaExpense;
-    private Double commissionExpense;
-    private Double otherExpense;
-    private Double unionExpense;
-    private Double cleanerExpense;
+    private double dieselExpense;
+    private double oilExpense;
+    private double waterExpense;
+    private double driverPathaExpense;
+    private double driverSalaryAllowanceExpense;
+    private double conductorPathaExpense;
+    private double conductorSalaryAllowanceExpense;
+    private double checkingPathaExpense;
+    private double commissionExpense;
+    private double otherExpense;
+    private double unionExpense;
+    private double cleanerExpense;
 
     private Date createdDate;
 
@@ -127,6 +122,11 @@ public class BusDailySummary implements RealmModel {
     public static final String GROUP_KEY = "groupId";
     public static final String SUMMARY_DATE_KEY = "summaryDate";
 
+    public double getTotalCollection() {
+
+        return getSingle1Collection() + getSingle2Collection() + getSingle3Collection() + getSingle4Collection() + getSingle5Collection()
+                + getSingle6Collection();
+    }
 
     public String getId() {
         return id;
@@ -194,185 +194,181 @@ public class BusDailySummary implements RealmModel {
         isSynced = synced;
     }
 
-    public Double getSingle1Collection() {
+    public double getSingle1Collection() {
         return single1Collection;
     }
 
-    public void setSingle1Collection(Double single1Collection) {
+    public void setSingle1Collection(double single1Collection) {
         this.single1Collection = single1Collection;
     }
 
-    public Double getSingle2Collection() {
+    public double getSingle2Collection() {
         return single2Collection;
     }
 
-    public void setSingle2Collection(Double single2Collection) {
+    public void setSingle2Collection(double single2Collection) {
         this.single2Collection = single2Collection;
     }
 
-    public Double getSingle3Collection() {
+    public double getSingle3Collection() {
         return single3Collection;
     }
 
-    public void setSingle3Collection(Double single3Collection) {
+    public void setSingle3Collection(double single3Collection) {
         this.single3Collection = single3Collection;
     }
 
-    public Double getSingle4Collection() {
+    public double getSingle4Collection() {
         return single4Collection;
     }
 
-    public void setSingle4Collection(Double single4Collection) {
+    public void setSingle4Collection(double single4Collection) {
         this.single4Collection = single4Collection;
     }
 
-    public Double getSingle5Collection() {
+    public double getSingle5Collection() {
         return single5Collection;
     }
 
-    public void setSingle5Collection(Double single5Collection) {
+    public void setSingle5Collection(double single5Collection) {
         this.single5Collection = single5Collection;
     }
 
-    public Double getSingle6Collection() {
+    public double getSingle6Collection() {
         return single6Collection;
     }
 
-    public void setSingle6Collection(Double single6Collection) {
+    public void setSingle6Collection(double single6Collection) {
         this.single6Collection = single6Collection;
     }
 
-    public Double getSingle7Collection() {
+    public double getSingle7Collection() {
         return single7Collection;
     }
 
-    public void setSingle7Collection(Double single7Collection) {
+    public void setSingle7Collection(double single7Collection) {
         this.single7Collection = single7Collection;
     }
 
-    public Double getSingle8Collection() {
+    public double getSingle8Collection() {
         return single8Collection;
     }
 
-    public void setSingle8Collection(Double single8Collection) {
+    public void setSingle8Collection(double single8Collection) {
         this.single8Collection = single8Collection;
     }
 
-    public Double getSingle9Collection() {
+    public double getSingle9Collection() {
         return single9Collection;
     }
 
-    public void setSingle9Collection(Double single9Collection) {
+    public void setSingle9Collection(double single9Collection) {
         this.single9Collection = single9Collection;
     }
 
-    public Double getSingle10Collection() {
+    public double getSingle10Collection() {
         return single10Collection;
     }
 
-    public void setSingle10Collection(Double single10Collection) {
+    public void setSingle10Collection(double single10Collection) {
         this.single10Collection = single10Collection;
     }
 
-    public Double getDieselExpense() {
+    public double getDieselExpense() {
         return dieselExpense;
     }
 
-    public void setDieselExpense(Double dieselExpense) {
+    public void setDieselExpense(double dieselExpense) {
         this.dieselExpense = dieselExpense;
     }
 
-    public Double getOilExpense() {
+    public double getOilExpense() {
         return oilExpense;
     }
 
-    public void setOilExpense(Double oilExpense) {
+    public void setOilExpense(double oilExpense) {
         this.oilExpense = oilExpense;
     }
 
-    public Double getWaterExpense() {
+    public double getWaterExpense() {
         return waterExpense;
     }
 
-    public void setWaterExpense(Double waterExpense) {
+    public void setWaterExpense(double waterExpense) {
         this.waterExpense = waterExpense;
     }
 
-    public Double getDriverPathaExpense() {
+    public double getDriverPathaExpense() {
         return driverPathaExpense;
     }
 
-    public void setDriverPathaExpense(Double driverPathaExpense) {
+    public void setDriverPathaExpense(double driverPathaExpense) {
         this.driverPathaExpense = driverPathaExpense;
     }
 
-    public Double getDriverSalaryAllowanceExpense() {
+    public double getDriverSalaryAllowanceExpense() {
         return driverSalaryAllowanceExpense;
     }
 
-    public void setDriverSalaryAllowanceExpense(Double driverSalaryAllowanceExpense) {
+    public void setDriverSalaryAllowanceExpense(double driverSalaryAllowanceExpense) {
         this.driverSalaryAllowanceExpense = driverSalaryAllowanceExpense;
     }
 
-    public Double getConductorPathaExpense() {
+    public double getConductorPathaExpense() {
         return conductorPathaExpense;
     }
 
-    public void setConductorPathaExpense(Double conductorPathaExpense) {
+    public void setConductorPathaExpense(double conductorPathaExpense) {
         this.conductorPathaExpense = conductorPathaExpense;
     }
 
-    public Double getConductorSalaryAllowanceExpense() {
+    public double getConductorSalaryAllowanceExpense() {
         return conductorSalaryAllowanceExpense;
     }
 
-    public void setConductorSalaryAllowanceExpense(Double conductorSalaryAllowanceExpense) {
+    public void setConductorSalaryAllowanceExpense(double conductorSalaryAllowanceExpense) {
         this.conductorSalaryAllowanceExpense = conductorSalaryAllowanceExpense;
     }
 
-    public Double getCheckingPathaExpense() {
+    public double getCheckingPathaExpense() {
         return checkingPathaExpense;
     }
 
-    public void setCheckingPathaExpense(Double checkingPathaExpense) {
+    public void setCheckingPathaExpense(double checkingPathaExpense) {
         this.checkingPathaExpense = checkingPathaExpense;
     }
 
-    public Double getCommissionExpense() {
+    public double getCommissionExpense() {
         return commissionExpense;
     }
 
-    public void setCommissionExpense(Double commissionExpense) {
+    public void setCommissionExpense(double commissionExpense) {
         this.commissionExpense = commissionExpense;
     }
 
-    public Double getOtherExpense() {
+    public double getOtherExpense() {
         return otherExpense;
     }
 
-    public void setOtherExpense(Double otherExpense) {
+    public void setOtherExpense(double otherExpense) {
         this.otherExpense = otherExpense;
     }
 
-    public Double getUnionExpense() {
+    public double getUnionExpense() {
         return unionExpense;
     }
 
-    public void setUnionExpense(Double unionExpense) {
+    public void setUnionExpense(double unionExpense) {
         this.unionExpense = unionExpense;
     }
 
-    public Double getCleanerExpense() {
+    public double getCleanerExpense() {
         return cleanerExpense;
     }
 
-    public void setCleanerExpense(Double cleanerExpense) {
+    public void setCleanerExpense(double cleanerExpense) {
         this.cleanerExpense = cleanerExpense;
     }
-
-
-
-
 
 
     public String getSubmittedBy() {
@@ -396,15 +392,39 @@ public class BusDailySummary implements RealmModel {
         try {
             this.id = jsonObject.getString(OBJECT_ID_JSON_KEY);
             this.single1Collection = jsonObject.getDouble(SINGLE1COLLECTION_JSON_KEY);
+            this.single2Collection = jsonObject.getDouble(SINGLE2COLLECTION_JSON_KEY);
+            this.single3Collection = jsonObject.getDouble(SINGLE3COLLECTION_JSON_KEY);
+            this.single4Collection = jsonObject.getDouble(SINGLE4COLLECTION_JSON_KEY);
+            this.single5Collection = jsonObject.getDouble(SINGLE5COLLECTION_JSON_KEY);
+            this.single6Collection = jsonObject.getDouble(SINGLE6COLLECTION_JSON_KEY);
+            this.single7Collection = jsonObject.getDouble(SINGLE7COLLECTION_JSON_KEY);
+            this.single8Collection = jsonObject.getDouble(SINGLE8COLLECTION_JSON_KEY);
+            this.single9Collection = jsonObject.getDouble(SINGLE9COLLECTION_JSON_KEY);
+            this.single10Collection = jsonObject.getDouble(SINGLE10COLLECTION_JSON_KEY);
+
+
+            this.dieselExpense = jsonObject.getDouble(DIESELEXPENSE_JSON_KEY);
+            this.oilExpense = jsonObject.getDouble(OILEXPENSE_JSON_KEY);
+            this.waterExpense = jsonObject.getDouble(WATEREXPENSE_JSON_KEY);
+            this.driverPathaExpense = jsonObject.getDouble(DRIVERPATHAEXPENSE_JSON_KEY);
+            this.driverSalaryAllowanceExpense = jsonObject.getDouble(DRIVERSALARYEXPENSE_JSON_KEY);
+            this.conductorPathaExpense = jsonObject.getDouble(CONDUCTORPATHAEXPENSE_JSON_KEY);
+            this.conductorSalaryAllowanceExpense = jsonObject.getDouble(CONDUCTORSALARYEXPENSE_JSON_KEY);
+            this.checkingPathaExpense = jsonObject.getDouble(CHECKINGPATHAEXPENSE_JSON_KEY);
+            this.commissionExpense = jsonObject.getDouble(COMMISSIONEXPENSE_JSON_KEY);
+            this.otherExpense = jsonObject.getDouble(OTHEREXPENSE_JSON_KEY);
+            this.unionExpense = jsonObject.getDouble(UNIONEXPENSE_JSON_KEY);
+            this.cleanerExpense = jsonObject.getDouble(CLEANEREXPENSE_JSON_KEY);
+
 
             this.groupId = jsonObject.getJSONObject(GROUP_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
 
-            if(!(jsonObject.getString(DRIVER_OBJ_KEY).equals("null"))){
+            if (!(jsonObject.getString(DRIVER_OBJ_KEY).equals("null"))) {
                 this.driverId = jsonObject.getJSONObject(DRIVER_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
 
             }
 
-            if(!(jsonObject.getString(CONDUCTOR_OBJ_KEY).equals("null"))){
+            if (!(jsonObject.getString(CONDUCTOR_OBJ_KEY).equals("null"))) {
                 this.conductorId = jsonObject.getJSONObject(CONDUCTOR_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);
 
             }
