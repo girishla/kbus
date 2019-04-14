@@ -30,8 +30,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private static final String TAG= BusDailySummaryAdapter.class.getSimpleName();
 
-    public static final String NO_CATEGORY_ID = "No User";
-    public static final String NO_CATEGORY_COLOR = "#BDBDBD";
+    public static final String NO_CONDUCTOR_ID = "No User";
+    public static final String NO_CONDUCTOR_COLOR = "#BDBDBD";
 
     private static final int VIEW_TYPE_DEFAULT = 0;
     private ArrayList<BusDailySummary> busdailysummaries;
@@ -114,9 +114,9 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 viewHolder.iconImageView.setVisibility(View.VISIBLE);
             }
         } else {
-            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(NO_CATEGORY_COLOR));
+            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(NO_CONDUCTOR_COLOR));
             viewHolder.conductorColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.conductorNameTextView.setText(NO_CATEGORY_ID);
+            viewHolder.conductorNameTextView.setText(NO_CONDUCTOR_ID);
         }
 
         User user = User.getUserById(busdailysummary.getSubmittedById());

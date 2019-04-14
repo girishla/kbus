@@ -176,7 +176,7 @@
 
                     <!-- Amount label -->
                     <TextView
-                        android:id="@+id/busdailysummary_detail_activity_amount_label_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_single1Collection_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/space_medium_large"
@@ -186,15 +186,15 @@
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
-                        android:text="@string/amount"
+                        android:text="@string/single1Collection"
                         android:textSize="@dimen/text_small"/>
 
                     <!-- Amount -->
                     <EditText
-                        android:id="@+id/busdailysummary_detail_activity_amount_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_single1Collection_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_amount_label_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single1Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
 
@@ -203,12 +203,17 @@
                         android:textSize="@dimen/text_medium_small"
                         android:background="@drawable/background_bottom_line_gray"/>
 
-                    <!-- Category label -->
+
+
+
+
+
+                    <!-- Conductor label -->
                     <TextView
                         android:id="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_amount_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single1Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
@@ -219,7 +224,7 @@
                         android:text="@string/conductor"
                         android:textSize="@dimen/text_small"/>
 
-                    <!-- Category info -->
+                    <!-- Conductor info -->
                     <RelativeLayout
                         android:id="@+id/busdailysummary_detail_activity_conductor_relative_layout_id"
                         android:layout_width="match_parent"
@@ -268,7 +273,7 @@
 
                         <!-- Amount -->
                         <TextView
-                            android:id="@+id/busdailysummary_detail_activity_conductor_amount_text_view_id"
+                            android:id="@+id/busdailysummary_detail_activity_conductor_single1Collection_text_view_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
@@ -282,7 +287,7 @@
 
                     </RelativeLayout>
 
-                    <!-- Category hint -->
+                    <!-- Conductor hint -->
                     <TextView
                         android:id="@+id/busdailysummary_detail_activity_conductor_hint_text_view_id"
                         android:layout_width="match_parent"

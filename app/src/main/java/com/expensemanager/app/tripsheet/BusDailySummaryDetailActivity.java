@@ -140,7 +140,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     TextView fullNameTextView;
     @BindView(R.id.busdailysummary_detail_activity_email_text_view_id)
     TextView emailTextView;
-    @BindView(R.id.busdailysummary_detail_activity_amount_text_view_id)
+    @BindView(R.id.busdailysummary_detail_activity_single1Collection_text_view_id)
     EditText amountTextView;
     @BindView(R.id.busdailysummary_detail_activity_note_text_view_id)
     EditText noteTextView;
@@ -162,10 +162,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     ImageView iconImageView;
     @BindView(R.id.busdailysummary_detail_activity_conductor_name_text_view_id)
     TextView conductorNameTextView;
-    @BindView(R.id.busdailysummary_detail_activity_conductor_amount_text_view_id)
-    TextView conductorAmountTextView;
-    @BindView(R.id.busdailysummary_detail_activity_busdailysummary_date_text_view_id)
-    TextView busdailysummaryDateTextView;
+
+    @BindView(R.id.busdailysummary_detail_activity_busdailysummary_date_text_view_id) TextView busdailysummaryDateTextView;
+
     @BindView(R.id.busdailysummary_detail_activity_busdailysummary_time_text_view_id)
     TextView busdailysummaryTimeTextView;
 

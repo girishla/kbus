@@ -84,6 +84,34 @@
     <string name="title_activity_report_detail">Report details</string>
     <string name="title_activity_overview">OverviewActivity</string>
     <string name="amount">Amount</string>
+    <string name="single1Collection">Single 1 Collection</string>
+    <string name="single2Collection">Single 2 Collection</string>
+    <string name="single3Collection">Single 3 Collection</string>
+    <string name="single4Collection">Single 4 Collection</string>
+    <string name="single5Collection">Single 5 Collection</string>
+    <string name="single6Collection">Single 6 Collection</string>
+    <string name="single7Collection">Single 7 Collection</string>
+    <string name="single8Collection">Single 8 Collection</string>
+    <string name="single9Collection">Single 9 Collection</string>
+    <string name="single10Collection">Single 10 Collection</string>
+
+
+    <string name="dieselExpense">Diesel</string>
+    <string name="oilExpense">Oil</string>
+    <string name="waterExpense">Water</string>
+    <string name="driverPathaExpense">Driver Patha</string>
+    <string name="driverSalaryAllowanceExpense">Driver Salary</string>
+    <string name="conductorPathaExpense">Conductor Patha</string>
+    <string name="conductorSalaryAllowanceExpense">Conductor Salary</string>
+    <string name="checkingPathaExpense">Checking Patha</string>
+    <string name="commissionExpense">Commission</string>
+    <string name="unionExpense">Union</string>
+    <string name="otherExpense">Other Expenses</string>
+
+
+
+
+
     <string name="about">About</string>
     <string name="note">Note</string>
     <string name="member">Members</string>
@@ -140,7 +168,7 @@
     <string name="delete_busdailysummary_title">Delete Trip Sheet</string>
     <string name="delete_category_title">Delete Category</string>
     <string name="delete_expense_message">Are you sure to delete this expense?</string>
-    <string name="delete_busdailysummary_message">Are you sure to delete this Trip Sheet?</string>
+    <string name="delete_busdailysummary_message">Are you sure you want to delete this Trip Sheet?</string>
     <string name="delete_category_message">Are you sure to delete this category?</string>
     <string name="no_notifications">YOU HAVE NO NOTIFICATIONS</string>
     <string name="no_expense_hint">NO EXPENSE DATA AVAILABLE</string>
