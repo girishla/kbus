@@ -96,7 +96,7 @@ public class OverviewMainFragment extends Fragment {
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.main_activity_toolbar_id);
         TextView titleTextView = (TextView) toolbar.findViewById(R.id.main_activity_toolbar_title_text_view_id);
-        titleTextView.setText(getString(R.string.app_name));
+        titleTextView.setText(getString(R.string.nav_header));
         ViewCompat.setElevation(toolbar, getResources().getInteger(R.integer.toolbar_elevation));
     }
 

@@ -41,7 +41,7 @@
             android:layout_marginStart="@dimen/space_medium"
             android:layout_centerVertical="true"
 
-            android:text="@string/app_name"
+            android:text="@string/nav_header"
             android:textSize="@dimen/text_small"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 

@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity {
     private static final int GROUP_POSITION = 5;
     private static final int NOTIFICATION_POSITION = 6;
     private static final int SETTINGS_POSITION = 7;
-    private static final int SIGN_OUT_POSITION = 8;
+    private static final int SIGN_OUT_POSITION = 9;
 
     private ActionBarDrawerToggle drawerToggle;
     private DrawerAdapter drawerAdapter;
@@ -411,8 +411,9 @@ public class MainActivity extends BaseActivity {
             case SIGN_OUT_POSITION:
                 signOut();
                 break;
-            case 9:
+            case 10:
                 // About
+
                 break;
             default:
                 break;
