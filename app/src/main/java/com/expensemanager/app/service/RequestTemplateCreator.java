@@ -27,8 +27,9 @@ import java.util.TimeZone;
 public class RequestTemplateCreator {
     private static final String TAG = RequestTemplateCreator.class.getSimpleName();
 
-        private static final String BASE_URL = "http://10.0.2.2:8080/";
+//        private static final String BASE_URL = "http://10.0.2.2:8080/";
 //    private static final String BASE_URL = "http://192.168.56.38:8080/";
+    private static final String BASE_URL = "http://192.168.1.150:8080/";
 
     public static final String GET = "GET";
     public static final String POST = "POST";
@@ -227,10 +228,12 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getAllBusDailySummariesByGroupId(String groupId) {
-        String url = BASE_URL + "busdailysummaries/search/findByGroupId";
+        String url = BASE_URL + "busdailysummaries/search/findByGroupIdAndDateIdBetween";
         Map<String, String> params = new HashMap<>();
         params.put("projection", "busdailysummaryProjection");
         params.put("groupId", groupId);
+        params.put("startDateId", "20180401");
+        params.put("endDateId", "20180416");
 
 
         return new RequestTemplate(GET, url, params);

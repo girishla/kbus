@@ -101,13 +101,14 @@
     <string name="oilExpense">Oil</string>
     <string name="waterExpense">Water</string>
     <string name="driverPathaExpense">Driver Patha</string>
-    <string name="driverSalaryAllowanceExpense">Driver Salary</string>
+    <string name="driverSalaryAllowanceExpense">Driver Salary Allowance</string>
     <string name="conductorPathaExpense">Conductor Patha</string>
-    <string name="conductorSalaryAllowanceExpense">Conductor Salary</string>
+    <string name="conductorSalaryAllowanceExpense">Conductor Salary Allowance</string>
     <string name="checkingPathaExpense">Checking Patha</string>
     <string name="commissionExpense">Commission</string>
     <string name="unionExpense">Union</string>
     <string name="otherExpense">Other Expenses</string>
+    <string name="cleanerExpense">Cleaner Expenses</string>
 
 
 
@@ -118,6 +119,7 @@
     <string name="member">Members</string>
     <string name="join">Join</string>
     <string name="invite">Invite</string>
+    <string name="add_member">Add Member</string>
     <string name="sent">Sent</string>
     <string name="search">Search</string>
     <string name="search_hint">Search fullname, email or phone...</string>

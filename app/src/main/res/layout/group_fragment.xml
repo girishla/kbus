@@ -173,7 +173,7 @@
                             android:layout_marginStart="@dimen/space_medium"
                             android:layout_centerVertical="true"
 
-                            android:text="@string/invite"
+                            android:text="@string/add_member"
                             android:textSize="@dimen/text_small" />
 
                         <!-- Right arrow -->

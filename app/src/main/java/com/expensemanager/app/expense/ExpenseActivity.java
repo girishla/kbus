@@ -168,6 +168,9 @@ public class ExpenseActivity extends BaseActivity {
 
     private void invalidateViews() {
         expenseAdapter.clear();
+
+        Log.d(TAG,"Invalidating Expsnes Views...");
+
         expenseAdapter.setIsBackgroundPrimary(!isCategoryFiltered);
         recyclerView.setBackgroundColor(ContextCompat.getColor(this, isCategoryFiltered? R.color.white : R.color.colorPrimaryDark));
 

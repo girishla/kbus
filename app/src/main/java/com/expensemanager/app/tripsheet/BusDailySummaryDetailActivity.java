@@ -29,6 +29,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -148,6 +150,54 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     @BindView(R.id.busdailysummary_detail_activity_single2Collection_text_view_id)
     EditText single2CollectionTextView;
 
+
+    @BindView(R.id.busdailysummary_detail_activity_single3Collection_text_view_id)
+    EditText single3CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single4Collection_text_view_id)
+    EditText single4CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single5Collection_text_view_id)
+    EditText single5CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single6Collection_text_view_id)
+    EditText single6CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single7Collection_text_view_id)
+    EditText single7CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single8Collection_text_view_id)
+    EditText single8CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single9Collection_text_view_id)
+    EditText single9CollectionTextView;
+    @BindView(R.id.busdailysummary_detail_activity_single10Collection_text_view_id)
+    EditText single10CollectionTextView;
+
+
+    @BindView(R.id.busdailysummary_detail_activity_dieselExpense_text_view_id)
+    EditText dieselExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_oilExpense_text_view_id)
+    EditText oilExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_waterExpense_text_view_id)
+    EditText waterExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_driverPathaExpense_text_view_id)
+    EditText driverPathaExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_driverSalaryAllowanceExpense_text_view_id)
+    EditText driverSalaryAllowanceExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_conductorPathaExpense_text_view_id)
+    EditText conductorPathaExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_conductorSalaryAllowanceExpense_text_view_id)
+    EditText conductorSalaryAllowanceExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_checkingPathaExpense_text_view_id)
+    EditText checkingPathaExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_commissionExpense_text_view_id)
+    EditText commissionExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_otherExpense_text_view_id)
+    EditText otherExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_unionExpense_text_view_id)
+    EditText unionExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_cleanerExpense_text_view_id)
+    EditText cleanerExpenseTextView;
+
+
+
+
+
     @BindView(R.id.busdailysummary_detail_activity_grid_view_id)
     GridView photoGridView;
     @BindView(R.id.busdailysummary_detail_activity_new_photo_grid_view_id)
@@ -222,6 +272,28 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         single1CollectionTextView.setText(String.valueOf(busdailysummary.getSingle1Collection()));
         single2CollectionTextView.setText(String.valueOf(busdailysummary.getSingle2Collection()));
+        single3CollectionTextView.setText(String.valueOf(busdailysummary.getSingle3Collection()));
+        single4CollectionTextView.setText(String.valueOf(busdailysummary.getSingle4Collection()));
+        single5CollectionTextView.setText(String.valueOf(busdailysummary.getSingle5Collection()));
+        single6CollectionTextView.setText(String.valueOf(busdailysummary.getSingle6Collection()));
+        single7CollectionTextView.setText(String.valueOf(busdailysummary.getSingle7Collection()));
+        single8CollectionTextView.setText(String.valueOf(busdailysummary.getSingle8Collection()));
+        single9CollectionTextView.setText(String.valueOf(busdailysummary.getSingle9Collection()));
+        single10CollectionTextView.setText(String.valueOf(busdailysummary.getSingle10Collection()));
+
+
+        dieselExpenseTextView.setText(String.valueOf(busdailysummary.getDieselExpense()));
+        oilExpenseTextView.setText(String.valueOf(busdailysummary.getOilExpense()));
+        waterExpenseTextView.setText(String.valueOf(busdailysummary.getWaterExpense()));
+        driverPathaExpenseTextView.setText(String.valueOf(busdailysummary.getDriverPathaExpense()));
+        driverSalaryAllowanceExpenseTextView.setText(String.valueOf(busdailysummary.getDriverSalaryAllowanceExpense()));
+        conductorPathaExpenseTextView.setText(String.valueOf(busdailysummary.getConductorPathaExpense()));
+        conductorSalaryAllowanceExpenseTextView.setText(String.valueOf(busdailysummary.getConductorSalaryAllowanceExpense()));
+        checkingPathaExpenseTextView.setText(String.valueOf(busdailysummary.getCheckingPathaExpense()));
+        commissionExpenseTextView.setText(String.valueOf(busdailysummary.getCommissionExpense()));
+        otherExpenseTextView.setText(String.valueOf(busdailysummary.getOtherExpense()));
+        unionExpenseTextView.setText(String.valueOf(busdailysummary.getUnionExpense()));
+        cleanerExpenseTextView.setText(String.valueOf(busdailysummary.getCleanerExpense()));
 
 
         setupConductor();
@@ -251,7 +323,40 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         newPhotoGridView.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
 
         setupEditableViews(isEditable);
+
+//        clearZeroes(single1CollectionTextView);
+//        clearZeroes(single2CollectionTextView);
+//        clearZeroes(single3CollectionTextView);
+//        clearZeroes(single4CollectionTextView);
+//        clearZeroes(single5CollectionTextView);
+
+
+
     }
+
+//
+//    private void clearZeroes(EditText et){
+//
+//        et.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if(et.getText().length() == 0){
+//                    et.setText("0");
+//                }
+//            }
+//        });
+//
+//    }
 
     private void showActionSheet() {
         ArrayList<EAction> actionsList = new ArrayList<>();
@@ -407,8 +512,35 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     }
 
     private void setupEditableViews(boolean isEditable) {
+
+
         setupEditField(single1CollectionTextView);
         setupEditField(single2CollectionTextView);
+        setupEditField(single3CollectionTextView);
+        setupEditField(single4CollectionTextView);
+        setupEditField(single5CollectionTextView);
+        setupEditField(single6CollectionTextView);
+        setupEditField(single7CollectionTextView);
+        setupEditField(single8CollectionTextView);
+        setupEditField(single9CollectionTextView);
+        setupEditField(single10CollectionTextView);
+
+
+        setupEditField(dieselExpenseTextView);
+        setupEditField(oilExpenseTextView);
+        setupEditField(waterExpenseTextView);
+        setupEditField(driverPathaExpenseTextView);
+        setupEditField(driverSalaryAllowanceExpenseTextView);
+        setupEditField(conductorPathaExpenseTextView);
+        setupEditField(conductorSalaryAllowanceExpenseTextView);
+        setupEditField(checkingPathaExpenseTextView);
+        setupEditField(commissionExpenseTextView);
+        setupEditField(otherExpenseTextView);
+        setupEditField(unionExpenseTextView);
+        setupEditField(cleanerExpenseTextView);
+
+
+
 
     }
 
@@ -458,9 +590,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         try {
             amount = Double.valueOf(editText.getText().toString());
             amount = Helpers.formatNumToDouble(amount);
-            if (amount <= 0) {
+            if (amount < 0) {
                 Toast.makeText(this, String.format("%s cannot be zero: ", amountName), Toast.LENGTH_SHORT).show();
-                throw new RuntimeException("Amount cannot be zero");
+                throw new RuntimeException("Amount cannot be less than zero");
             }
         } catch (Exception e) {
             Log.d(TAG, "Cannot convert Amount to double. :" + amountName, e);
@@ -471,11 +603,38 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         validatedAmounts.put(amountName, amount);
     }
 
+
+
+
     private void save() {
 
         try {
-            getValidatedAmount("Single 1 Collection", single1CollectionTextView);
-            getValidatedAmount("Single 2 Collection", single2CollectionTextView);
+            getValidatedAmount(getString(R.string.single1Collection), single1CollectionTextView);
+            getValidatedAmount(getString(R.string.single2Collection), single2CollectionTextView);
+            getValidatedAmount(getString(R.string.single3Collection), single3CollectionTextView);
+            getValidatedAmount(getString(R.string.single4Collection), single4CollectionTextView);
+            getValidatedAmount(getString(R.string.single5Collection), single5CollectionTextView);
+            getValidatedAmount(getString(R.string.single6Collection), single6CollectionTextView);
+            getValidatedAmount(getString(R.string.single7Collection), single7CollectionTextView);
+            getValidatedAmount(getString(R.string.single8Collection), single8CollectionTextView);
+            getValidatedAmount(getString(R.string.single9Collection), single9CollectionTextView);
+            getValidatedAmount(getString(R.string.single10Collection), single10CollectionTextView);
+
+            getValidatedAmount(getString(R.string.dieselExpense), dieselExpenseTextView);
+            getValidatedAmount(getString(R.string.oilExpense), oilExpenseTextView);
+            getValidatedAmount(getString(R.string.waterExpense), waterExpenseTextView);
+            getValidatedAmount(getString(R.string.driverPathaExpense), driverPathaExpenseTextView);
+            getValidatedAmount(getString(R.string.driverSalaryAllowanceExpense), driverSalaryAllowanceExpenseTextView);
+            getValidatedAmount(getString(R.string.conductorPathaExpense), conductorPathaExpenseTextView);
+            getValidatedAmount(getString(R.string.conductorSalaryAllowanceExpense), conductorSalaryAllowanceExpenseTextView);
+            getValidatedAmount(getString(R.string.checkingPathaExpense), checkingPathaExpenseTextView);
+            getValidatedAmount(getString(R.string.commissionExpense), commissionExpenseTextView);
+            getValidatedAmount(getString(R.string.otherExpense), otherExpenseTextView);
+            getValidatedAmount(getString(R.string.unionExpense), unionExpenseTextView);
+            getValidatedAmount(getString(R.string.cleanerExpense), cleanerExpenseTextView);
+
+
+
 
         } catch (Exception e) {
             Log.d(TAG, "Amount Validation Error..", e);
@@ -493,8 +652,31 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        busdailysummary.setSingle1Collection(validatedAmounts.get("Single 1 Collection"));
-        busdailysummary.setSingle2Collection(validatedAmounts.get("Single 2 Collection"));
+        busdailysummary.setSingle1Collection(validatedAmounts.get(getString(R.string.single1Collection)));
+        busdailysummary.setSingle2Collection(validatedAmounts.get(getString(R.string.single2Collection)));
+        busdailysummary.setSingle3Collection(validatedAmounts.get(getString(R.string.single3Collection)));
+        busdailysummary.setSingle4Collection(validatedAmounts.get(getString(R.string.single4Collection)));
+        busdailysummary.setSingle5Collection(validatedAmounts.get(getString(R.string.single5Collection)));
+        busdailysummary.setSingle6Collection(validatedAmounts.get(getString(R.string.single6Collection)));
+        busdailysummary.setSingle7Collection(validatedAmounts.get(getString(R.string.single7Collection)));
+        busdailysummary.setSingle8Collection(validatedAmounts.get(getString(R.string.single8Collection)));
+        busdailysummary.setSingle9Collection(validatedAmounts.get(getString(R.string.single9Collection)));
+        busdailysummary.setSingle10Collection(validatedAmounts.get(getString(R.string.single10Collection)));
+
+
+        busdailysummary.setDieselExpense(validatedAmounts.get(getString(R.string.dieselExpense)));
+        busdailysummary.setOilExpense(validatedAmounts.get(getString(R.string.oilExpense)));
+        busdailysummary.setWaterExpense(validatedAmounts.get(getString(R.string.waterExpense)));
+        busdailysummary.setDriverPathaExpense(validatedAmounts.get(getString(R.string.waterExpense)));
+        busdailysummary.setDriverSalaryAllowanceExpense(validatedAmounts.get(getString(R.string.driverSalaryAllowanceExpense)));
+        busdailysummary.setConductorPathaExpense(validatedAmounts.get(getString(R.string.conductorPathaExpense)));
+        busdailysummary.setConductorSalaryAllowanceExpense(validatedAmounts.get(getString(R.string.conductorSalaryAllowanceExpense)));
+        busdailysummary.setCheckingPathaExpense(validatedAmounts.get(getString(R.string.checkingPathaExpense)));
+        busdailysummary.setCommissionExpense(validatedAmounts.get(getString(R.string.commissionExpense)));
+        busdailysummary.setOtherExpense(validatedAmounts.get(getString(R.string.otherExpense)));
+        busdailysummary.setUnionExpense(validatedAmounts.get(getString(R.string.unionExpense)));
+        busdailysummary.setCleanerExpense(validatedAmounts.get(getString(R.string.cleanerExpense)));
+
         busdailysummary.setConductorId(conductor != null ? conductor.getId() : null);
         busdailysummary.setGroupId(groupId);
         busdailysummary.setSummaryDate(calendar.getTime());

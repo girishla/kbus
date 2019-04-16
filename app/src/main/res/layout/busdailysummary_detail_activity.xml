@@ -237,9 +237,9 @@
 
 
 
-                    <!-- Conductor label -->
+                    <!-- single3Collection label -->
                     <TextView
-                        android:id="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_single3Collection_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single2Collection_text_view_id"
@@ -250,8 +250,660 @@
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single3Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single3Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single3Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single3Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+                    <!-- single4Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single4Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single3Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single4Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single4Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single4Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single4Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+                    <!-- single5Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single5Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single4Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single5Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single5Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single5Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single5Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+                    <!-- single6Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single6Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single5Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single6Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single6Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single6Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single6Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+                    <!-- single7Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single7Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single6Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single7Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single7Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single7Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single7Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+                    <!-- single8Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single8Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single7Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single8Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single8Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single8Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single8Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+                    <!-- single9Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single9Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single8Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single9Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single9Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single9Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single9Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+                    <!-- single10Collection label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_single10Collection_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single9Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/single10Collection"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- single10Collection -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_single10Collection_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+
+                    <!-- dieselExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/dieselExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- dieselExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+                    <!-- oilExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_oilExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/oilExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- oilExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_oilExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+                    <!-- waterExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_waterExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/waterExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- waterExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_waterExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- driverPathaExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_driverPathaExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/driverPathaExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- driverPathaExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_driverPathaExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_driverPathaExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- driverSalaryAllowanceExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_driverPathaExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/driverSalaryAllowanceExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- driverSalaryAllowanceExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- conductorPathaExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_conductorPathaExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/conductorPathaExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- conductorPathaExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_conductorPathaExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_conductorPathaExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- conductorSalaryAllowanceExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_conductorPathaExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/conductorSalaryAllowanceExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- conductorSalaryAllowanceExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+                    <!-- conductorSalaryAllowanceExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_checkingPathaExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/checkingPathaExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- conductorSalaryAllowanceExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_checkingPathaExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_checkingPathaExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+
+                    <!-- checkingPathaExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_commissionExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_checkingPathaExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/commissionExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- checkingPathaExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_commissionExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_commissionExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- checkingPathaExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_otherExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_commissionExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/otherExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- checkingPathaExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_otherExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_otherExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- checkingPathaExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_unionExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_otherExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/unionExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- checkingPathaExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_unionExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_unionExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+                    <!-- checkingPathaExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_cleanerExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_unionExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/cleanerExpense"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- checkingPathaExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_cleanerExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_cleanerExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small"
+                        android:background="@drawable/background_bottom_line_gray"/>
+
+
+
+
+
+                    <!-- Conductor label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_cleanerExpense_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductor"
                         android:textSize="@dimen/text_small"/>
+
+
+
 
                     <!-- Conductor info -->
                     <RelativeLayout

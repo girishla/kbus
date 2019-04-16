@@ -126,11 +126,11 @@ public class BusDailySummaryActivity extends BaseActivity {
             startDate = startEnd[0];
             endDate = startEnd[1];
         }
-        if (getIntent().hasExtra(CONDUCTOR_ID)) {
-            isConductorFiltered = true;
-            String conductorId = getIntent().getStringExtra(CONDUCTOR_ID);
-            conductor = User.getUserById(conductorId);
-        }
+//        if (getIntent().hasExtra(CONDUCTOR_ID)) {
+//            isConductorFiltered = true;
+//            String conductorId = getIntent().getStringExtra(CONDUCTOR_ID);
+//            conductor = User.getUserById(conductorId);
+//        }
 
         busdailysummaries = new ArrayList<>();
         busdailysummaryAdapter = new BusDailySummaryAdapter(this, busdailysummaries);
@@ -138,10 +138,10 @@ public class BusDailySummaryActivity extends BaseActivity {
         setupSwipeToRefresh();
 
 
-
-        if (isConductorFiltered && conductor != null) {
-            BusDailySummaryActivity.this.toolbar.setBackgroundColor(Color.BLACK);
-        }
+//
+//        if (isConductorFiltered && conductor != null) {
+//            BusDailySummaryActivity.this.toolbar.setBackgroundColor(Color.BLACK);
+//        }
     }
 
     private Continuation<Void, Void> onGetTripSheetFinished = new Continuation<Void, Void>() {
@@ -161,11 +161,16 @@ public class BusDailySummaryActivity extends BaseActivity {
 
     private void invalidateViews() {
         busdailysummaryAdapter.clear();
+
+        Log.d(TAG,"Invalidating Views...");
+
         busdailysummaryAdapter.setIsBackgroundPrimary(!isConductorFiltered);
         recyclerView.setBackgroundColor(ContextCompat.getColor(this, isConductorFiltered? R.color.white : R.color.colorPrimaryDark));
 
         // Check size of group members
         if (Member.getAllAcceptedMembersByGroupId(groupId).size() > 1) {
+            Log.d(TAG,"in if loop...");
+
             busdailysummaryAdapter.setShowMember(true);
         } else {
             busdailysummaryAdapter.setShowMember(false);
@@ -221,6 +226,7 @@ public class BusDailySummaryActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.menu_filter:
 //                showFilteringPopUpMenu();
