@@ -356,6 +356,8 @@ public class RequestTemplateCreator {
 
         params.put(BusDailySummary.SUMMARY_DATE_KEY, time);
         params.put(BusDailySummary.DATEID_JSON_KEY, time2);
+        params.put(BusDailySummary.ID_KEY, time2);
+
 
 
         return new RequestTemplate(PUT, url, params);

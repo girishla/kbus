@@ -256,7 +256,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         setupToolbar();
         setupDateAndTime();
-//        setupNewPhoto();
+
 
     }
 
@@ -267,8 +267,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             return;
         }
 
-        photoGridView.setFocusable(false);
-        newPhotoGridView.setFocusable(false);
+
 
         single1CollectionTextView.setText(String.valueOf(busdailysummary.getSingle1Collection()));
         single2CollectionTextView.setText(String.valueOf(busdailysummary.getSingle2Collection()));
@@ -298,16 +297,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         setupConductor();
 
-        if (createdBy != null && Member.getAllAcceptedMembersByGroupId(groupId).size() > 1) {
-            userInfoRelativeLayout.setVisibility(View.VISIBLE);
 
-            Helpers.loadProfilePhoto(userPhotoImageView, createdBy.getPhotoUrl());
-            fullNameTextView.setText(createdBy.getFullname());
-            emailTextView.setText(createdBy.getEmail());
-            userPhotoImageView.setOnClickListener(v -> ProfileActivity.newInstance(this, createdBy.getId()));
-        } else {
-            userInfoRelativeLayout.setVisibility(View.GONE);
-        }
+
+        userInfoRelativeLayout.setVisibility(View.GONE);
 
         deleteButton.setOnClickListener(v -> delete());
 
@@ -319,71 +311,15 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         saveTextView.setVisibility(isEditable ? View.VISIBLE : View.GONE);
         deleteButton.setVisibility(isEditable ? View.VISIBLE : View.GONE);
-        // If set GONE, newPhotoGridView would not show up after click edit again
-        newPhotoGridView.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
 
         setupEditableViews(isEditable);
 
-//        clearZeroes(single1CollectionTextView);
-//        clearZeroes(single2CollectionTextView);
-//        clearZeroes(single3CollectionTextView);
-//        clearZeroes(single4CollectionTextView);
-//        clearZeroes(single5CollectionTextView);
-
-
 
     }
 
-//
-//    private void clearZeroes(EditText et){
-//
-//        et.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if(et.getText().length() == 0){
-//                    et.setText("0");
-//                }
-//            }
-//        });
-//
-//    }
 
-    private void showActionSheet() {
-        ArrayList<EAction> actionsList = new ArrayList<>();
-        actionsList.add(new EAction(R.string.edit, R.mipmap.ic_launcher));
-        actionsList.add(new EAction(R.string.save, R.mipmap.ic_launcher));
-        actionsList.add(new EAction(R.string.add, R.mipmap.ic_launcher));
-        actionsList.add(new EAction(R.string.delete, R.mipmap.ic_launcher));
 
-        ActionSheetAdapter adapter = new ActionSheetAdapter(actionsList);
-        adapter.setOnItemClickListener(new ActionSheetAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(ActionSheetAdapter.ItemHolder item, int position) {
-                Log.d(TAG, "clicked position:" + position);
-                bottomSheetDialog.dismiss();
-            }
-        });
 
-        View view = getLayoutInflater().inflate(R.layout.action_sheet, null);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-
-        bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(view);
-        bottomSheetDialog.show();
-    }
 
     private void setupDateAndTime() {
         calendar = Calendar.getInstance();
@@ -401,16 +337,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             }
         });
 
-//        busdailysummaryTimeTextView.setOnClickListener(v -> {
-//            if (isEditable) {
-//                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-//                int minute = calendar.get(Calendar.MINUTE);
-//                TimePickerFragment timePickerFragment = TimePickerFragment
-//                        .newInstance(hour, minute);
-//                timePickerFragment.setListener(onTimeSetListener);
-//                timePickerFragment.show(getSupportFragmentManager(), TIME_PICKER);
-//            }
-//        });
+
     }
 
     private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -558,6 +485,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     private void setEditMode(boolean isEditable) {
         this.isEditable = isEditable;
         invalidateViews();
+        single1CollectionTextView.requestFocus();
+
     }
 
 
@@ -679,7 +608,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         busdailysummary.setConductorId(conductor != null ? conductor.getId() : null);
         busdailysummary.setGroupId(groupId);
-        busdailysummary.setSummaryDate(calendar.getTime());
+//        busdailysummary.setSummaryDate(calendar.getTime());
         busdailysummary.setSynced(false);
         realm.copyToRealmOrUpdate(busdailysummary);
         realm.commitTransaction();
