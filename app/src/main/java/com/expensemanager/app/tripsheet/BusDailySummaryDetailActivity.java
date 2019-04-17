@@ -136,14 +136,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     TextView editTextView;
     @BindView(R.id.toolbar_save_text_view_id)
     TextView saveTextView;
-    @BindView(R.id.busdailysummary_detail_activity_user_info_relative_layout_id)
-    RelativeLayout userInfoRelativeLayout;
-    @BindView(R.id.busdailysummary_detail_activity_user_photo_image_view_id)
-    ImageView userPhotoImageView;
-    @BindView(R.id.busdailysummary_detail_activity_fullname_text_view_id)
-    TextView fullNameTextView;
-    @BindView(R.id.busdailysummary_detail_activity_email_text_view_id)
-    TextView emailTextView;
+
     @BindView(R.id.busdailysummary_detail_activity_single1Collection_text_view_id)
     EditText single1CollectionTextView;
 
@@ -196,12 +189,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
 
 
-
-
-    @BindView(R.id.busdailysummary_detail_activity_grid_view_id)
-    GridView photoGridView;
-    @BindView(R.id.busdailysummary_detail_activity_new_photo_grid_view_id)
-    GridView newPhotoGridView;
     @BindView(R.id.busdailysummary_detail_activity_delete_button_id)
     Button deleteButton;
     @BindView(R.id.busdailysummary_detail_activity_progress_bar_id)
@@ -297,9 +284,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         setupConductor();
 
-
-
-        userInfoRelativeLayout.setVisibility(View.GONE);
 
         deleteButton.setOnClickListener(v -> delete());
 
@@ -466,6 +450,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         setupEditField(unionExpenseTextView);
         setupEditField(cleanerExpenseTextView);
 
+        single1CollectionTextView.requestFocus();
 
 
 
@@ -480,12 +465,29 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             editText.setSelection(editText.length());
 
         }
+
+
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    if(editText.getText().toString().trim().equals("0.0")){
+                        editText.setText("");
+                    }
+                }else {
+                    if(editText.getText().length() == 0){
+                        editText.setText("0.0");
+                    }
+                }
+            }
+        });
     }
 
     private void setEditMode(boolean isEditable) {
         this.isEditable = isEditable;
         invalidateViews();
         single1CollectionTextView.requestFocus();
+        busdailysummaryDateTextView.setEnabled(false);
 
     }
 

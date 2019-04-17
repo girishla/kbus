@@ -113,72 +113,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:id="@+id/busdailysummary_detail_activity_user_info_relative_layout_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_medium_large"
-                android:layout_marginLeft="@dimen/space_medium"
-                android:layout_marginRight="@dimen/space_medium">
-
-                <!-- User photo -->
-                <ImageView
-                    android:id="@+id/busdailysummary_detail_activity_user_photo_image_view_id"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerHorizontal="true"
-
-                    android:layout_marginTop="@dimen/space_medium"
-                    android:layout_marginBottom="@dimen/space_medium"/>
-
-                <!-- User name and email -->
-                <LinearLayout
-                    android:id="@+id/busdailysummary_detail_activity_linear_layout_title_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/busdailysummary_detail_activity_user_photo_image_view_id"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/busdailysummary_detail_activity_fullname_text_view_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_gravity="center_horizontal"
-
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_small"
-                        android:text="Girish Lakshmanan"/>
-
-                    <com.expensemanager.app.helpers.ETextView
-                        android:id="@+id/busdailysummary_detail_activity_email_text_view_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-
-                        android:textColor="@color/gray_really_light"
-                        android:textSize="@dimen/text_small"/>
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
             <android.support.v7.widget.CardView
                 android:id="@+id/busdailysummary_detail_activity_card_view_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_medium_small"
-                android:layout_below="@+id/busdailysummary_detail_activity_user_info_relative_layout_id">
+                android:layout_margin="@dimen/space_medium_small">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
+                    <!-- TripSheet date and time label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_date_time_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/busdailysummary_date"
+                        android:textSize="@dimen/text_small"/>
+
+                    <!-- TripSheet date and time -->
+                    <LinearLayout
+                        android:id="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_label_text_view_id"
+
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <!-- Date -->
+                        <TextView
+                            android:id="@+id/busdailysummary_detail_activity_busdailysummary_date_text_view_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/space_small"
+
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="@dimen/space_really_small"
+                            android:textSize="@dimen/text_small"
+                            android:textColor="@color/black"
+                            android:background="@drawable/background_round_corner_border_gray"
+                            tools:text="Date"/>
+
+
+                    </LinearLayout>
 
                     <!-- single1Collection label -->
                     <TextView
                         android:id="@+id/busdailysummary_detail_activity_single1Collection_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
+
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
@@ -985,115 +981,14 @@
                         android:textSize="@dimen/text_small"
                         android:background="@drawable/background_round_corner_border_gray"/>
 
-                    <!-- TripSheet date and time label -->
-                    <TextView
-                        android:id="@+id/busdailysummary_detail_activity_date_time_label_text_view_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_conductor_relative_layout_id"
-                        android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
-                        android:layout_marginTop="@dimen/space_medium_large"
-                        android:layout_marginBottom="@dimen/space_medium"
-
-                        android:paddingLeft="@dimen/space_really_small"
-                        android:paddingRight="@dimen/space_really_small"
-                        android:text="@string/busdailysummary_date"
-                        android:textSize="@dimen/text_small"/>
-
-                    <!-- TripSheet date and time -->
-                    <LinearLayout
-                        android:id="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
-                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_label_text_view_id"
-
-                        android:weightSum="2"
-                        android:orientation="horizontal">
-
-                        <!-- Date -->
-                        <TextView
-                            android:id="@+id/busdailysummary_detail_activity_busdailysummary_date_text_view_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="@dimen/space_small"
-
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="@dimen/space_really_small"
-                            android:textSize="@dimen/text_small"
-                            android:textColor="@color/black"
-                            android:background="@drawable/background_round_corner_border_gray"
-                            tools:text="Date"/>
-
-                        <!-- Time -->
-                        <!--<TextView-->
-                            <!--android:id="@+id/busdailysummary_detail_activity_busdailysummary_time_text_view_id"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_marginLeft="@dimen/space_small"-->
-
-                            <!--android:layout_weight="1"-->
-                            <!--android:gravity="center"-->
-                            <!--android:padding="@dimen/space_really_small"-->
-                            <!--android:textSize="@dimen/text_small"-->
-                            <!--android:textColor="@color/black"-->
-                            <!--android:background="@drawable/background_round_corner_border_gray"-->
-                            <!--tools:text="Time"/>-->
-
-                    </LinearLayout>
 
 
 
-                    <!-- TripSheet photo -->
-                    <LinearLayout
-                        android:id="@+id/busdailysummary_detail_activity_linear_layout_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/busdailysummary_detail_activity_date_time_linear_layout_id"
-                        android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
-                        android:layout_marginTop="@dimen/space_medium_large"
-                        android:layout_marginBottom="@dimen/space_medium_large">
-
-                        <GridView
-                            android:id="@+id/busdailysummary_detail_activity_grid_view_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:columnWidth="84dp"
-                            android:numColumns="auto_fit"
-                            android:gravity="center" />
-
-                    </LinearLayout>
 
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
-            <!-- Add new busdailysummary photo -->
-            <LinearLayout
-                android:id="@+id/busdailysummary_detail_activity_new_photo_linear_layout_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/busdailysummary_detail_activity_card_view_id"
-                android:layout_marginLeft="@dimen/space_medium_large"
-                android:layout_marginRight="@dimen/space_medium_large"
-                android:layout_marginTop="@dimen/space_medium_large"
-                android:layout_marginBottom="@dimen/space_medium_large">
-
-                <GridView
-                    android:id="@+id/busdailysummary_detail_activity_new_photo_grid_view_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="176dp"
-
-                    android:columnWidth="84dp"
-                    android:numColumns="auto_fit"
-                    android:gravity="center" />
-
-            </LinearLayout>
 
             <!-- Delete -->
             <Button
@@ -1101,7 +996,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="@dimen/space_medium_large"
-                android:layout_below="@+id/busdailysummary_detail_activity_new_photo_linear_layout_id"
+                android:layout_below="@+id/busdailysummary_detail_activity_card_view_id"
 
                 android:textSize="@dimen/text_small"
                 android:textColor="@color/black"
