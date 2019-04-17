@@ -70,7 +70,11 @@ public class BusDailySummaryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+//        setHasOptionsMenu(true);
+        Log.d(TAG,"In Fragment................................");
+        setUserVisibleHint(true);
+
+
     }
 
     @Nullable
@@ -90,6 +94,12 @@ public class BusDailySummaryFragment extends Fragment {
 
         busdailysummaries = new ArrayList<>();
         busdailysummaryAdapter = new BusDailySummaryAdapter(getActivity(), busdailysummaries);
+
+        if(BusDailySummary.getAllBusDailySummariesByGroupId(groupId).size()<=0){
+            SyncBusDailySummary.getAllBusDailySummariesByGroupId(groupId).continueWith(onGetTripSheetFinished, Task.UI_THREAD_EXECUTOR);
+        }
+
+
         setupToolbar();
         setupRecyclerView();
         setupSwipeToRefresh();
@@ -106,6 +116,9 @@ public class BusDailySummaryFragment extends Fragment {
         } else {
             busdailysummaryAdapter.setShowMember(false);
         }
+
+
+
 
         busdailysummaryAdapter.addAll(BusDailySummary.getAllBusDailySummariesByGroupId(groupId));
 
@@ -157,7 +170,11 @@ public class BusDailySummaryFragment extends Fragment {
 
             if (swipeContainer != null) {
                 swipeContainer.setRefreshing(false);
+
             }
+
+//            busdailysummaryAdapter.notifyDataSetChanged();
+            invalidateViews();
 
             return null;
         }

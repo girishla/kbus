@@ -8,6 +8,7 @@ import android.util.Log;
 import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.Helpers;
 import com.expensemanager.app.main.EApplication;
+import com.expensemanager.app.models.Group;
 import com.expensemanager.app.models.User;
 
 import org.json.JSONObject;
@@ -67,6 +68,7 @@ public class SyncUser {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(User.SESSION_TOKEN, sessionToken);
                     editor.putString(User.USER_ID, userId);
+
                     editor.apply();
                 }
 

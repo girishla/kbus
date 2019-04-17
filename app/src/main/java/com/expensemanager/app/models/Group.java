@@ -46,6 +46,7 @@ public class Group implements RealmModel {
 
     // Property name key
     public static final String ID_KEY = "id";
+    public static final String GROUP_ID_KEY = "groupId";
     public static final String CREATED_AT_KEY = "createdAt";
     public static final String COLOR_KEY = "color";
     public static final String NAME_KEY = "name";

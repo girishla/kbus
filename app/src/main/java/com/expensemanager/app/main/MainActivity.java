@@ -129,6 +129,7 @@ public class MainActivity extends BaseActivity {
 
         loginUserId = Helpers.getLoginUserId();
         groupId = Helpers.getCurrentGroupId();
+
         syncTimeKey = Helpers.getSyncTimeKey(TAG, groupId);
         syncTimeInMillis = Helpers.getSyncTimeInMillis(syncTimeKey);
 
@@ -579,7 +580,7 @@ public class MainActivity extends BaseActivity {
         Log.d(TAG,">>>>>>>>>>>>>>>> Attempting to save Group Id " + groupId);
 
         SharedPreferences.Editor sharedPreferencesEditor = getSharedPreferences(getString(R.string.shared_preferences_session_key), 0).edit();
-        sharedPreferencesEditor.putString(Group.ID_KEY, groupId);
+        sharedPreferencesEditor.putString(Group.GROUP_ID_KEY, groupId);
         sharedPreferencesEditor.apply();
     }
 

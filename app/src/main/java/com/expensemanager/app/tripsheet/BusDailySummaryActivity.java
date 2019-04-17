@@ -80,31 +80,31 @@ public class BusDailySummaryActivity extends BaseActivity {
         ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
-    public static void newInstance(Context context, String conductorId) {
-        Intent intent = new Intent(context, BusDailySummaryActivity.class);
-        intent.putExtra(CONDUCTOR_ID, conductorId);
-        context.startActivity(intent);
-        ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
-    }
-
-    public static void newInstance(Context context, Date[] startEnd) {
-        Intent intent = new Intent(context, BusDailySummaryActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(START_END_DATE, startEnd);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
-        ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
-    }
-
-    public static void newInstance(Context context, String conductorId, Date[] startEnd) {
-        Intent intent = new Intent(context, BusDailySummaryActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(START_END_DATE, startEnd);
-        intent.putExtras(bundle);
-        intent.putExtra(CONDUCTOR_ID, conductorId);
-        context.startActivity(intent);
-        ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
-    }
+//    public static void newInstance(Context context, String conductorId) {
+//        Intent intent = new Intent(context, BusDailySummaryActivity.class);
+//        intent.putExtra(CONDUCTOR_ID, conductorId);
+//        context.startActivity(intent);
+//        ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
+//    }
+//
+//    public static void newInstance(Context context, Date[] startEnd) {
+//        Intent intent = new Intent(context, BusDailySummaryActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(START_END_DATE, startEnd);
+//        intent.putExtras(bundle);
+//        context.startActivity(intent);
+//        ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
+//    }
+//
+//    public static void newInstance(Context context, String conductorId, Date[] startEnd) {
+//        Intent intent = new Intent(context, BusDailySummaryActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(START_END_DATE, startEnd);
+//        intent.putExtras(bundle);
+//        intent.putExtra(CONDUCTOR_ID, conductorId);
+//        context.startActivity(intent);
+//        ((Activity)context).overridePendingTransition(R.anim.right_in, R.anim.left_out);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

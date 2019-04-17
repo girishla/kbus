@@ -240,7 +240,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.shared_preferences_session_key), 0);
-        groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
         loginUserId = sharedPreferences.getString(User.USER_ID, null);
 
         group = Group.getGroupById(groupId);
@@ -643,7 +643,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.shared_preferences_session_key), 0);
         String loginUserId = sharedPreferences.getString(User.USER_ID, null);
-        String groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        String groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
 
         if (loginUserId == null || groupId == null) {
             Log.i(TAG, "Error getting login user id or group id.");

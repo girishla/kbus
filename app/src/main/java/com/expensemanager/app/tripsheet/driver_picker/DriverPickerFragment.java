@@ -51,7 +51,7 @@ public class DriverPickerFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.CategoryColorDialogStyle);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_preferences_session_key), 0);
-        groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
     }
 
     @Override

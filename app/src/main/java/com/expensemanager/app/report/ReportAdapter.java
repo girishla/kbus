@@ -62,7 +62,7 @@ public class ReportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         sumLists = new ArrayList<>();
         categoryLists = new ArrayList<>();
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(getContext().getString(R.string.shared_preferences_session_key), 0);
-        groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
     }
 
     private Context getContext() {

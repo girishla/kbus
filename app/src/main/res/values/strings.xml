@@ -11,7 +11,7 @@
     <!-- Welcome, Login and Sign up-->
     <string name="welcome">Welcome</string>
     <string name="welcome_title">Welcome to Karthikeyan Bus Service</string>
-    <string name="welcome_sub_title">Income and Expenses Management</string>
+    <string name="welcome_sub_title"></string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="current_password">Current password</string>

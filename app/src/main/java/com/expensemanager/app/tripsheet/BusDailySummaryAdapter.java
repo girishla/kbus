@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
+        Log.d(TAG,"Count is %%%%%%%%%%%%%%%%%%%%%%%." + this.busdailysummaries.size());
+
         return this.busdailysummaries.size();
     }
 
@@ -60,6 +63,9 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        Log.d(TAG,"onCreateViewHolder...................");
+
         RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
@@ -152,11 +158,14 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     public void clear() {
         busdailysummaries.clear();
+        Log.d(TAG,"clear...................");
+
         notifyDataSetChanged();
     }
 
     public void addAll(List<BusDailySummary> busdailysummaries) {
         this.busdailysummaries.addAll(busdailysummaries);
+        Log.d(TAG,"notifyDataSetChanged...................");
         notifyDataSetChanged();
     }
 

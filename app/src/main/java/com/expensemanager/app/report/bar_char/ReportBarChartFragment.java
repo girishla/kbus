@@ -57,7 +57,7 @@ public class ReportBarChartFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_preferences_session_key), 0);
-        groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
     }
 
     // 3.onCreateView() creates and returns the view hierarchy associated with the fragment.

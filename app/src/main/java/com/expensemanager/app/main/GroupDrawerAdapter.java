@@ -104,7 +104,7 @@ public class GroupDrawerAdapter extends RecyclerView.Adapter<GroupDrawerAdapter.
             holder.joinTextView.setVisibility(View.INVISIBLE);
 
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getString(R.string.shared_preferences_session_key), 0);
-            String groupId = sharedPreferences.getString(Group.ID_KEY, null);
+            String groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
 
             Member member = members.get(position - 2);
             Group group = member.getGroup();

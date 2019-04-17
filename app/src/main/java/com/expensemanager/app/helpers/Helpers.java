@@ -709,8 +709,8 @@ public class Helpers {
                 context.getSharedPreferences(context.getString(R.string.shared_preferences_session_key), 0);
 
 
-        Log.d(TAG,"^^^^^^^^^^getCurrentGroupId()" + sharedPreferences.getString(Group.ID_KEY, null));
-        return sharedPreferences.getString(Group.ID_KEY, null);
+        Log.d(TAG,"^^^^^^^^^^getCurrentGroupId()" + sharedPreferences.getString(Group.GROUP_ID_KEY, null));
+        return sharedPreferences.getString(Group.GROUP_ID_KEY, null);
     }
 
     public static  void centerRevealEnter(View view) {

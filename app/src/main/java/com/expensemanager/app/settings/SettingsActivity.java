@@ -110,7 +110,7 @@ public class SettingsActivity extends BaseActivity {
 
     public static void loadSetting(Activity activity) {
         SharedPreferences sharedPreferences = activity.getSharedPreferences(activity.getString(R.string.shared_preferences_session_key), MODE_PRIVATE);
-        String groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        String groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
         SettingsActivity.setWeekly = sharedPreferences.getBoolean(SET_WEEKLY, true);
         SettingsActivity.setMonthly = sharedPreferences.getBoolean(SET_MONTHLY, true);
 

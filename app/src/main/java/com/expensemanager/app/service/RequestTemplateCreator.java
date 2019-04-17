@@ -233,7 +233,7 @@ public class RequestTemplateCreator {
         params.put("projection", "busdailysummaryProjection");
         params.put("groupId", groupId);
         params.put("startDateId", "20180401");
-        params.put("endDateId", "20180416");
+        params.put("endDateId", "20180402");
 
 
         return new RequestTemplate(GET, url, params);

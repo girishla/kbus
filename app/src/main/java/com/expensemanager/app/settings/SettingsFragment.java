@@ -151,7 +151,7 @@ public class SettingsFragment extends Fragment {
     public static void loadSetting() {
         Context context = EApplication.getInstance();
         SharedPreferences sharedPreferences = context.getSharedPreferences(context.getString(R.string.shared_preferences_session_key), MODE_PRIVATE);
-        String groupId = sharedPreferences.getString(Group.ID_KEY, null);
+        String groupId = sharedPreferences.getString(Group.GROUP_ID_KEY, null);
         SettingsFragment.setWeekly = sharedPreferences.getBoolean(SettingsFragment.SET_WEEKLY, true);
         SettingsFragment.setMonthly = sharedPreferences.getBoolean(SettingsFragment.SET_MONTHLY, true);
 
