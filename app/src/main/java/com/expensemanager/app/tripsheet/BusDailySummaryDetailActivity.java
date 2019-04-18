@@ -1,91 +1,49 @@
 package com.expensemanager.app.tripsheet;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.ThumbnailUtils;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.expensemanager.app.R;
-import com.expensemanager.app.models.BusDailySummary;
-import com.expensemanager.app.service.SyncBusDailySummary;
-import com.expensemanager.app.tripsheet.conductor_picker.ConductorPickerFragment;
-
 import com.expensemanager.app.helpers.DatePickerFragment;
 import com.expensemanager.app.helpers.Helpers;
-import com.expensemanager.app.helpers.PhotoSourceAdapter;
-import com.expensemanager.app.helpers.TimePickerFragment;
 import com.expensemanager.app.main.BaseActivity;
-import com.expensemanager.app.models.User;
-import com.expensemanager.app.models.EAction;
+import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.models.Group;
-import com.expensemanager.app.models.Member;
-import com.expensemanager.app.models.PhotoSource;
 import com.expensemanager.app.models.User;
-import com.expensemanager.app.profile.ProfileActivity;
-import com.expensemanager.app.service.Constant;
-import com.expensemanager.app.service.PermissionsManager;
-import com.expensemanager.app.service.SyncPhoto;
+import com.expensemanager.app.service.SyncBusDailySummary;
 import com.expensemanager.app.service.enums.EIcon;
-import com.jakewharton.rxbinding.widget.RxAdapterView;
+import com.expensemanager.app.tripsheet.conductor_picker.ConductorPickerFragment;
 
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import bolts.Continuation;
 import bolts.Task;
@@ -93,9 +51,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.Realm;
-import io.realm.RealmResults;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 
 public class BusDailySummaryDetailActivity extends BaseActivity {
     private static final String TAG = BusDailySummaryDetailActivity.class.getSimpleName();
@@ -188,7 +143,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     EditText cleanerExpenseTextView;
 
 
-
     @BindView(R.id.busdailysummary_detail_activity_delete_button_id)
     Button deleteButton;
     @BindView(R.id.busdailysummary_detail_activity_progress_bar_id)
@@ -253,33 +207,31 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         if (busdailysummary == null) {
             return;
         }
+        NumberFormat format = new DecimalFormat("0.#");
 
 
-
-        single1CollectionTextView.setText(String.valueOf(busdailysummary.getSingle1Collection()));
-        single2CollectionTextView.setText(String.valueOf(busdailysummary.getSingle2Collection()));
-        single3CollectionTextView.setText(String.valueOf(busdailysummary.getSingle3Collection()));
-        single4CollectionTextView.setText(String.valueOf(busdailysummary.getSingle4Collection()));
-        single5CollectionTextView.setText(String.valueOf(busdailysummary.getSingle5Collection()));
-        single6CollectionTextView.setText(String.valueOf(busdailysummary.getSingle6Collection()));
-        single7CollectionTextView.setText(String.valueOf(busdailysummary.getSingle7Collection()));
-        single8CollectionTextView.setText(String.valueOf(busdailysummary.getSingle8Collection()));
-        single9CollectionTextView.setText(String.valueOf(busdailysummary.getSingle9Collection()));
-        single10CollectionTextView.setText(String.valueOf(busdailysummary.getSingle10Collection()));
-
-
-        dieselExpenseTextView.setText(String.valueOf(busdailysummary.getDieselExpense()));
-        oilExpenseTextView.setText(String.valueOf(busdailysummary.getOilExpense()));
-        waterExpenseTextView.setText(String.valueOf(busdailysummary.getWaterExpense()));
-        driverPathaExpenseTextView.setText(String.valueOf(busdailysummary.getDriverPathaExpense()));
-        driverSalaryAllowanceExpenseTextView.setText(String.valueOf(busdailysummary.getDriverSalaryAllowanceExpense()));
-        conductorPathaExpenseTextView.setText(String.valueOf(busdailysummary.getConductorPathaExpense()));
-        conductorSalaryAllowanceExpenseTextView.setText(String.valueOf(busdailysummary.getConductorSalaryAllowanceExpense()));
-        checkingPathaExpenseTextView.setText(String.valueOf(busdailysummary.getCheckingPathaExpense()));
-        commissionExpenseTextView.setText(String.valueOf(busdailysummary.getCommissionExpense()));
-        otherExpenseTextView.setText(String.valueOf(busdailysummary.getOtherExpense()));
-        unionExpenseTextView.setText(String.valueOf(busdailysummary.getUnionExpense()));
-        cleanerExpenseTextView.setText(String.valueOf(busdailysummary.getCleanerExpense()));
+        single1CollectionTextView.setText(format.format((busdailysummary.getSingle1Collection())));
+        single2CollectionTextView.setText(format.format((busdailysummary.getSingle2Collection())));
+        single3CollectionTextView.setText(format.format((busdailysummary.getSingle3Collection())));
+        single4CollectionTextView.setText(format.format((busdailysummary.getSingle4Collection())));
+        single5CollectionTextView.setText(format.format((busdailysummary.getSingle5Collection())));
+        single6CollectionTextView.setText(format.format((busdailysummary.getSingle6Collection())));
+        single7CollectionTextView.setText(format.format((busdailysummary.getSingle7Collection())));
+        single8CollectionTextView.setText(format.format((busdailysummary.getSingle8Collection())));
+        single9CollectionTextView.setText(format.format((busdailysummary.getSingle9Collection())));
+        single10CollectionTextView.setText(format.format((busdailysummary.getSingle10Collection())));
+        dieselExpenseTextView.setText(format.format((busdailysummary.getDieselExpense())));
+        oilExpenseTextView.setText(format.format((busdailysummary.getOilExpense())));
+        waterExpenseTextView.setText(format.format((busdailysummary.getWaterExpense())));
+        driverPathaExpenseTextView.setText(format.format((busdailysummary.getDriverPathaExpense())));
+        driverSalaryAllowanceExpenseTextView.setText(format.format((busdailysummary.getDriverSalaryAllowanceExpense())));
+        conductorPathaExpenseTextView.setText(format.format((busdailysummary.getConductorPathaExpense())));
+        conductorSalaryAllowanceExpenseTextView.setText(format.format((busdailysummary.getConductorSalaryAllowanceExpense())));
+        checkingPathaExpenseTextView.setText(format.format((busdailysummary.getCheckingPathaExpense())));
+        commissionExpenseTextView.setText(format.format((busdailysummary.getCommissionExpense())));
+        otherExpenseTextView.setText(format.format((busdailysummary.getOtherExpense())));
+        unionExpenseTextView.setText(format.format((busdailysummary.getUnionExpense())));
+        cleanerExpenseTextView.setText(format.format((busdailysummary.getCleanerExpense())));
 
 
         setupConductor();
@@ -300,9 +252,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
 
     }
-
-
-
 
 
     private void setupDateAndTime() {
@@ -332,14 +281,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
     };
 
-    private TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            calendar.set(Calendar.MINUTE, minute);
-            formatDateAndTime(calendar.getTime());
-        }
-    };
 
     private void formatDateAndTime(Date date) {
         // Create format
@@ -453,7 +394,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         single1CollectionTextView.requestFocus();
 
 
-
     }
 
     private void setupEditField(EditText editText) {
@@ -470,13 +410,20 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    if(editText.getText().toString().trim().equals("0.0")){
+                if (hasFocus) {
+
+                    String text = editText.getText().toString().trim();
+
+                    if (editText.getText().toString().trim().equals("0")) {
                         editText.setText("");
                     }
-                }else {
-                    if(editText.getText().length() == 0){
-                        editText.setText("0.0");
+                    if (editText.getText().toString().trim().endsWith(".0")) {
+                        editText.setText("");
+                        editText.setText(text.substring(0, text.length() - 2));
+                    }
+                } else {
+                    if (editText.getText().length() == 0) {
+                        editText.setText("0");
                     }
                 }
             }
@@ -519,6 +466,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         double amount = 0;
         try {
+            if (editText.getText().length() == 0) {
+                editText.setText("0.0");
+            }
             amount = Double.valueOf(editText.getText().toString());
             amount = Helpers.formatNumToDouble(amount);
             if (amount < 0) {
@@ -527,14 +477,12 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             }
         } catch (Exception e) {
             Log.d(TAG, "Cannot convert Amount to double. :" + amountName, e);
-            Toast.makeText(this, String.format("Incorrect %s format.",amountName), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, String.format("Incorrect %s format.", amountName), Toast.LENGTH_SHORT).show();
             throw new RuntimeException("Incorrect Amount format.");
         }
 
         validatedAmounts.put(amountName, amount);
     }
-
-
 
 
     private void save() {
@@ -563,8 +511,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             getValidatedAmount(getString(R.string.otherExpense), otherExpenseTextView);
             getValidatedAmount(getString(R.string.unionExpense), unionExpenseTextView);
             getValidatedAmount(getString(R.string.cleanerExpense), cleanerExpenseTextView);
-
-
 
 
         } catch (Exception e) {

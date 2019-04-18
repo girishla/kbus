@@ -51,7 +51,6 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        Log.d(TAG,"Count is %%%%%%%%%%%%%%%%%%%%%%%." + this.busdailysummaries.size());
 
         return this.busdailysummaries.size();
     }
@@ -64,7 +63,6 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        Log.d(TAG,"onCreateViewHolder...................");
 
         RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -158,14 +156,12 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     public void clear() {
         busdailysummaries.clear();
-        Log.d(TAG,"clear...................");
 
         notifyDataSetChanged();
     }
 
     public void addAll(List<BusDailySummary> busdailysummaries) {
         this.busdailysummaries.addAll(busdailysummaries);
-        Log.d(TAG,"notifyDataSetChanged...................");
         notifyDataSetChanged();
     }
 

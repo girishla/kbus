@@ -193,6 +193,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single1Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:inputType="numberSigned"
 
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
@@ -225,7 +226,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single2Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -257,7 +258,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single3Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -289,7 +290,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single4Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -321,7 +322,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single5Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -352,7 +353,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single6Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -383,7 +384,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single7Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -414,7 +415,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single8Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -446,7 +447,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single9Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -477,7 +478,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -511,7 +512,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -543,7 +544,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -575,7 +576,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -608,7 +609,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_driverPathaExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -641,7 +642,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -674,7 +675,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_conductorPathaExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -707,7 +708,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -739,7 +740,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_checkingPathaExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -773,7 +774,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_commissionExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -806,7 +807,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_otherExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -839,7 +840,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_unionExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -872,7 +873,7 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_cleanerExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-
+                        android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_medium_small"
@@ -909,7 +910,6 @@
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_below="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
-
                         android:padding="@dimen/space_medium"
                         android:background="@drawable/background_round_corner_border_gray">
 
@@ -980,9 +980,6 @@
                         android:textColorHint="@color/gray_light"
                         android:textSize="@dimen/text_small"
                         android:background="@drawable/background_round_corner_border_gray"/>
-
-
-
 
 
                 </RelativeLayout>

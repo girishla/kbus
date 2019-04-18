@@ -472,16 +472,9 @@ public class BusDailySummary implements RealmModel {
      */
     public static RealmResults<BusDailySummary> getAllBusDailySummariesByGroupId(String groupId) {
 
-
-        Log.d(TAG,"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^getAllBusDailySummariesByGroupId");
-
         Realm realm = Realm.getDefaultInstance();
         RealmResults<BusDailySummary> busDailySummaries = realm.where(BusDailySummary.class).findAllSorted(SUMMARY_DATE_KEY, Sort.DESCENDING);
-        Log.d(TAG,"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + busDailySummaries.size());
-
-
         realm.close();
-
         return busDailySummaries;
     }
 
