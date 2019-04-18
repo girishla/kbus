@@ -118,7 +118,7 @@
     <string name="note">Note</string>
     <string name="member">Members</string>
     <string name="join">Join</string>
-    <string name="invite">Invite</string>
+    <string name="invite">Add Member</string>
     <string name="add_member">Add Member</string>
     <string name="sent">Sent</string>
     <string name="search">Search</string>
@@ -131,7 +131,7 @@
     <string name="password_mismatch">Password mismatch.</string>
     <string name="accepted">Accepted</string>
     <string name="accept">Accept</string>
-    <string name="invite_new">New invitation</string>
+    <string name="invite_new">Add User</string>
     <string name="created_at">Created At</string>
     <string name="created_by">Created By</string>
     <string name="shared_preferences_session_key">Session</string>

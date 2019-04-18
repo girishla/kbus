@@ -34,6 +34,8 @@ public class RequestTemplateCreator {
     public static final String GET = "GET";
     public static final String POST = "POST";
     public static final String PUT = "PUT";
+    public static final String PATCH = "PATCH";
+
     public static final String DELETE = "DELETE";
     public static final String INCLUDE = "include";
     public static final String CONTENT = "CONTENT";
@@ -349,18 +351,18 @@ public class RequestTemplateCreator {
         SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
         timezoneFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         String time = timezoneFormat.format(busDailySummary.getSummaryDate());
-
-        SimpleDateFormat timezoneFormat2 = new SimpleDateFormat("yyyyMMdd", Locale.US);
-        timezoneFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
-        String time2 = timezoneFormat2.format(busDailySummary.getSummaryDate());
+//
+//        SimpleDateFormat timezoneFormat2 = new SimpleDateFormat("yyyyMMdd", Locale.US);
+//        timezoneFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
+//        String time2 = timezoneFormat2.format(busDailySummary.getSummaryDate());
 
         params.put(BusDailySummary.SUMMARY_DATE_KEY, time);
-        params.put(BusDailySummary.DATEID_JSON_KEY, time2);
-        params.put(BusDailySummary.ID_KEY, time2);
+        params.put(BusDailySummary.DATEID_JSON_KEY, busDailySummary.getId());
+        params.put(BusDailySummary.ID_KEY, busDailySummary.getId());
 
 
 
-        return new RequestTemplate(PUT, url, params);
+        return new RequestTemplate(PATCH, url, params);
     }
 
     public static RequestTemplate deleteBusDailySummary(String busDailySummaryId) {
