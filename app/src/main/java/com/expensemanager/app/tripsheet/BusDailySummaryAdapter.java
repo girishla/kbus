@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,8 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = BusDailySummaryAdapter.class.getSimpleName();
 
-    public static final String NO_CONDUCTOR_ID = "No User";
-    public static final String NO_CONDUCTOR_COLOR = "#BDBDBD";
+    public static final String NO_CONDUCTOR_ID = "Unknown Conductor";
 
     private static final int VIEW_TYPE_DEFAULT = 0;
     private ArrayList<BusDailySummary> busdailysummaries;
@@ -69,11 +69,11 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         switch (viewType) {
             case VIEW_TYPE_DEFAULT:
-                View view = inflater.inflate(R.layout.busdailysummary_item_default, parent, false);
+                View view = inflater.inflate(R.layout.busdailysummary_item_constrained, parent, false);
                 viewHolder = new ViewHolderDefault(view);
                 break;
             default:
-                View defaultView = inflater.inflate(R.layout.busdailysummary_item_default, parent, false);
+                View defaultView = inflater.inflate(R.layout.busdailysummary_item_constrained, parent, false);
                 viewHolder = new ViewHolderDefault(defaultView);
                 break;
         }
@@ -94,52 +94,26 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     private void configureViewHolderDefault(ViewHolderDefault viewHolder, int position) {
-        // Reset views
-        viewHolder.iconImageView.setVisibility(View.INVISIBLE);
-        viewHolder.userFullnameTextView.setVisibility(View.GONE);
-        viewHolder.userPhotoImageView.setVisibility(View.GONE);
-        viewHolder.dividerView.setVisibility(View.GONE);
+
+        viewHolder.dividerView.setVisibility(View.VISIBLE);
 
         BusDailySummary busdailysummary = busdailysummaries.get(position);
-        User conductor = User.getUserById(busdailysummary.getConductorId());
 
         viewHolder.spentAtTextView.setText(Helpers.formatCreateAt(busdailysummary.getSummaryDate()));
         viewHolder.amountTextView.setText(Helpers.doubleToCurrency(busdailysummary.getTotalCollection()));
 
-        // Load conductor data or hide
-        if (conductor != null) {
-            ColorDrawable colorDrawable = new ColorDrawable(Color.BLACK);
-            viewHolder.conductorColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.conductorNameTextView.setText(conductor.getFullname());
 
-            EIcon eIcon = EIcon.instanceFromName("face");
-            if (eIcon != null) {
-                viewHolder.iconImageView.setImageResource(eIcon.getValueRes());
-                viewHolder.iconImageView.setVisibility(View.VISIBLE);
-            }
+        if (busdailysummary.isApproved()) {
+            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#77dd77"));
+            viewHolder.approvedColorImageView.setImageDrawable(colorDrawable);
+
         } else {
-            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(NO_CONDUCTOR_COLOR));
-            viewHolder.conductorColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.conductorNameTextView.setText(NO_CONDUCTOR_ID);
+            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#cfcfc4"));
+            viewHolder.approvedColorImageView.setImageDrawable(colorDrawable);
         }
 
-        User user = User.getUserById(busdailysummary.getSubmittedById());
-        if (showMember && user != null) {
-            Helpers.loadIconPhoto(viewHolder.userPhotoImageView, user.getPhotoUrl());
-            viewHolder.userPhotoImageView.setOnClickListener(v -> {
-                ProfileTripSheetActivity.newInstance(context, user.getId());
-                ((Activity) getContext()).overridePendingTransition(R.anim.right_in, R.anim.stay);
-            });
-
-            viewHolder.userFullnameTextView.setText(user.getFullname());
-            viewHolder.userFullnameTextView.setVisibility(View.VISIBLE);
-            viewHolder.userFullnameTextView.setTextColor(ContextCompat.getColor(getContext(), isBackgroundPrimary ? R.color.white : R.color.black));
-            viewHolder.userPhotoImageView.setVisibility(View.VISIBLE);
-            viewHolder.dividerView.setVisibility(View.VISIBLE);
-        }
-
-        // Set item click listener
-        viewHolder.cardView.setOnClickListener(v -> {
+//         Set item click listener
+        viewHolder.viewDetailsButton.setOnClickListener(v -> {
             BusDailySummaryDetailActivity.newInstance(context, busdailysummaries.get(position).getId());
             ((Activity) getContext()).overridePendingTransition(R.anim.right_in, R.anim.stay);
         });
@@ -170,20 +144,20 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         TextView spentAtTextView;
         @BindView(R.id.busdailysummary_item_default_amount_text_view_id)
         TextView amountTextView;
-        @BindView(R.id.busdailysummary_item_default_conductor_color_image_view_id)
-        CircleImageView conductorColorImageView;
-        @BindView(R.id.busdailysummary_item_default_icon_image_view_id)
-        ImageView iconImageView;
-        @BindView(R.id.busdailysummary_item_default_user_photo_image_view_id)
-        ImageView userPhotoImageView;
-        @BindView(R.id.busdailysummary_item_default_name_text_view_id)
-        TextView userFullnameTextView;
+
         @BindView(R.id.busdailysummary_item_default_view_id)
         View dividerView;
         @BindView(R.id.busdailysummary_item_default_conductor_name_text_view_id)
         TextView conductorNameTextView;
-        @BindView(R.id.busdailysummary_item_default_card_view_id)
-        CardView cardView;
+//        @BindView(R.id.busdailysummary_item_default_card_view_id)
+//        CardView cardView;
+
+        @BindView(R.id.busdailysummary_item_default_approved_color_image_view_id)
+        CircleImageView approvedColorImageView;
+
+        @BindView(R.id.busdailysummary_item_view_trip_details_button)
+        Button viewDetailsButton;
+
 
         private View itemView;
 

@@ -235,6 +235,37 @@ public class SyncBusDailySummary {
         return networkRequest.send().continueWith(onUpdateBusDailySummaryFinished);
     }
 
+
+    public static Task<Void> approve(String busDailySummaryId) {
+        TaskCompletionSource<JSONObject> taskCompletionSource = new TaskCompletionSource<>();
+        RequestTemplate requestTemplate = RequestTemplateCreator.approveBusDailySummary(busDailySummaryId);
+        NetworkRequest networkRequest = new NetworkRequest(requestTemplate, taskCompletionSource);
+
+        Continuation<JSONObject, Void> onUpdateCategoryFinished = new Continuation<JSONObject, Void>() {
+            @Override
+            public Void then(Task<JSONObject> task) throws Exception {
+                if (task.isFaulted()) {
+                    Exception exception = task.getError();
+                    Log.e(TAG, "Error in deleting busDailySummary.", exception);
+                    throw exception;
+                }
+
+                JSONObject result = task.getResult();
+                if (result == null) {
+                    throw new Exception("Empty response.");
+                }
+
+                // Example response: {}
+                Log.d(TAG, "Response: \n" + result);
+                return null;
+            }
+        };
+
+        Log.d(TAG, "Start updating busDailySummary.");
+        return networkRequest.send().continueWith(onUpdateCategoryFinished);
+
+    }
+
     public static Task<Void> delete(String busDailySummaryId) {
         TaskCompletionSource<JSONObject> taskCompletionSource = new TaskCompletionSource<>();
         RequestTemplate requestTemplate = RequestTemplateCreator.deleteBusDailySummary(busDailySummaryId);

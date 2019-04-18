@@ -72,6 +72,7 @@ public class BusDailySummary implements RealmModel {
     public static final String DRIVER_OBJ_KEY = "driver";
     public static final String CONDUCTOR_OBJ_KEY = "conductor";
     public static final String GROUP_OBJ_KEY = "group";
+    public static final String IS_APPROVED_KEY = "approved";
 
     // Property name key
     public static final String ID_KEY = "id";
@@ -415,6 +416,7 @@ public class BusDailySummary implements RealmModel {
             this.otherExpense = jsonObject.getDouble(OTHEREXPENSE_JSON_KEY);
             this.unionExpense = jsonObject.getDouble(UNIONEXPENSE_JSON_KEY);
             this.cleanerExpense = jsonObject.getDouble(CLEANEREXPENSE_JSON_KEY);
+            this.isApproved = jsonObject.getBoolean(IS_APPROVED_KEY);
 
 
             this.groupId = jsonObject.getJSONObject(GROUP_OBJ_KEY).getString(OBJECT_ID_JSON_KEY);

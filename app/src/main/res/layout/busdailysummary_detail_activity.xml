@@ -1011,20 +1011,25 @@
             </android.support.v7.widget.CardView>
 
 
-            <!-- Delete -->
+            <!-- Approve -->
             <Button
-                android:id="@+id/busdailysummary_detail_activity_delete_button_id"
+                android:id="@+id/busdailysummary_detail_activity_approve_button_id"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/busdailysummary_detail_activity_card_view_id"
-                android:layout_margin="@dimen/space_medium_large"
 
+                android:layout_marginStart="@dimen/space_medium_large"
+                android:layout_marginTop="@dimen/space_medium_large"
+                android:layout_marginEnd="@dimen/space_medium_large"
+                android:layout_marginBottom="@dimen/space_medium_large"
                 android:background="@drawable/button_background_white"
                 android:stateListAnimator="@null"
-                android:text="@string/delete"
+                android:text="@string/approve"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_small" />
+
+
 
         </RelativeLayout>
     </ScrollView>

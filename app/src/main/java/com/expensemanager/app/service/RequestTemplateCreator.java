@@ -371,7 +371,15 @@ public class RequestTemplateCreator {
         return new RequestTemplate(DELETE, url, null);
     }
 
+    public static RequestTemplate approveBusDailySummary(String busDailySummaryId) {
+        String url = BASE_URL + "busdailysummaries/" + busDailySummaryId;
+        Map<String, String> params = new HashMap<>();
 
+        params.put(BusDailySummary.ID_KEY, busDailySummaryId);
+        params.put(BusDailySummary.IS_APPROVED_KEY, "true");
+
+        return new RequestTemplate(PATCH, url, params);
+    }
 
 
 

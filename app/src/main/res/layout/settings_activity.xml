@@ -160,7 +160,7 @@
                     android:paddingTop="@dimen/space_medium_large"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
-                    android:text="@string/budget"
+                    android:text="@string/target"
                     android:textSize="@dimen/text_really_small"/>
 
                 <RelativeLayout

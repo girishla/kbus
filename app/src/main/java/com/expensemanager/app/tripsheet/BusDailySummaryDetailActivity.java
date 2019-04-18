@@ -143,8 +143,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     EditText cleanerExpenseTextView;
 
 
-    @BindView(R.id.busdailysummary_detail_activity_delete_button_id)
-    Button deleteButton;
+    @BindView(R.id.busdailysummary_detail_activity_approve_button_id)
+    Button approveButton;
     @BindView(R.id.busdailysummary_detail_activity_progress_bar_id)
     ProgressBar progressBar;
     @BindView(R.id.busdailysummary_detail_activity_conductor_hint_text_view_id)
@@ -237,7 +237,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         setupConductor();
 
 
-        deleteButton.setOnClickListener(v -> delete());
+        approveButton.setOnClickListener(v -> approve());
 
         if (loginUserId.equals(busdailysummary.getSubmittedById()) || loginUserId.equals(group.getUserId())) {
             editTextView.setVisibility(isEditable ? View.GONE : View.VISIBLE);
@@ -246,9 +246,20 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
 
         saveTextView.setVisibility(isEditable ? View.VISIBLE : View.GONE);
-        deleteButton.setVisibility(isEditable ? View.VISIBLE : View.GONE);
+        approveButton.setVisibility(View.VISIBLE);
 
         setupEditableViews(isEditable);
+
+        if(busdailysummary.isApproved()){
+            approveButton.setText(R.string.alreadyApproved);
+            approveButton.setEnabled(false);
+            approveButton.setBackgroundColor(Color.WHITE);
+            approveButton.setTextColor(Color.LTGRAY);
+        }else{
+            approveButton.setEnabled(true);
+            approveButton.setText(R.string.approve);
+
+        }
 
 
     }
@@ -302,9 +313,25 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         titleTextView.setText(getString(R.string.title_activity_busdailysummary_detail));
         backImageView.setOnClickListener(v -> close());
+
+
+
+
         editTextView.setOnClickListener(v -> {
-            setEditMode(true);
-//            showActionSheet(); // Example of bottom sheet
+
+            if (busdailysummary.isApproved()) {
+                Toast toast=Toast.makeText(this, "Cannot edit approved Trip Sheet", Toast.LENGTH_SHORT);
+                TextView error = (TextView) toast.getView().findViewById(android.R.id.message);
+                error.setTextColor(Color.RED);
+                error.setBackgroundColor(Color.WHITE);
+                toast.show();
+
+                return;
+            }else{
+                setEditMode(true);
+
+            }
+
         });
         saveTextView.setOnClickListener(v -> save());
     }
@@ -572,17 +599,15 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     }
 
 
-    private Continuation<Void, Void> onDeleteSuccess = new Continuation<Void, Void>() {
+    private Continuation<Void, Void> onApproveSuccess = new Continuation<Void, Void>() {
         @Override
         public Void then(Task<Void> task) throws Exception {
             progressBar.setVisibility(View.GONE);
             if (task.isFaulted()) {
-                Log.e(TAG, "Error in deleting busdailysummary.", task.getError());
+                Log.e(TAG, "Error in approving busdailysummary.", task.getError());
             }
 
-            isDeleteAction = true;
-            Log.d(TAG, "Delete busdailysummary success.");
-            close();
+            Log.d(TAG, "Approve busdailysummary success.");
             return null;
         }
     };
@@ -596,13 +621,20 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
     }
 
-    private void delete() {
+    private void approve() {
         new AlertDialog.Builder(this)
-                .setTitle(R.string.delete_busdailysummary_title)
-                .setMessage(R.string.delete_busdailysummary_message)
-                .setPositiveButton(R.string.delete, (DialogInterface dialog, int which) -> {
+                .setTitle(R.string.approve_busdailysummary_title)
+                .setMessage(R.string.approve_busdailysummary_message)
+                .setPositiveButton(R.string.approve, (DialogInterface dialog, int which) -> {
                     progressBar.setVisibility(View.VISIBLE);
-                    SyncBusDailySummary.delete(busdailysummary.getId()).continueWith(onDeleteSuccess, Task.UI_THREAD_EXECUTOR);
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    busdailysummary.setApproved(true);
+
+                    realm.copyToRealmOrUpdate(busdailysummary);
+                    realm.commitTransaction();
+                    realm.close();
+                    SyncBusDailySummary.approve(busdailysummary.getId()).continueWith(onApproveSuccess, Task.UI_THREAD_EXECUTOR);
                 })
                 .setNegativeButton(R.string.cancel, (DialogInterface dialog, int which) -> dialog.dismiss())
                 .show();
@@ -619,9 +651,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     public void onDestroy() {
         super.onDestroy();
 
-        if (isDeleteAction) {
-            BusDailySummary.delete(busdailysummary.getId());
-        }
+//        if (isDeleteAction) {
+//            BusDailySummary.delete(busdailysummary.getId());
+//        }
     }
 
     @Override

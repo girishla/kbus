@@ -104,13 +104,12 @@ public class Helpers {
                 readableDate.append(dayOfWeekFormat.format(spentAt));
             }
         } else {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy", Locale.US);
-            readableDate.append(dateFormat.format(spentAt));
+            SimpleDateFormat dayOfWeekFormat = new SimpleDateFormat("EEEE", Locale.US);
+            readableDate.append(dayOfWeekFormat.format(spentAt));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
+            readableDate.append(" " + dateFormat.format(spentAt));
         }
 
-        readableDate.append(" at ");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.US);
-        readableDate.append(timeFormat.format(spentAt));
 
         return readableDate.toString();
     }
