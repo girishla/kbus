@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -30,8 +29,8 @@
                 android:layout_centerVertical="true"
 
                 android:padding="10dp"
-                android:tint="?attr/android:actionMenuTextColor"
-                android:src="@drawable/ic_arrow_left_24dp"/>
+                android:src="@drawable/ic_arrow_left_24dp"
+                android:tint="?attr/android:actionMenuTextColor" />
 
             <!-- Extra image -->
             <ImageView
@@ -39,52 +38,52 @@
                 android:layout_width="@dimen/category_color_width_small"
                 android:layout_height="@dimen/category_color_width_small"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/toolbar_back_image_view_id"
                 android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/toolbar_back_image_view_id"
 
                 android:visibility="gone"
-                tools:src="@drawable/ic_arrow_back_white_24dp"/>
+                tools:src="@drawable/ic_arrow_back_white_24dp" />
 
             <!-- Title -->
             <TextView
                 android:id="@+id/toolbar_title_text_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/toolbar_extra_image_view_id"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/toolbar_extra_image_view_id"
 
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_medium_small"/>
+                android:textSize="@dimen/text_medium_small" />
 
             <!-- Edit -->
             <TextView
                 android:id="@+id/toolbar_edit_text_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignBottom="@+id/toolbar_title_text_view_id"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
 
-                android:textColor="?attr/android:actionMenuTextColor"
-                android:textSize="@dimen/text_medium_small"
                 android:paddingEnd="10dp"
                 android:text="@string/edit"
-                android:visibility="invisible"/>
+                android:textColor="?attr/android:actionMenuTextColor"
+                android:textSize="@dimen/text_medium_small"
+                android:visibility="invisible" />
 
             <!-- Save -->
             <TextView
                 android:id="@+id/toolbar_save_text_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignBottom="@+id/toolbar_title_text_view_id"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
 
-                android:textColor="?attr/android:actionMenuTextColor"
-                android:textSize="@dimen/text_medium_small"
                 android:paddingEnd="10dp"
                 android:text="@string/save"
-                android:visibility="invisible"/>
+                android:textColor="?attr/android:actionMenuTextColor"
+                android:textSize="@dimen/text_medium_small"
+                android:visibility="invisible" />
 
             <!-- Right title -->
             <TextView
@@ -97,17 +96,20 @@
 
                 android:textColor="?attr/android:actionMenuTextColor"
                 android:textSize="@dimen/text_medium_small"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
+    <!--android:layout_above="@+id/m_table_menu"-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_id"
-        android:scrollbars="none"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+
+        android:scrollbars="none">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -129,26 +131,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/busdailysummary_date"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- TripSheet date and time -->
                     <LinearLayout
                         android:id="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_label_text_view_id"
 
-                        android:weightSum="2"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
                         <!-- Date -->
                         <TextView
@@ -158,12 +160,12 @@
                             android:layout_marginRight="@dimen/space_small"
 
                             android:layout_weight="1"
+                            android:background="@drawable/background_round_corner_border_gray"
                             android:gravity="center"
                             android:padding="@dimen/space_really_small"
-                            android:textSize="@dimen/text_small"
                             android:textColor="@color/black"
-                            android:background="@drawable/background_round_corner_border_gray"
-                            tools:text="Date"/>
+                            android:textSize="@dimen/text_small"
+                            tools:text="Date" />
 
 
                     </LinearLayout>
@@ -176,14 +178,14 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
 
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single1Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single1Collection -->
                     <EditText
@@ -193,13 +195,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single1Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-                        android:inputType="numberSigned"
+                        android:background="@drawable/background_bottom_line_gray"
+                        android:imeOptions="actionNext"
 
+                        android:inputType="numberSigned"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single2Collection label -->
@@ -209,14 +211,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single1Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single2Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single2Collection -->
                     <EditText
@@ -226,12 +228,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single2Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single3Collection label -->
@@ -241,14 +244,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single2Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single3Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single3Collection -->
                     <EditText
@@ -258,12 +261,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single3Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+                        android:imeOptions="actionNext"
+
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single4Collection label -->
@@ -273,14 +277,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single3Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single4Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single4Collection -->
                     <EditText
@@ -290,12 +294,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single4Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single5Collection label -->
@@ -305,14 +310,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single4Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single5Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single5Collection -->
                     <EditText
@@ -322,11 +327,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single5Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single6Collection label -->
@@ -336,14 +343,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single5Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single6Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single6Collection -->
                     <EditText
@@ -353,11 +360,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single6Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single7Collection label -->
@@ -367,14 +376,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single6Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single7Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single7Collection -->
                     <EditText
@@ -384,11 +393,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single7Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single8Collection label -->
@@ -398,14 +409,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single7Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single8Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single8Collection -->
                     <EditText
@@ -415,12 +426,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single8Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single9Collection label -->
@@ -430,14 +442,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single8Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single9Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single9Collection -->
                     <EditText
@@ -447,11 +459,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single9Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- single10Collection label -->
@@ -461,14 +475,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single9Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single10Collection"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- single10Collection -->
                     <EditText
@@ -478,14 +492,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- dieselExpense label -->
@@ -495,14 +508,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/dieselExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- dieselExpense -->
                     <EditText
@@ -512,12 +525,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- oilExpense label -->
@@ -527,14 +541,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/oilExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- oilExpense -->
                     <EditText
@@ -544,12 +558,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- waterExpense label -->
@@ -559,14 +574,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/waterExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- waterExpense -->
                     <EditText
@@ -576,13 +591,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- driverPathaExpense label -->
@@ -592,14 +607,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/driverPathaExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- driverPathaExpense -->
                     <EditText
@@ -609,13 +624,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_driverPathaExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- driverSalaryAllowanceExpense label -->
@@ -625,14 +640,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_driverPathaExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/driverSalaryAllowanceExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- driverSalaryAllowanceExpense -->
                     <EditText
@@ -642,13 +657,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- conductorPathaExpense label -->
@@ -658,14 +673,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_driverSalaryAllowanceExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductorPathaExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- conductorPathaExpense -->
                     <EditText
@@ -675,13 +690,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_conductorPathaExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- conductorSalaryAllowanceExpense label -->
@@ -691,14 +706,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_conductorPathaExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductorSalaryAllowanceExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- conductorSalaryAllowanceExpense -->
                     <EditText
@@ -708,12 +723,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- conductorSalaryAllowanceExpense label -->
@@ -723,14 +739,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_conductorSalaryAllowanceExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/checkingPathaExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- conductorSalaryAllowanceExpense -->
                     <EditText
@@ -740,14 +756,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_checkingPathaExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- checkingPathaExpense label -->
@@ -757,14 +772,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_checkingPathaExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/commissionExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- checkingPathaExpense -->
                     <EditText
@@ -774,13 +789,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_commissionExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- checkingPathaExpense label -->
@@ -790,14 +805,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_commissionExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/otherExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- checkingPathaExpense -->
                     <EditText
@@ -807,13 +822,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_otherExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- checkingPathaExpense label -->
@@ -823,14 +838,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_otherExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/unionExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- checkingPathaExpense -->
                     <EditText
@@ -840,13 +855,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_unionExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- checkingPathaExpense label -->
@@ -856,14 +871,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_unionExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/cleanerExpense"
-                        android:textSize="@dimen/text_small"/>
+                        android:textSize="@dimen/text_small" />
 
                     <!-- checkingPathaExpense -->
                     <EditText
@@ -873,14 +888,13 @@
                         android:layout_below="@+id/busdailysummary_detail_activity_cleanerExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
                         android:inputType="number"
                         android:padding="@dimen/space_really_small"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small"
-                        android:background="@drawable/background_bottom_line_gray"/>
-
-
-
+                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- Conductor label -->
@@ -890,16 +904,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_cleanerExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductor"
-                        android:textSize="@dimen/text_small"/>
-
-
+                        android:textSize="@dimen/text_small" />
 
 
                     <!-- Conductor info -->
@@ -907,60 +919,62 @@
                         android:id="@+id/busdailysummary_detail_activity_conductor_relative_layout_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
-                        android:layout_below="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
-                        android:padding="@dimen/space_medium"
-                        android:background="@drawable/background_round_corner_border_gray">
+                        android:layout_marginBottom="@dimen/space_medium_large"
+
+                        android:background="@drawable/background_round_corner_border_gray"
+                        android:padding="@dimen/space_medium">
 
                         <!-- Color -->
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
                             android:layout_width="@dimen/category_color_width_small"
                             android:layout_height="@dimen/category_color_width_small"
-                            android:layout_marginEnd="@dimen/space_medium"/>
+                            android:layout_marginEnd="@dimen/space_medium" />
 
                         <!-- Icon -->
                         <ImageView
                             android:id="@+id/busdailysummary_detail_activity_icon_image_view_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
-                            android:layout_alignTop="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
-                            android:layout_alignBottom="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
                             android:layout_alignStart="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
+                            android:layout_alignTop="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
                             android:layout_alignEnd="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
+                            android:layout_alignBottom="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
+                            android:layout_margin="6dp"
 
                             android:tint="@color/white"
-                            tools:src="@drawable/ic_security"/>
+                            tools:src="@drawable/ic_security" />
 
                         <!-- Name -->
                         <TextView
                             android:id="@+id/busdailysummary_detail_activity_conductor_name_text_view_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
                             android:layout_alignTop="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
                             android:layout_alignBottom="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
+                            android:layout_toEndOf="@+id/busdailysummary_detail_activity_conductor_color_image_view_id"
 
+                            android:gravity="center_vertical"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_medium_small"
-                            android:gravity="center_vertical"
-                            tools:text="name"/>
+                            tools:text="name" />
 
                         <!-- Amount -->
                         <TextView
                             android:id="@+id/busdailysummary_detail_activity_conductor_single1Collection_text_view_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
                             android:layout_alignTop="@+id/busdailysummary_detail_activity_conductor_name_text_view_id"
                             android:layout_alignBottom="@+id/busdailysummary_detail_activity_conductor_name_text_view_id"
+                            android:layout_alignParentEnd="true"
 
+                            android:gravity="center_vertical"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_really_small"
-                            android:gravity="center_vertical"
-                            tools:text="1234"/>
+                            tools:text="1234" />
 
                     </RelativeLayout>
 
@@ -969,18 +983,18 @@
                         android:id="@+id/busdailysummary_detail_activity_conductor_hint_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_alignTop="@+id/busdailysummary_detail_activity_conductor_relative_layout_id"
                         android:layout_alignBottom="@+id/busdailysummary_detail_activity_conductor_relative_layout_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
 
+
+                        android:background="@drawable/background_round_corner_border_gray"
                         android:gravity="center"
-                        android:padding="@dimen/space_really_small"
                         android:hint="@string/no_conductor"
+                        android:padding="@dimen/space_really_small"
                         android:textColorHint="@color/gray_light"
-                        android:textSize="@dimen/text_small"
-                        android:background="@drawable/background_round_corner_border_gray"/>
-
+                        android:textSize="@dimen/text_small" />
 
                 </RelativeLayout>
 
@@ -992,27 +1006,42 @@
                 android:id="@+id/busdailysummary_detail_activity_delete_button_id"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_margin="@dimen/space_medium_large"
                 android:layout_below="@+id/busdailysummary_detail_activity_card_view_id"
+                android:layout_margin="@dimen/space_medium_large"
 
-                android:textSize="@dimen/text_small"
-                android:textColor="@color/black"
+                android:background="@drawable/button_background_white"
+                android:stateListAnimator="@null"
                 android:text="@string/delete"
                 android:textAllCaps="false"
-                android:stateListAnimator="@null"
-                android:background="@drawable/button_background_white"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small" />
 
         </RelativeLayout>
     </ScrollView>
+    <!-- <TableLayout
+         android:id="@+id/m_table_menu"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:background="#000000"
+         android:padding="0dp"
+         android:stretchColumns="*">
 
+         <Button
+             android:id="@+id/button_next"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:layout_margin="10dp"
+             android:text="Next" />
+     </TableLayout>-->
     <ProgressBar
         android:id="@+id/busdailysummary_detail_activity_progress_bar_id"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
 
-        android:visibility="gone"
-        style="?android:attr/progressBarStyleLarge"/>
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>
 

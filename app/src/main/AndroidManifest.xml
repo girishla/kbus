@@ -46,10 +46,14 @@
             android:name=".tripsheet.BusDailySummaryActivity"
             android:theme="@style/AppTheme.OverlapSystemBar"
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".tripsheet.BusDailySummaryDetailActivity"
             android:theme="@style/AppTheme.OverlapSystemBar"
+            android:windowSoftInputMode="adjustResize"
+
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".expense.NewExpenseActivity"
             android:theme="@style/BaseThemeDetail"
