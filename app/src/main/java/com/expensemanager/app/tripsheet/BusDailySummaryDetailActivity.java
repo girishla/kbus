@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,6 +84,11 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.toolbar_back_image_view_id)
     ImageView backImageView;
+
+    @BindView(R.id.busdailysummary_detail_scroll_view_id)
+    ScrollView mainScrollView;
+
+
     @BindView(R.id.toolbar_extra_image_view_id)
     ImageView extraImageView;
     @BindView(R.id.toolbar_title_text_view_id)
@@ -418,7 +424,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         setupEditField(unionExpenseTextView);
         setupEditField(cleanerExpenseTextView);
 
-        single1CollectionTextView.requestFocus();
+        mainScrollView.fullScroll(ScrollView.FOCUS_UP);
 
 
     }
@@ -460,7 +466,10 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     private void setEditMode(boolean isEditable) {
         this.isEditable = isEditable;
         invalidateViews();
-        single1CollectionTextView.requestFocus();
+//        conductorNameTextView.requestFocus();
+
+        mainScrollView.fullScroll(ScrollView.FOCUS_UP);
+
         busdailysummaryDateTextView.setEnabled(false);
 
     }

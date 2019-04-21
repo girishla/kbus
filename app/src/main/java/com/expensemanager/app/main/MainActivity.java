@@ -46,6 +46,7 @@ import com.expensemanager.app.overview.OverviewMainFragment;
 import com.expensemanager.app.report.main.ReportMainFragment;
 import com.expensemanager.app.service.Constant;
 import com.expensemanager.app.service.PermissionsManager;
+import com.expensemanager.app.service.SyncBusDailySummary;
 import com.expensemanager.app.service.SyncCategory;
 import com.expensemanager.app.service.SyncExpense;
 import com.expensemanager.app.service.SyncGroup;
@@ -618,6 +619,7 @@ public class MainActivity extends BaseActivity {
                 SyncExpense.getAllExpensesByGroupId(groupId);
                 // Sync all members of current group
                 SyncMember.getMembersByGroupId(groupId);
+                SyncBusDailySummary.getAllBusDailySummariesByGroupId(groupId);
             }
 
             return null;

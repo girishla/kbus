@@ -475,7 +475,7 @@ public class BusDailySummary implements RealmModel {
     public static RealmResults<BusDailySummary> getAllBusDailySummariesByGroupId(String groupId) {
 
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<BusDailySummary> busDailySummaries = realm.where(BusDailySummary.class).findAllSorted(SUMMARY_DATE_KEY, Sort.DESCENDING);
+        RealmResults<BusDailySummary> busDailySummaries = realm.where(BusDailySummary.class).equalTo(GROUP_KEY, groupId).findAllSorted(SUMMARY_DATE_KEY, Sort.DESCENDING);
         realm.close();
         return busDailySummaries;
     }

@@ -103,6 +103,8 @@
 
     <!--android:layout_above="@+id/m_table_menu"-->
     <ScrollView
+        android:id="@+id/busdailysummary_detail_scroll_view_id"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_id"
@@ -175,12 +177,118 @@
                     </LinearLayout>
 
 
+
+                    <!-- driver label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_driver_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/driver"
+                        android:textSize="@dimen/text_small" />
+
+
+                    <!-- driver info -->
+                    <RelativeLayout
+                        android:id="@+id/busdailysummary_detail_activity_driver_relative_layout_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_driver_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium_large"
+
+                        android:background="@drawable/background_round_corner_border_gray"
+                        android:padding="@dimen/space_medium">
+
+                        <!-- Color -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_width="@dimen/category_color_width_small"
+                            android:layout_height="@dimen/category_color_width_small"
+                            android:layout_marginEnd="@dimen/space_medium" />
+
+                        <!-- Icon -->
+                        <ImageView
+                            android:id="@+id/busdailysummary_detail_activity_icon_image_view_driver_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_alignTop="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_alignEnd="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_alignBottom="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_margin="6dp"
+
+                            android:tint="@color/white"
+                            tools:src="@drawable/ic_security" />
+
+                        <!-- Name -->
+                        <TextView
+                            android:id="@+id/busdailysummary_detail_activity_driver_name_text_view_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_alignBottom="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+                            android:layout_toEndOf="@+id/busdailysummary_detail_activity_driver_color_image_view_id"
+
+                            android:gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_medium_small"
+                            tools:text="name" />
+
+                        <!-- Amount -->
+                        <TextView
+                            android:id="@+id/busdailysummary_detail_activity_driver_single1Collection_text_view_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/busdailysummary_detail_activity_driver_name_text_view_id"
+                            android:layout_alignBottom="@+id/busdailysummary_detail_activity_driver_name_text_view_id"
+                            android:layout_alignParentEnd="true"
+
+                            android:gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_really_small"
+                            tools:text="1234" />
+
+                    </RelativeLayout>
+
+                    <!-- driver hint -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_driver_hint_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/busdailysummary_detail_activity_driver_relative_layout_id"
+                        android:layout_alignBottom="@+id/busdailysummary_detail_activity_driver_relative_layout_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+
+
+                        android:background="@drawable/background_round_corner_border_gray"
+                        android:gravity="center"
+                        android:hint="@string/no_driver"
+                        android:padding="@dimen/space_really_small"
+                        android:textColorHint="@color/gray_light"
+                        android:textSize="@dimen/text_small" />
+
+
+
+
+
+
+
                     <!-- Conductor label -->
                     <TextView
                         android:id="@+id/busdailysummary_detail_activity_conductor_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_date_time_linear_layout_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_driver_hint_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
@@ -273,6 +381,12 @@
                         android:padding="@dimen/space_really_small"
                         android:textColorHint="@color/gray_light"
                         android:textSize="@dimen/text_small" />
+
+
+
+
+
+
 
 
 

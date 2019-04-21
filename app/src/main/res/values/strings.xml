@@ -35,6 +35,7 @@
     <string name="preview">Preview</string>
     <string name="category">Category</string>
     <string name="conductor">Conductor</string>
+    <string name="driver">Driver</string>
     <string name="user">User</string>
     <string name="date">Date</string>
     <string name="no_category">No Category</string>

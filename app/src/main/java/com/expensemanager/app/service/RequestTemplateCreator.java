@@ -15,6 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -231,15 +233,25 @@ public class RequestTemplateCreator {
     }
 
     public static RequestTemplate getAllBusDailySummariesByGroupId(String groupId) {
+
+
         String url = BASE_URL + "busdailysummaries/search/findByGroupIdAndDateIdBetween";
         Map<String, String> params = new HashMap<>();
         params.put("projection", "busdailysummaryProjection");
         params.put("groupId", groupId);
-        params.put("startDateId", "20180401");
-        params.put("endDateId", "20180402");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.US);
+        params.put("startDateId", dateFormat.format(get30DaysAgo().getTime()));
+        params.put("endDateId", dateFormat.format(Calendar.getInstance().getTime()));
 
 
         return new RequestTemplate(GET, url, params);
+    }
+
+    private static Date get30DaysAgo() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -30);
+        return cal.getTime();
     }
 
 
