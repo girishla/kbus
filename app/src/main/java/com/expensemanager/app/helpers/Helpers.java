@@ -28,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.expensemanager.app.R;
 import com.expensemanager.app.main.EApplication;
+import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.models.Category;
 import com.expensemanager.app.models.Expense;
 import com.expensemanager.app.models.Group;
@@ -440,13 +441,13 @@ public class Helpers {
         Calendar startCalendar = Calendar.getInstance();
         startCalendar.setTime(startDate);
 
-        Expense oldestExpense = Expense.getOldestExpenseByGroupId(groupId);
+        BusDailySummary oldestBusDailySummary = BusDailySummary.getOldestBusDailySummaryByGroupId(groupId);
         
-        if (oldestExpense == null) {
+        if (oldestBusDailySummary == null) {
             return null;
         }
 
-        Date endDate = oldestExpense.getExpenseDate();
+        Date endDate = oldestBusDailySummary.getSummaryDate();
 
         Calendar endCalendar = Calendar.getInstance();
         endCalendar.setTime(endDate);
@@ -468,13 +469,13 @@ public class Helpers {
         Calendar startCalendar = Calendar.getInstance();
         startCalendar.setTime(startDate);
 
-        Expense oldestExpense = Expense.getOldestExpenseByGroupId(groupId);
+        BusDailySummary oldestBusDailySummary = BusDailySummary.getOldestBusDailySummaryByGroupId(groupId);
 
-        if (oldestExpense == null) {
+        if (oldestBusDailySummary == null) {
             return null;
         }
 
-        Date endDate = oldestExpense.getExpenseDate();
+        Date endDate = oldestBusDailySummary.getSummaryDate();
 
         Calendar endCalendar = Calendar.getInstance();
         endCalendar.setTime(endDate);
@@ -499,13 +500,13 @@ public class Helpers {
         Calendar startCalendar = Calendar.getInstance();
         startCalendar.setTime(startDate);
 
-        Expense oldestExpense = Expense.getOldestExpenseByGroupId(groupId);
+        BusDailySummary oldestBusDailySummary = BusDailySummary.getOldestBusDailySummaryByGroupId(groupId);
 
-        if (oldestExpense == null) {
+        if (oldestBusDailySummary == null) {
             return null;
         }
 
-        Date endDate = oldestExpense.getExpenseDate();
+        Date endDate = oldestBusDailySummary.getSummaryDate();
 
         Calendar endCalendar = Calendar.getInstance();
         endCalendar.setTime(endDate);
@@ -682,7 +683,7 @@ public class Helpers {
     }
 
     public static String doubleToCurrency(double amount) {
-        return String.format("₹%,.2f", amount);
+        return String.format("₹%.0f", amount);
     }
 
     public static PhotoSourceAdapter getPhotoSourceAdapter(Context context) {

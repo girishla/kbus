@@ -30,10 +30,10 @@ public class SettingsBudgetFragment extends DialogFragment {
     private int requestCode;
     private double amount;
 
-    @BindView(R.id.setting_budget_fragment_label_text_view_id) TextView budgetLabelTextView;
-    @BindView(R.id.setting_budget_fragment_amount_edit_text_id) EditText budgetAmountEditText;
-    @BindView(R.id.setting_budget_fragment_save_button_id) Button saveButton;
-    @BindView(R.id.setting_budget_fragment_cancel_button_id) Button cancelButton;
+    @BindView(R.id.setting_collectiontarget_fragment_label_text_view_id) TextView collectiontargetLabelTextView;
+    @BindView(R.id.setting_collectiontarget_fragment_amount_edit_text_id) EditText collectiontargetAmountEditText;
+    @BindView(R.id.setting_collectiontarget_fragment_save_button_id) Button saveButton;
+    @BindView(R.id.setting_collectiontarget_fragment_cancel_button_id) Button cancelButton;
 
     public SettingsBudgetFragment() {}
 
@@ -58,7 +58,7 @@ public class SettingsBudgetFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.setting_budget_fragment, container);
+        View view = inflater.inflate(R.layout.setting_collectiontarget_fragment, container);
         unbinder = ButterKnife.bind(this, view);
 
         return view;
@@ -73,14 +73,14 @@ public class SettingsBudgetFragment extends DialogFragment {
 
     private void invalidateViews() {
         if (requestCode == SettingsFragment.WEEKLY) {
-            budgetLabelTextView.setText(getContext().getString(R.string.weekly_budget));
+            collectiontargetLabelTextView.setText(getContext().getString(R.string.weekly_collectiontarget));
         } else {
-            budgetLabelTextView.setText(getContext().getString(R.string.monthly_budget));
+            collectiontargetLabelTextView.setText(getContext().getString(R.string.monthly_collectiontarget));
         }
 
-        budgetAmountEditText.setText(String.valueOf(amount));
-        budgetAmountEditText.requestFocus();
-        budgetAmountEditText.setSelection(String.valueOf(amount).length());
+        collectiontargetAmountEditText.setText(String.valueOf(amount));
+        collectiontargetAmountEditText.requestFocus();
+        collectiontargetAmountEditText.setSelection(String.valueOf(amount).length());
 
         cancelButton.setOnClickListener(v -> close());
         saveButton.setOnClickListener(v -> save());
@@ -90,7 +90,7 @@ public class SettingsBudgetFragment extends DialogFragment {
         Helpers.closeSoftKeyboard(getContext());
 
         try {
-            amount = Double.valueOf(budgetAmountEditText.getText().toString());
+            amount = Double.valueOf(collectiontargetAmountEditText.getText().toString());
             amount = Helpers.formatNumToDouble(amount);
             if (amount <= 0) {
                 Toast.makeText(getContext(), "Amount cannot be zero.", Toast.LENGTH_SHORT).show();

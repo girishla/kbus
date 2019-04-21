@@ -11,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.expensemanager.app.R;
 import com.expensemanager.app.expense.ExpenseDetailActivity;
 import com.expensemanager.app.expense.ProfileExpenseActivity;
 import com.expensemanager.app.helpers.Helpers;
+import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.models.Category;
 import com.expensemanager.app.models.Expense;
 import com.expensemanager.app.models.User;
 import com.expensemanager.app.service.enums.EIcon;
+import com.expensemanager.app.tripsheet.BusDailySummaryDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +36,13 @@ public class OverviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static final String NO_CATEGORY_COLOR = "#BDBDBD";
 
     private static final int VIEW_TYPE_DEFAULT = 0;
-    private ArrayList<Expense> expenses;
+    private ArrayList<BusDailySummary> summaries;
     private Context context;
     private boolean showMember;
 
-    public OverviewAdapter(Context context, ArrayList<Expense> expenses) {
+    public OverviewAdapter(Context context, ArrayList<BusDailySummary> summaries) {
         this.context = context;
-        this.expenses = expenses;
+        this.summaries = summaries;
     }
 
     private Context getContext() {
@@ -50,7 +51,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return this.expenses.size();
+        return this.summaries.size();
     }
 
     @Override
@@ -65,11 +66,12 @@ public class OverviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         switch (viewType) {
             case VIEW_TYPE_DEFAULT:
-                View view = inflater.inflate(R.layout.expense_item_default, parent, false);
+                View view = inflater.inflate(R.layout.summary_item_default, parent, false);
+
                 viewHolder = new ViewHolderDefault(view);
                 break;
             default:
-                View defaultView = inflater.inflate(R.layout.expense_item_default, parent, false);
+                View defaultView = inflater.inflate(R.layout.summary_item_default, parent, false);
                 viewHolder = new ViewHolderDefault(defaultView);
                 break;
         }
@@ -91,35 +93,18 @@ public class OverviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private void configureViewHolderDefault(ViewHolderDefault viewHolder, int position) {
         // Reset views
-        viewHolder.iconImageView.setVisibility(View.INVISIBLE);
         viewHolder.userFullnameTextView.setVisibility(View.GONE);
         viewHolder.userPhotoImageView.setVisibility(View.GONE);
         viewHolder.dividerView.setVisibility(View.GONE);
 
-        Expense expense = expenses.get(position);
-        Category category = expense.getCategory();
+        BusDailySummary summary = summaries.get(position);
 
-        viewHolder.spentAtTextView.setText(Helpers.formatCreateAt(expense.getExpenseDate()));
-        viewHolder.amountTextView.setText("$" + expense.getAmount());
 
-        // Load category data or hide
-        if (category != null) {
-            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(category.getColor()));
-            viewHolder.categoryColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.categoryNameTextView.setText(category.getName());
+        viewHolder.spentAtTextView.setText(Helpers.formatCreateAt(summary.getSummaryDate()));
+        viewHolder.amountTextView.setText("₹" + summary.getTotalCollection());
 
-            EIcon eIcon = EIcon.instanceFromName(category.getIcon());
-            if (eIcon != null) {
-                viewHolder.iconImageView.setImageResource(eIcon.getValueRes());
-                viewHolder.iconImageView.setVisibility(View.VISIBLE);
-            }
-        } else {
-            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(NO_CATEGORY_COLOR));
-            viewHolder.categoryColorImageView.setImageDrawable(colorDrawable);
-            viewHolder.categoryNameTextView.setText(NO_CATEGORY_ID);
-        }
 
-        User user = User.getUserById(expense.getUserId());
+        User user = User.getUserById(summary.getSubmittedById());
         if (showMember && user != null) {
             Helpers.loadIconPhoto(viewHolder.userPhotoImageView, user.getPhotoUrl());
             viewHolder.userPhotoImageView.setOnClickListener(v -> {
@@ -135,7 +120,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         // Set item click listener
         viewHolder.cardView.setOnClickListener(v -> {
-            ExpenseDetailActivity.newInstance(context, expenses.get(position).getId());
+            BusDailySummaryDetailActivity.newInstance(context, summaries.get(position).getId());
             ((Activity)getContext()).overridePendingTransition(R.anim.right_in, R.anim.stay);
         });
     }
@@ -146,29 +131,26 @@ public class OverviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void clear() {
-        expenses.clear();
+        summaries.clear();
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Expense> expenses) {
-        if (expenses == null) {
+    public void addAll(List<BusDailySummary> summaries) {
+        if (summaries == null) {
             return;
         }
 
-        this.expenses.addAll(expenses);
+        this.summaries.addAll(summaries);
         notifyDataSetChanged();
     }
 
     public static class ViewHolderDefault extends RecyclerView.ViewHolder {
-        @BindView(R.id.expense_item_default_spent_at_text_view_id) TextView spentAtTextView;
-        @BindView(R.id.expense_item_default_amount_text_view_id) TextView amountTextView;
-        @BindView(R.id.expense_item_default_category_color_image_view_id) CircleImageView categoryColorImageView;
-        @BindView(R.id.expense_item_default_icon_image_view_id) ImageView iconImageView;
-        @BindView(R.id.expense_item_default_user_photo_image_view_id) ImageView userPhotoImageView;
-        @BindView(R.id.expense_item_default_name_text_view_id) TextView userFullnameTextView;
-        @BindView(R.id.expense_item_default_view_id) View dividerView;
-        @BindView(R.id.expense_item_default_category_name_text_view_id) TextView categoryNameTextView;
-        @BindView(R.id.expense_item_default_card_view_id) CardView cardView;
+        @BindView(R.id.summary_item_default_spent_at_text_view_id) TextView spentAtTextView;
+        @BindView(R.id.summary_item_default_amount_text_view_id) TextView amountTextView;
+        @BindView(R.id.summary_item_default_user_photo_image_view_id) ImageView userPhotoImageView;
+        @BindView(R.id.summary_item_default_name_text_view_id) TextView userFullnameTextView;
+        @BindView(R.id.summary_item_default_view_id) View dividerView;
+        @BindView(R.id.summary_item_default_card_view_id) CardView cardView;
 
         private View itemView;
 

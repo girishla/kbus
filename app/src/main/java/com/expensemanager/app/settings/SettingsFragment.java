@@ -56,7 +56,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class SettingsFragment extends Fragment {
     private static final String TAG = SettingsFragment.class.getSimpleName();
 
-    public static final String SETTING_BUDGET = "setting_budget";
+    public static final String SETTING_BUDGET = "setting_collectiontarget";
     public static final String SET_WEEKLY = "set_weekly";
     public static final String SET_MONTHLY = "set_monthly";
     public static final int WEEKLY = 0;
@@ -82,11 +82,11 @@ public class SettingsFragment extends Fragment {
     @BindView(R.id.setting_activity_change_password_text_view_id) TextView changePasswordTextView;
     @BindView(R.id.setting_activity_category_label_text_view_id) TextView categoryLabelTextView;
     @BindView(R.id.setting_activity_category_description_text_view_id) TextView editCategoryTextView;
-    @BindView(R.id.setting_activity_budget_label_text_view_id) TextView budgetTextView;
-    @BindView(R.id.setting_activity_weekly_budget_relative_layout_id) RelativeLayout weeklyBudgetRelativeLayout;
-    @BindView(R.id.setting_activity_weekly_budget_text_view_id) TextView weeklyBudgetTextView;
-    @BindView(R.id.setting_activity_monthly_budget_relative_layout_id) RelativeLayout monthlyBudgetRelativeLayout;
-    @BindView(R.id.setting_activity_monthly_budget_text_view_id) TextView monthlyBudgetTextView;
+    @BindView(R.id.setting_activity_collectiontarget_label_text_view_id) TextView collectiontargetTextView;
+    @BindView(R.id.setting_activity_weekly_collectiontarget_relative_layout_id) RelativeLayout weeklyBudgetRelativeLayout;
+    @BindView(R.id.setting_activity_weekly_collectiontarget_text_view_id) TextView weeklyBudgetTextView;
+    @BindView(R.id.setting_activity_monthly_collectiontarget_relative_layout_id) RelativeLayout monthlyBudgetRelativeLayout;
+    @BindView(R.id.setting_activity_monthly_collectiontarget_text_view_id) TextView monthlyBudgetTextView;
     @BindView(R.id.setting_activity_weekly_notification_switch_id) Switch weeklyNotificationSwitch;
     @BindView(R.id.setting_activity_monthly_notification_switch_id) Switch monthlyNotificationSwitch;
     @BindView(R.id.setting_activity_signout_text_view_id) TextView signOutTextView;
@@ -249,7 +249,7 @@ public class SettingsFragment extends Fragment {
         monthlyNotificationSwitch.setChecked(SettingsFragment.setMonthly);
 
         Typeface boldTypeface = EApplication.getInstance().getTypeface(Font.BOLD);
-        budgetTextView.setTypeface(boldTypeface);
+        collectiontargetTextView.setTypeface(boldTypeface);
         profileLabelTextView.setTypeface(boldTypeface);
         categoryLabelTextView.setTypeface(boldTypeface);
         notificationLabelTextView.setTypeface(boldTypeface);

@@ -131,7 +131,7 @@ public class ReportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         Date[] startEnd = dates.get(position);
 
-        viewHolder.amountTextView.setText("$" + sumLists.get(position));
+        viewHolder.amountTextView.setText("₹" + sumLists.get(position));
         viewHolder.categoryRecyclerView.setFocusable(false);
         viewHolder.categoryRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         viewHolder.categoryRecyclerView.setAdapter(new CategoryListAdapter(categoryLists.get(position)));

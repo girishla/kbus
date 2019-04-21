@@ -226,6 +226,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         single8CollectionTextView.setText(format.format((busdailysummary.getSingle8Collection())));
         single9CollectionTextView.setText(format.format((busdailysummary.getSingle9Collection())));
         single10CollectionTextView.setText(format.format((busdailysummary.getSingle10Collection())));
+
         dieselExpenseTextView.setText(format.format((busdailysummary.getDieselExpense())));
         dieselLitresTextView.setText(format.format((busdailysummary.getDieselLitres())));
         greaseExpenseTextView.setText(format.format((busdailysummary.getGreaseExpense())));

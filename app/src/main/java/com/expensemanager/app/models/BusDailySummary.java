@@ -544,4 +544,6 @@ public class BusDailySummary implements RealmModel {
 
         return busDailySummaries;
     }
+
+
 }

@@ -29,10 +29,10 @@ import java.util.TimeZone;
 public class RequestTemplateCreator {
     private static final String TAG = RequestTemplateCreator.class.getSimpleName();
 
-//        private static final String BASE_URL = "http://10.0.2.2:8080/";
+    //        private static final String BASE_URL = "http://10.0.2.2:8080/";
 //    private static final String BASE_URL = "http://192.168.56.38:8080/";
-//    private static final String BASE_URL = "http://192.168.1.150:8080/";
-    private static final String BASE_URL = "http://172.20.10.14:8080/";
+    private static final String BASE_URL = "http://192.168.1.150:8080/";
+//    private static final String BASE_URL = "http://172.20.10.14:8080/";
 
     public static final String GET = "GET";
     public static final String POST = "POST";
@@ -209,10 +209,6 @@ public class RequestTemplateCreator {
     }
 
 
-
-
-
-
     public static RequestTemplate getAllBusDailySummaries() {
         String url = BASE_URL + "busdailysummaries";
         Map<String, String> params = new HashMap<>();
@@ -241,17 +237,22 @@ public class RequestTemplateCreator {
         params.put("groupId", groupId);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.US);
-        params.put("startDateId", dateFormat.format(get30DaysAgo().getTime()));
+        params.put("startDateId", getYearStartDate());
         params.put("endDateId", dateFormat.format(Calendar.getInstance().getTime()));
 
 
         return new RequestTemplate(GET, url, params);
     }
 
-    private static Date get30DaysAgo() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -30);
-        return cal.getTime();
+    public static String getFiscalYear() {
+        Calendar calendarDate = Calendar.getInstance();
+        int month = calendarDate.get(Calendar.MONTH);
+        int year = calendarDate.get(Calendar.YEAR);
+        return String.valueOf((month >= Calendar.APRIL) ? year : year - 1);
+    }
+
+    private static String getYearStartDate() {
+        return getFiscalYear() + "0401";
     }
 
 
@@ -279,18 +280,18 @@ public class RequestTemplateCreator {
         params.put(BusDailySummary.SINGLE9COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle9Collection()));
         params.put(BusDailySummary.SINGLE10COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle10Collection()));
 
-        params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDieselExpense()));
-        params.put(BusDailySummary.DIESELLITRES_JSON_KEY , String.valueOf(busDailySummary.getDieselLitres()));
-        params.put(BusDailySummary.GREASEEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getGreaseExpense()));
-        params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverPathaExpense()));
-        params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
-        params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorPathaExpense()));
-        params.put(BusDailySummary.CONDUCTORSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorSalaryAllowanceExpense()));
-        params.put(BusDailySummary.CHECKINGPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCheckingPathaExpense()));
-        params.put(BusDailySummary.COMMISSIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCommissionExpense()));
-        params.put(BusDailySummary.OTHEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOtherExpense()));
-        params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getUnionExpense()));
-        params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCleanerExpense()));
+        params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getDieselExpense()));
+        params.put(BusDailySummary.DIESELLITRES_JSON_KEY, String.valueOf(busDailySummary.getDieselLitres()));
+        params.put(BusDailySummary.GREASEEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getGreaseExpense()));
+        params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getDriverPathaExpense()));
+        params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getConductorPathaExpense()));
+        params.put(BusDailySummary.CONDUCTORSALARYEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getConductorSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CHECKINGPATHAEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getCheckingPathaExpense()));
+        params.put(BusDailySummary.COMMISSIONEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getCommissionExpense()));
+        params.put(BusDailySummary.OTHEREXPENSE_JSON_KEY, String.valueOf(busDailySummary.getOtherExpense()));
+        params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getUnionExpense()));
+        params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY, String.valueOf(busDailySummary.getCleanerExpense()));
 
 
         params.put(BusDailySummary.SUBMITTEDBY_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getSubmittedById());
@@ -329,36 +330,35 @@ public class RequestTemplateCreator {
         params.put(BusDailySummary.SINGLE9COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle9Collection()));
         params.put(BusDailySummary.SINGLE10COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle10Collection()));
 
-        params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDieselExpense()));
-        params.put(BusDailySummary.DIESELLITRES_JSON_KEY , String.valueOf(busDailySummary.getDieselLitres()));
-        params.put(BusDailySummary.GREASEEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getGreaseExpense()));
-        params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverPathaExpense()));
-        params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
-        params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorPathaExpense()));
-        params.put(BusDailySummary.CONDUCTORSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorSalaryAllowanceExpense()));
-        params.put(BusDailySummary.CHECKINGPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCheckingPathaExpense()));
-        params.put(BusDailySummary.COMMISSIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCommissionExpense()));
-        params.put(BusDailySummary.OTHEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOtherExpense()));
-        params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getUnionExpense()));
-        params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getCleanerExpense()));
+        params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getDieselExpense()));
+        params.put(BusDailySummary.DIESELLITRES_JSON_KEY, String.valueOf(busDailySummary.getDieselLitres()));
+        params.put(BusDailySummary.GREASEEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getGreaseExpense()));
+        params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getDriverPathaExpense()));
+        params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getConductorPathaExpense()));
+        params.put(BusDailySummary.CONDUCTORSALARYEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getConductorSalaryAllowanceExpense()));
+        params.put(BusDailySummary.CHECKINGPATHAEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getCheckingPathaExpense()));
+        params.put(BusDailySummary.COMMISSIONEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getCommissionExpense()));
+        params.put(BusDailySummary.OTHEREXPENSE_JSON_KEY, String.valueOf(busDailySummary.getOtherExpense()));
+        params.put(BusDailySummary.UNIONEXPENSE_JSON_KEY, String.valueOf(busDailySummary.getUnionExpense()));
+        params.put(BusDailySummary.CLEANEREXPENSE_JSON_KEY, String.valueOf(busDailySummary.getCleanerExpense()));
 
-        if((busDailySummary.getSubmittedById()!=null)){
+        if ((busDailySummary.getSubmittedById() != null)) {
             params.put(BusDailySummary.SUBMITTEDBY_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getSubmittedById());
 
         }
-        if(busDailySummary.getDriverId()!=null){
+        if (busDailySummary.getDriverId() != null) {
             params.put(BusDailySummary.DRIVER_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getDriverId());
 
         }
-        if(busDailySummary.getConductorId()!=null){
+        if (busDailySummary.getConductorId() != null) {
             params.put(BusDailySummary.CONDUCTOR_OBJ_KEY, BASE_URL + "users/" + busDailySummary.getConductorId());
 
         }
-        if(busDailySummary.getGroupId()!=null){
+        if (busDailySummary.getGroupId() != null) {
             params.put(BusDailySummary.GROUP_OBJ_KEY, BASE_URL + "groups/" + busDailySummary.getGroupId());
 
         }
-
 
 
         SimpleDateFormat timezoneFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:00.000'Z'", Locale.US);
@@ -372,7 +372,6 @@ public class RequestTemplateCreator {
         params.put(BusDailySummary.SUMMARY_DATE_KEY, time);
         params.put(BusDailySummary.DATEID_JSON_KEY, busDailySummary.getId());
         params.put(BusDailySummary.ID_KEY, busDailySummary.getId());
-
 
 
         return new RequestTemplate(PATCH, url, params);
@@ -393,19 +392,6 @@ public class RequestTemplateCreator {
 
         return new RequestTemplate(PATCH, url, params);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static RequestTemplate getAllCategories() {

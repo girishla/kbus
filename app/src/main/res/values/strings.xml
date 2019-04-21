@@ -197,12 +197,12 @@
     <string name="mobile">Mobile</string>
     <string name="report_average">Average: $</string>
     <string name="transition_category">transition_category</string>
-    <string name="budget">Budget</string>
+    <string name="collectiontarget">Budget</string>
     <string name="target">Collection Target</string>
-    <string name="weekly_budget">Weekly Budget</string>
-    <string name="monthly_budget">Monthly Budget</string>
-    <string name="weekly_budget_optional">(optional) e.g. $800</string>
-    <string name="monthly_budget_optional">(optional) e.g. $2600</string>
+    <string name="weekly_collectiontarget">Weekly Budget</string>
+    <string name="monthly_collectiontarget">Monthly Budget</string>
+    <string name="weekly_collectiontarget_optional">(optional) e.g. $800</string>
+    <string name="monthly_collectiontarget_optional">(optional) e.g. $2600</string>
     <string name="change_photo">change photo</string>
     <string name="actions">Actions</string>
 

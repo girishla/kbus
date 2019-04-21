@@ -44,8 +44,8 @@ public class NewGroupActivity extends AppCompatActivity {
     @BindView(R.id.new_group_activity_name_edit_text_id) EditText nameEditText;
     @BindView(R.id.new_group_activity_group_edit_text_id) EditText groupEditText;
     @BindView(R.id.new_group_activity_about_edit_text_id) EditText aboutEditText;
-    @BindView(R.id.new_group_activity_monthly_budget_edit_text_id) EditText monthlyBudgetEditText;
-    @BindView(R.id.new_group_activity_weekly_budget_edit_text_id) EditText weeklyBudgetEditText;
+    @BindView(R.id.new_group_activity_monthly_collectiontarget_edit_text_id) EditText monthlyBudgetEditText;
+    @BindView(R.id.new_group_activity_weekly_collectiontarget_edit_text_id) EditText weeklyBudgetEditText;
     @BindView(R.id.progress_bar_id) ProgressBar progressBar;
 
     public static void newInstance(Context context) {
@@ -147,8 +147,8 @@ public class NewGroupActivity extends AppCompatActivity {
             try {
                 weeklyBudget = Double.parseDouble(weeklyBudgetString);
             } catch (NumberFormatException e) {
-                Log.d(TAG, "Incorrect weekly budget number.");
-                Toast.makeText(this, "Incorrect weekly budget number.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Incorrect weekly collectiontarget number.");
+                Toast.makeText(this, "Incorrect weekly collectiontarget number.", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }

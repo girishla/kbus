@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.Helpers;
-import com.expensemanager.app.models.Expense;
+import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.models.Member;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class OverviewMainFragment extends Fragment {
     public static int SLEEP_LENGTH = 1200;
 
     private String groupId;
-    private ArrayList<Expense> expenses;
+    private ArrayList<BusDailySummary> summaries;
     private OverviewAdapter overviewAdapter;
     private OverviewFragmentAdapter overviewFragmentAdapter;
     private boolean isPersonal = false;
@@ -68,8 +68,8 @@ public class OverviewMainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        expenses = new ArrayList<>();
-        overviewAdapter = new OverviewAdapter(getActivity(), expenses);
+        summaries = new ArrayList<>();
+        overviewAdapter = new OverviewAdapter(getActivity(), summaries);
         setupToolbar();
 
         setupViewPager(viewPager);
@@ -88,7 +88,7 @@ public class OverviewMainFragment extends Fragment {
             isPersonal = true;
         }
 
-        overviewAdapter.addAll(Expense.getAllExpensesByGroupId(groupId));
+        overviewAdapter.addAll(BusDailySummary.getAllBusDailySummariesByGroupId(groupId));
         setupRecyclerView();
         scrollView.fullScroll(ScrollView.FOCUS_UP);
     }
@@ -120,7 +120,7 @@ public class OverviewMainFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
         overviewFragmentAdapter = new OverviewFragmentAdapter(getFragmentManager());
 
-        overviewFragmentAdapter.addFragment(BudgetFragment.newInstance(), "Monthly");
+        overviewFragmentAdapter.addFragment(TargetFragment.newInstance(), "Monthly");
         overviewFragmentAdapter.addFragment(AverageFragment.newInstance(), "Average");
         viewPager.setAdapter(overviewFragmentAdapter);
         viewPager.setOnPageChangeListener(pageChangeListener);
@@ -157,11 +157,11 @@ public class OverviewMainFragment extends Fragment {
     private double getWeeklyExpense() {
         Date currentDate = new Date();
         Date[] weekStartEnd = Helpers.getWeekStartEndDate(currentDate);
-        RealmResults<Expense> weeklyExpenses = Expense.getExpensesByRangeAndGroupId(weekStartEnd, groupId);
+        RealmResults<BusDailySummary> weeklyExpenses = BusDailySummary.getBusDailySummariesByRangeAndGroupId(weekStartEnd, groupId);
 
         double weeklyTotal = 0;
-        for (Expense expense : weeklyExpenses) {
-            weeklyTotal += expense.getAmount();
+        for (BusDailySummary summary : weeklyExpenses) {
+            weeklyTotal += summary.getTotalCollection();
         }
 
         return Math.round(weeklyTotal * 100.0) / 100.0;
@@ -170,11 +170,11 @@ public class OverviewMainFragment extends Fragment {
     private double getMonthlyExpense() {
         Date currentDate = new Date();
         Date[] monthStartEnd = Helpers.getMonthStartEndDate(currentDate);
-        RealmResults<Expense> monthlyExpenses = Expense.getExpensesByRangeAndGroupId(monthStartEnd, groupId);
+        RealmResults<BusDailySummary> monthlyExpenses = BusDailySummary.getBusDailySummariesByRangeAndGroupId(monthStartEnd, groupId);
 
         double monthlyTotal = 0;
-        for (Expense expense : monthlyExpenses) {
-            monthlyTotal += expense.getAmount();
+        for (BusDailySummary summary : monthlyExpenses) {
+            monthlyTotal += summary.getTotalCollection();
         }
 
         return Math.round(monthlyTotal * 100.0) / 100.0;
@@ -204,9 +204,9 @@ public class OverviewMainFragment extends Fragment {
     private double  getTotalExpense() {
         double total = 0.0;
 
-        RealmResults<Expense> allExpenses = Expense.getAllExpensesByGroupId(groupId);
-        for (Expense expense : allExpenses) {
-            total += expense.getAmount();
+        RealmResults<BusDailySummary> allExpenses = BusDailySummary.getAllBusDailySummariesByGroupId(groupId);
+        for (BusDailySummary summary : allExpenses) {
+            total += summary.getTotalCollection();
         }
 
         return (double) Math.round(total * 100) / 100;

@@ -9,7 +9,7 @@
 
     <!-- Budget setting label -->
     <TextView
-        android:id="@+id/setting_budget_fragment_label_text_view_id"
+        android:id="@+id/setting_collectiontarget_fragment_label_text_view_id"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="@dimen/space_medium_large"
@@ -19,17 +19,17 @@
         android:paddingLeft="@dimen/space_really_small"
         android:paddingRight="@dimen/space_really_small"
         android:gravity="center_vertical"
-        tools:text="set budget"
+        tools:text="set collectiontarget"
         android:textSize="@dimen/text_small"/>
 
     <!-- Budget amount -->
         <EditText
-            android:id="@+id/setting_budget_fragment_amount_edit_text_id"
+            android:id="@+id/setting_collectiontarget_fragment_amount_edit_text_id"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="@dimen/space_medium_large"
             android:layout_marginRight="@dimen/space_medium_large"
-            android:layout_below="@+id/setting_budget_fragment_label_text_view_id"
+            android:layout_below="@+id/setting_collectiontarget_fragment_label_text_view_id"
 
             android:gravity="center|start"
             android:padding="@dimen/space_really_small"
@@ -40,21 +40,21 @@
 
     <!-- Action -->
     <LinearLayout
-        android:id="@+id/setting_budget_fragment_action_linear_layout_id"
+        android:id="@+id/setting_collectiontarget_fragment_action_linear_layout_id"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="@dimen/space_large"
         android:layout_marginBottom="@dimen/space_large"
         android:layout_marginLeft="@dimen/space_medium_large"
         android:layout_marginRight="@dimen/space_medium_large"
-        android:layout_below="@+id/setting_budget_fragment_amount_edit_text_id"
+        android:layout_below="@+id/setting_collectiontarget_fragment_amount_edit_text_id"
 
         android:weightSum="2"
         android:orientation="horizontal">
 
         <!-- Cancel -->
         <Button
-            android:id="@+id/setting_budget_fragment_cancel_button_id"
+            android:id="@+id/setting_collectiontarget_fragment_cancel_button_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/space_small"
@@ -69,7 +69,7 @@
 
         <!-- Save -->
         <Button
-            android:id="@+id/setting_budget_fragment_save_button_id"
+            android:id="@+id/setting_collectiontarget_fragment_save_button_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/space_small"

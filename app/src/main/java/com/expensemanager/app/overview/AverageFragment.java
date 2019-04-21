@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.Helpers;
-import com.expensemanager.app.models.Expense;
+import com.expensemanager.app.models.BusDailySummary;
 
 import java.util.Date;
 import java.util.List;
@@ -38,13 +38,13 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
     private int monthlyStatus = 0;
     private String groupId;
     private String oldGroupId;
-    private double totalExpense = 0.0;
-    private double weeklyExpense = 0.0;
+    private double totalBusDailySummary = 0.0;
+    private double weeklyBusDailySummary = 0.0;
     private double weeklyAve = 0.0;
-    private double monthlyExpense = 0.0;
+    private double monthlyBusDailySummary = 0.0;
     private double monthlyAve = 0.0;
-    private double oldWeeklyExpense = 0.0;
-    private double oldMonthlyExpense = 0.0;
+    private double oldWeeklyBusDailySummary = 0.0;
+    private double oldMonthlyBusDailySummary = 0.0;
 
     @BindView(R.id.average_fragment_total_text_view_id) TextView totalTextView;
     @BindView(R.id.average_fragment_weekly_total_text_view_id) TextView weeklyTextView;
@@ -78,30 +78,30 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
     public void invalidateViews() {
         groupId = Helpers.getCurrentGroupId();
 
-        totalExpense = getTotalExpense();
-        weeklyExpense = getWeeklyExpense();
+        totalBusDailySummary = getTotalBusDailySummary();
+        weeklyBusDailySummary = getWeeklyBusDailySummary();
         weeklyAve = getWeeklyAverage();
-        monthlyExpense = getMonthlyExpense();
+        monthlyBusDailySummary = getMonthlyBusDailySummary();
         monthlyAve = getMonthlyAverage();
 
-        weeklyTextView.setText(Helpers.doubleToCurrency(weeklyExpense));
-        monthlyTextView.setText(Helpers.doubleToCurrency(monthlyExpense));
+        weeklyTextView.setText(Helpers.doubleToCurrency(weeklyBusDailySummary));
+        monthlyTextView.setText(Helpers.doubleToCurrency(monthlyBusDailySummary));
 
         invalidateProgressBars();
     }
 
     private void invalidateProgressBars() {
-        if (weeklyExpense == 0) {
+        if (weeklyBusDailySummary == 0) {
             weeklyProgressBar.setProgress(0);
             weeklyTextView.setText("$0");
         }
 
-        if (monthlyExpense == 0) {
+        if (monthlyBusDailySummary == 0) {
             monthlyProgressBar.setProgress(0);
             monthlyTextView.setText("$0");
         }
 
-        if (oldWeeklyExpense == weeklyExpense && oldMonthlyExpense == monthlyExpense
+        if (oldWeeklyBusDailySummary == weeklyBusDailySummary && oldMonthlyBusDailySummary == monthlyBusDailySummary
                 && groupId != null && groupId.equals(oldGroupId)) {
             return;
         }
@@ -114,17 +114,17 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
         int monthlyProgress = 0;
 
         if (weeklyAve != 0) {
-            weeklyProgress = (int)(weeklyExpense / weeklyAve * 100);
+            weeklyProgress = (int)(weeklyBusDailySummary / weeklyAve * 100);
         }
 
         if (monthlyAve != 0) {
-            monthlyProgress = (int) (monthlyExpense / monthlyAve * 100);
+            monthlyProgress = (int) (monthlyBusDailySummary / monthlyAve * 100);
         }
 
-        setupTotalProgress(totalExpense);
+        setupTotalProgress(totalBusDailySummary);
         setupWeeklyProgress(weeklyProgress);
         setupMonthlyProgress(monthlyProgress);
-        oldWeeklyExpense = weeklyExpense;
+        oldWeeklyBusDailySummary = weeklyBusDailySummary;
         oldGroupId = groupId;
     }
 
@@ -170,7 +170,7 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
                                 }
                                 totalProgressBar.setProgress((int)totalProgress);
                             } else {
-                                totalTextView.setText("$" + totalStatus);
+                                totalTextView.setText("₹" + totalStatus);
                             }
                         }
                     });
@@ -241,27 +241,27 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
         }).start();
     }
 
-    private double getWeeklyExpense() {
+    private double getWeeklyBusDailySummary() {
         Date currentDate = new Date();
         Date[] weekStartEnd = Helpers.getWeekStartEndDate(currentDate);
-        RealmResults<Expense> weeklyExpenses = Expense.getExpensesByRangeAndGroupId(weekStartEnd, groupId);
+        RealmResults<BusDailySummary> weeklyBusDailySummaries = BusDailySummary.getBusDailySummariesByRangeAndGroupId(weekStartEnd, groupId);
 
         double weeklyTotal = 0;
-        for (Expense expense : weeklyExpenses) {
-            weeklyTotal += expense.getAmount();
+        for (BusDailySummary summary : weeklyBusDailySummaries) {
+            weeklyTotal += summary.getTotalCollection();
         }
 
         return Math.round(weeklyTotal * 100.0) / 100.0;
     }
 
-    private double getMonthlyExpense() {
+    private double getMonthlyBusDailySummary() {
         Date currentDate = new Date();
         Date[] monthStartEnd = Helpers.getMonthStartEndDate(currentDate);
-        RealmResults<Expense> monthlyExpenses = Expense.getExpensesByRangeAndGroupId(monthStartEnd, groupId);
+        RealmResults<BusDailySummary> monthlyBusDailySummaries = BusDailySummary.getBusDailySummariesByRangeAndGroupId(monthStartEnd, groupId);
 
         double monthlyTotal = 0;
-        for (Expense expense : monthlyExpenses) {
-            monthlyTotal += expense.getAmount();
+        for (BusDailySummary summary : monthlyBusDailySummaries) {
+            monthlyTotal += summary.getTotalCollection();
         }
 
         return Math.round(monthlyTotal * 100.0) / 100.0;
@@ -275,7 +275,7 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
         }
 
         int weeks = allWeeks.size();
-        return getTotalExpense()/weeks;
+        return getTotalBusDailySummary()/weeks;
     }
 
     private double getMonthlyAverage() {
@@ -285,15 +285,15 @@ public class AverageFragment extends Fragment implements FragmentLifecycle {
             return 0;
         }
         int months = allMonths.size();
-        return getTotalExpense()/months;
+        return getTotalBusDailySummary()/months;
     }
 
-    private double  getTotalExpense() {
+    private double  getTotalBusDailySummary() {
         double total = 0.0;
 
-        RealmResults<Expense> allExpenses = Expense.getAllExpensesByGroupId(groupId);
-        for (Expense expense : allExpenses) {
-            total += expense.getAmount();
+        RealmResults<BusDailySummary> allBusDailySummaries = BusDailySummary.getAllBusDailySummariesByGroupId(groupId);
+        for (BusDailySummary summary : allBusDailySummaries) {
+            total += summary.getTotalCollection();
         }
 
         return (double) Math.round(total * 100) / 100;

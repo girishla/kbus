@@ -13,8 +13,9 @@ import android.widget.TextView;
 
 import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.Helpers;
-import com.expensemanager.app.models.Expense;
+import com.expensemanager.app.models.BusDailySummary;
 import com.expensemanager.app.models.Group;
+import com.expensemanager.app.service.SyncBusDailySummary;
 import com.expensemanager.app.service.SyncCategory;
 import com.expensemanager.app.service.SyncExpense;
 import com.expensemanager.app.service.SyncGroup;
@@ -33,17 +34,17 @@ import io.realm.RealmResults;
  * Created by Girish Lakshmanan on 9/16/19.
  */
 
-public class BudgetFragment extends Fragment implements FragmentLifecycle {
-    private static final String TAG = BudgetFragment.class.getSimpleName();
+public class TargetFragment extends Fragment implements FragmentLifecycle {
+    private static final String TAG = TargetFragment.class.getSimpleName();
 
     private int levelTotal = 10000;
     private int levelStatus;
     private int level;
     private int steps = 100;
     private int animationTime = 1500;
-    private double budgetMonthly;
+    private double collectiontargetMonthly;
     private double amountLeftMonthly;
-    private double budgetWeekly;
+    private double collectiontargetWeekly;
     private double amountLeftWeekly;
     private double monthlyExpense;
     private double weeklyExpense;
@@ -54,14 +55,14 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
     private ClipDrawable clipDrawable;
     private Handler handler = new Handler();
 
-    @BindView(R.id.circle_solid_view_id) View budgetView;
+    @BindView(R.id.circle_solid_view_id) View collectiontargetView;
     @BindView(R.id.circle_amount_text_view_id) TextView circleAmountTextView;
     @BindView(R.id.monthly_amount_text_view_id) TextView monthlyAmountTextView;
     @BindView(R.id.weekly_amount_text_view_id) TextView weeklyAmountTextView;
     @BindView(R.id.circle_month_text_view_id) TextView circleMonthTextView;
 
     public static Fragment newInstance() {
-        return new BudgetFragment();
+        return new TargetFragment();
     }
 
     @Override
@@ -71,7 +72,7 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.budget_fragment, container, false);
+        return inflater.inflate(R.layout.collectiontarget_fragment, container, false);
     }
 
     @Override
@@ -91,8 +92,8 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
         Group group = Group.getGroupById(groupId);
 
         if (group != null) {
-            budgetMonthly = group.getMonthlyBudget();
-            budgetWeekly = group.getWeeklyBudget();
+            collectiontargetMonthly = group.getMonthlyBudget();
+            collectiontargetWeekly = group.getWeeklyBudget();
         } else {
             if (groupId != null) {
                 SyncGroup.getGroupById(groupId).continueWith(onGetGroupsFinished, Task.UI_THREAD_EXECUTOR);
@@ -101,14 +102,14 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
             }
         }
 
-        monthlyAmountTextView.setText(Helpers.doubleToCurrency(budgetMonthly));
-        weeklyAmountTextView.setText(Helpers.doubleToCurrency(budgetWeekly));
+        monthlyAmountTextView.setText(Helpers.doubleToCurrency(collectiontargetMonthly));
+        weeklyAmountTextView.setText(Helpers.doubleToCurrency(collectiontargetWeekly));
 
         monthlyExpense = getMonthlyExpense();
         weeklyExpense = getWeeklyExpense();
 
-        amountLeftMonthly = budgetMonthly - monthlyExpense;
-        amountLeftWeekly = budgetWeekly - weeklyExpense;
+        amountLeftMonthly = collectiontargetMonthly - monthlyExpense;
+        amountLeftWeekly = collectiontargetWeekly - weeklyExpense;
 
         circleAmountTextView.setText(Helpers.doubleToCurrency(amountLeftMonthly));
         circleMonthTextView.setText(Helpers.getShortMonthStringOnlyFromDate(new Date()));
@@ -118,14 +119,14 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
 
     private void invalidateProgressBars() {
 
-        if (budgetMonthly == 0) {
+        if (collectiontargetMonthly == 0) {
             level = levelTotal;
         } else {
-            level = (int) (Math.min(monthlyExpense, budgetMonthly) / budgetMonthly * levelTotal);
+            level = (int) (Math.min(monthlyExpense, collectiontargetMonthly) / collectiontargetMonthly * levelTotal);
         }
 
         levelStatus = levelTotal;
-        clipDrawable = (ClipDrawable) budgetView.getBackground();
+        clipDrawable = (ClipDrawable) collectiontargetView.getBackground();
         clipDrawable.setLevel(levelTotal);
         long currentTime = System.currentTimeMillis();
 
@@ -156,6 +157,7 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
                 SyncExpense.getAllExpensesByGroupId(groupId);
                 // Sync all members of current group
                 SyncMember.getMembersByGroupId(groupId);
+                SyncBusDailySummary.getAllBusDailySummariesByGroupId(groupId);
             }
 
             invalidateViews();
@@ -166,11 +168,11 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
     private double getWeeklyExpense() {
         Date currentDate = new Date();
         Date[] weekStartEnd = Helpers.getWeekStartEndDate(currentDate);
-        RealmResults<Expense> weeklyExpenses = Expense.getExpensesByRangeAndGroupId(weekStartEnd, groupId);
+        RealmResults<BusDailySummary> weeklyExpenses = BusDailySummary.getBusDailySummariesByRangeAndGroupId(weekStartEnd, groupId);
 
         double weeklyTotal = 0;
-        for (Expense expense : weeklyExpenses) {
-            weeklyTotal += expense.getAmount();
+        for (BusDailySummary summary : weeklyExpenses) {
+            weeklyTotal += summary.getTotalCollection();
         }
 
         return Math.round(weeklyTotal * 100.0) / 100.0;
@@ -179,11 +181,11 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
     private double getMonthlyExpense() {
         Date currentDate = new Date();
         Date[] monthStartEnd = Helpers.getMonthStartEndDate(currentDate);
-        RealmResults<Expense> monthlyExpenses = Expense.getExpensesByRangeAndGroupId(monthStartEnd, groupId);
+        RealmResults<BusDailySummary> monthlyExpenses = BusDailySummary.getBusDailySummariesByRangeAndGroupId(monthStartEnd, groupId);
 
         double monthlyTotal = 0;
-        for (Expense expense : monthlyExpenses) {
-            monthlyTotal += expense.getAmount();
+        for (BusDailySummary summary : monthlyExpenses) {
+            monthlyTotal += summary.getTotalCollection();
         }
 
         return Math.round(monthlyTotal * 100.0) / 100.0;
@@ -234,7 +236,6 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
 
         invalidateViews();
 
-        Log.d(TAG, "zhaox onResume: ");
     }
 
     @Override
@@ -243,6 +244,5 @@ public class BudgetFragment extends Fragment implements FragmentLifecycle {
         Realm realm = Realm.getDefaultInstance();
         realm.removeAllChangeListeners();
 
-        Log.d(TAG, "zhaox onPause: ");
     }
 }

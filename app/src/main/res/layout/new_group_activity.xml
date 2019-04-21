@@ -109,9 +109,9 @@
                 android:textSize="@dimen/text_medium_small"
                 android:background="@drawable/background_bottom_line_gray"/>
 
-            <!-- Monthly budget label -->
+            <!-- Monthly collectiontarget label -->
             <TextView
-                android:id="@+id/new_group_activity_monthly_budget_label_text_view_id"
+                android:id="@+id/new_group_activity_monthly_collectiontarget_label_text_view_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/new_group_activity_about_edit_text_id"
@@ -122,31 +122,31 @@
 
                 android:paddingLeft="@dimen/space_really_small"
                 android:paddingRight="@dimen/space_really_small"
-                android:text="@string/monthly_budget"
+                android:text="@string/monthly_collectiontarget"
                 android:textSize="@dimen/text_small"/>
 
-            <!-- Monthly budget -->
+            <!-- Monthly collectiontarget -->
             <EditText
-                android:id="@+id/new_group_activity_monthly_budget_edit_text_id"
+                android:id="@+id/new_group_activity_monthly_collectiontarget_edit_text_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/new_group_activity_monthly_budget_label_text_view_id"
+                android:layout_below="@+id/new_group_activity_monthly_collectiontarget_label_text_view_id"
                 android:layout_marginLeft="@dimen/space_medium_large"
                 android:layout_marginRight="@dimen/space_medium_large"
 
                 android:padding="@dimen/space_really_small"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_medium_small"
-                android:hint="@string/monthly_budget_optional"
+                android:hint="@string/monthly_collectiontarget_optional"
                 android:textColorHint="@color/gray_light"
                 android:background="@drawable/background_bottom_line_gray"/>
 
-            <!-- Weekly budget label -->
+            <!-- Weekly collectiontarget label -->
             <TextView
-                android:id="@+id/new_group_activity_weekly_budget_label_text_view_id"
+                android:id="@+id/new_group_activity_weekly_collectiontarget_label_text_view_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/new_group_activity_monthly_budget_edit_text_id"
+                android:layout_below="@+id/new_group_activity_monthly_collectiontarget_edit_text_id"
                 android:layout_marginLeft="@dimen/space_medium_large"
                 android:layout_marginRight="@dimen/space_medium_large"
                 android:layout_marginTop="@dimen/space_medium_large"
@@ -154,15 +154,15 @@
 
                 android:paddingLeft="@dimen/space_really_small"
                 android:paddingRight="@dimen/space_really_small"
-                android:text="@string/weekly_budget"
+                android:text="@string/weekly_collectiontarget"
                 android:textSize="@dimen/text_small"/>
 
-            <!-- Weekly budget -->
+            <!-- Weekly collectiontarget -->
             <EditText
-                android:id="@+id/new_group_activity_weekly_budget_edit_text_id"
+                android:id="@+id/new_group_activity_weekly_collectiontarget_edit_text_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/new_group_activity_weekly_budget_label_text_view_id"
+                android:layout_below="@+id/new_group_activity_weekly_collectiontarget_label_text_view_id"
                 android:layout_marginLeft="@dimen/space_medium_large"
                 android:layout_marginRight="@dimen/space_medium_large"
                 android:layout_marginBottom="@dimen/space_medium_large"
@@ -170,7 +170,7 @@
                 android:padding="@dimen/space_really_small"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_medium_small"
-                android:hint="@string/weekly_budget_optional"
+                android:hint="@string/weekly_collectiontarget_optional"
                 android:textColorHint="@color/gray_light"
                 android:background="@drawable/background_bottom_line_gray"/>
 
