@@ -106,10 +106,14 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if (busdailysummary.isApproved()) {
             ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#77dd77"));
             viewHolder.approvedColorImageView.setImageDrawable(colorDrawable);
+            viewHolder.approvedColorImageView.setVisibility(View.VISIBLE);
+
 
         } else {
             ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#cfcfc4"));
             viewHolder.approvedColorImageView.setImageDrawable(colorDrawable);
+            viewHolder.approvedColorImageView.setVisibility(View.GONE);
+
         }
 
 //         Set item click listener
