@@ -29,7 +29,8 @@ public class RequestTemplateCreator {
 
 //        private static final String BASE_URL = "http://10.0.2.2:8080/";
 //    private static final String BASE_URL = "http://192.168.56.38:8080/";
-    private static final String BASE_URL = "http://192.168.1.150:8080/";
+//    private static final String BASE_URL = "http://192.168.1.150:8080/";
+    private static final String BASE_URL = "http://172.20.10.14:8080/";
 
     public static final String GET = "GET";
     public static final String POST = "POST";
@@ -267,8 +268,8 @@ public class RequestTemplateCreator {
         params.put(BusDailySummary.SINGLE10COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle10Collection()));
 
         params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDieselExpense()));
-        params.put(BusDailySummary.OILEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOilExpense()));
-        params.put(BusDailySummary.WATEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getWaterExpense()));
+        params.put(BusDailySummary.DIESELLITRES_JSON_KEY , String.valueOf(busDailySummary.getDieselLitres()));
+        params.put(BusDailySummary.GREASEEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getGreaseExpense()));
         params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverPathaExpense()));
         params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
         params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorPathaExpense()));
@@ -317,8 +318,8 @@ public class RequestTemplateCreator {
         params.put(BusDailySummary.SINGLE10COLLECTION_JSON_KEY, String.valueOf(busDailySummary.getSingle10Collection()));
 
         params.put(BusDailySummary.DIESELEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDieselExpense()));
-        params.put(BusDailySummary.OILEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getOilExpense()));
-        params.put(BusDailySummary.WATEREXPENSE_JSON_KEY , String.valueOf(busDailySummary.getWaterExpense()));
+        params.put(BusDailySummary.DIESELLITRES_JSON_KEY , String.valueOf(busDailySummary.getDieselLitres()));
+        params.put(BusDailySummary.GREASEEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getGreaseExpense()));
         params.put(BusDailySummary.DRIVERPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverPathaExpense()));
         params.put(BusDailySummary.DRIVERSALARYEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getDriverSalaryAllowanceExpense()));
         params.put(BusDailySummary.CONDUCTORPATHAEXPENSE_JSON_KEY , String.valueOf(busDailySummary.getConductorPathaExpense()));

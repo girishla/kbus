@@ -98,8 +98,7 @@
 
 
     <string name="dieselExpense">Diesel</string>
-    <string name="oilExpense">Oil</string>
-    <string name="waterExpense">Water</string>
+    <string name="greaseExpense">Grease</string>
     <string name="driverPathaExpense">Driver Patha</string>
     <string name="driverSalaryAllowanceExpense">Driver Salary Allowance</string>
     <string name="conductorPathaExpense">Conductor Patha</string>
@@ -110,11 +109,11 @@
     <string name="otherExpense">Other Expenses</string>
     <string name="cleanerExpense">Cleaner Expenses</string>
     <string name="collections">Collections</string>
-    <string name="dieselLitres">Diesel Lts.</string>
     <string name="tripSheetDate">Trip Sheet Date</string>
     <string name="viewDetails">View</string>
     <string name="approve">Approve</string>
     <string name="alreadyApproved">Already Approved</string>
+    <string name="dieselLitres">Diesel</string>
 
 
 

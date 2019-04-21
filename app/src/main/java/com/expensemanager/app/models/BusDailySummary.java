@@ -45,8 +45,8 @@ public class BusDailySummary implements RealmModel {
 
 
     public static final String DIESELEXPENSE_JSON_KEY = "dieselExpense";
-    public static final String OILEXPENSE_JSON_KEY = "oilExpense";
-    public static final String WATEREXPENSE_JSON_KEY = "waterExpense";
+    public static final String DIESELLITRES_JSON_KEY = "dieselLitres";
+    public static final String GREASEEXPENSE_JSON_KEY = "greaseExpense";
     public static final String DRIVERPATHAEXPENSE_JSON_KEY = "driverPathaExpense";
     public static final String DRIVERSALARYEXPENSE_JSON_KEY = "driverSalaryAllowanceExpense";
     public static final String CONDUCTORPATHAEXPENSE_JSON_KEY = "conductorPathaExpense";
@@ -104,8 +104,8 @@ public class BusDailySummary implements RealmModel {
     private double single10Collection;
 
     private double dieselExpense;
-    private double oilExpense;
-    private double waterExpense;
+    private double dieselLitres;
+    private double greaseExpense;
     private double driverPathaExpense;
     private double driverSalaryAllowanceExpense;
     private double conductorPathaExpense;
@@ -126,7 +126,7 @@ public class BusDailySummary implements RealmModel {
     public double getTotalCollection() {
 
         return getSingle1Collection() + getSingle2Collection() + getSingle3Collection() + getSingle4Collection() + getSingle5Collection()
-                + getSingle6Collection();
+                + getSingle6Collection() + getSingle7Collection()+ getSingle8Collection()+ getSingle9Collection()+ getSingle10Collection();
     }
 
     public String getId() {
@@ -283,20 +283,20 @@ public class BusDailySummary implements RealmModel {
         this.dieselExpense = dieselExpense;
     }
 
-    public double getOilExpense() {
-        return oilExpense;
+    public double getDieselLitres() {
+        return dieselLitres;
     }
 
-    public void setOilExpense(double oilExpense) {
-        this.oilExpense = oilExpense;
+    public void setDieselLitres(double dieselLitres) {
+        this.dieselLitres = dieselLitres;
     }
 
-    public double getWaterExpense() {
-        return waterExpense;
+    public double getGreaseExpense() {
+        return greaseExpense;
     }
 
-    public void setWaterExpense(double waterExpense) {
-        this.waterExpense = waterExpense;
+    public void setGreaseExpense(double greaseExpense) {
+        this.greaseExpense = greaseExpense;
     }
 
     public double getDriverPathaExpense() {
@@ -405,8 +405,8 @@ public class BusDailySummary implements RealmModel {
 
 
             this.dieselExpense = jsonObject.getDouble(DIESELEXPENSE_JSON_KEY);
-            this.oilExpense = jsonObject.getDouble(OILEXPENSE_JSON_KEY);
-            this.waterExpense = jsonObject.getDouble(WATEREXPENSE_JSON_KEY);
+            this.dieselLitres = jsonObject.getDouble(DIESELLITRES_JSON_KEY);
+            this.greaseExpense = jsonObject.getDouble(GREASEEXPENSE_JSON_KEY);
             this.driverPathaExpense = jsonObject.getDouble(DRIVERPATHAEXPENSE_JSON_KEY);
             this.driverSalaryAllowanceExpense = jsonObject.getDouble(DRIVERSALARYEXPENSE_JSON_KEY);
             this.conductorPathaExpense = jsonObject.getDouble(CONDUCTORPATHAEXPENSE_JSON_KEY);

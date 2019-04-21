@@ -642,9 +642,9 @@
                         android:textSize="@dimen/text_medium_small" />
 
 
-                    <!-- oilExpense label -->
+                    <!-- dieselLitres label -->
                     <TextView
-                        android:id="@+id/busdailysummary_detail_activity_oilExpense_label_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_dieselLitres_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
@@ -655,15 +655,15 @@
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
-                        android:text="@string/oilExpense"
+                        android:text="@string/dieselLitres"
                         android:textSize="@dimen/text_small" />
 
-                    <!-- oilExpense -->
+                    <!-- dieselLitres -->
                     <EditText
-                        android:id="@+id/busdailysummary_detail_activity_oilExpense_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_dieselLitres_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_label_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselLitres_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:background="@drawable/background_bottom_line_gray"
@@ -675,12 +675,12 @@
                         android:textSize="@dimen/text_medium_small" />
 
 
-                    <!-- waterExpense label -->
+                    <!-- greaseExpense label -->
                     <TextView
-                        android:id="@+id/busdailysummary_detail_activity_waterExpense_label_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_greaseExpense_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_oilExpense_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselLitres_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
@@ -688,15 +688,15 @@
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
-                        android:text="@string/waterExpense"
+                        android:text="@string/greaseExpense"
                         android:textSize="@dimen/text_small" />
 
-                    <!-- waterExpense -->
+                    <!-- greaseExpense -->
                     <EditText
-                        android:id="@+id/busdailysummary_detail_activity_waterExpense_text_view_id"
+                        android:id="@+id/busdailysummary_detail_activity_greaseExpense_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_label_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_greaseExpense_label_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:background="@drawable/background_bottom_line_gray"
@@ -713,7 +713,7 @@
                         android:id="@+id/busdailysummary_detail_activity_driverPathaExpense_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_waterExpense_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_greaseExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"

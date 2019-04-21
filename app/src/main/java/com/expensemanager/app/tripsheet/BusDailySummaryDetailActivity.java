@@ -119,10 +119,10 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
     @BindView(R.id.busdailysummary_detail_activity_dieselExpense_text_view_id)
     EditText dieselExpenseTextView;
-    @BindView(R.id.busdailysummary_detail_activity_oilExpense_text_view_id)
-    EditText oilExpenseTextView;
-    @BindView(R.id.busdailysummary_detail_activity_waterExpense_text_view_id)
-    EditText waterExpenseTextView;
+    @BindView(R.id.busdailysummary_detail_activity_dieselLitres_text_view_id)
+    EditText dieselLitresTextView;
+    @BindView(R.id.busdailysummary_detail_activity_greaseExpense_text_view_id)
+    EditText greaseExpenseTextView;
     @BindView(R.id.busdailysummary_detail_activity_driverPathaExpense_text_view_id)
     EditText driverPathaExpenseTextView;
     @BindView(R.id.busdailysummary_detail_activity_driverSalaryAllowanceExpense_text_view_id)
@@ -221,8 +221,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         single9CollectionTextView.setText(format.format((busdailysummary.getSingle9Collection())));
         single10CollectionTextView.setText(format.format((busdailysummary.getSingle10Collection())));
         dieselExpenseTextView.setText(format.format((busdailysummary.getDieselExpense())));
-        oilExpenseTextView.setText(format.format((busdailysummary.getOilExpense())));
-        waterExpenseTextView.setText(format.format((busdailysummary.getWaterExpense())));
+        dieselLitresTextView.setText(format.format((busdailysummary.getDieselLitres())));
+        greaseExpenseTextView.setText(format.format((busdailysummary.getGreaseExpense())));
         driverPathaExpenseTextView.setText(format.format((busdailysummary.getDriverPathaExpense())));
         driverSalaryAllowanceExpenseTextView.setText(format.format((busdailysummary.getDriverSalaryAllowanceExpense())));
         conductorPathaExpenseTextView.setText(format.format((busdailysummary.getConductorPathaExpense())));
@@ -406,8 +406,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
 
         setupEditField(dieselExpenseTextView);
-        setupEditField(oilExpenseTextView);
-        setupEditField(waterExpenseTextView);
+        setupEditField(dieselLitresTextView);
+        setupEditField(greaseExpenseTextView);
         setupEditField(driverPathaExpenseTextView);
         setupEditField(driverSalaryAllowanceExpenseTextView);
         setupEditField(conductorPathaExpenseTextView);
@@ -527,8 +527,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             getValidatedAmount(getString(R.string.single10Collection), single10CollectionTextView);
 
             getValidatedAmount(getString(R.string.dieselExpense), dieselExpenseTextView);
-            getValidatedAmount(getString(R.string.oilExpense), oilExpenseTextView);
-            getValidatedAmount(getString(R.string.waterExpense), waterExpenseTextView);
+            getValidatedAmount(getString(R.string.dieselLitres), dieselLitresTextView);
+            getValidatedAmount(getString(R.string.greaseExpense), greaseExpenseTextView);
             getValidatedAmount(getString(R.string.driverPathaExpense), driverPathaExpenseTextView);
             getValidatedAmount(getString(R.string.driverSalaryAllowanceExpense), driverSalaryAllowanceExpenseTextView);
             getValidatedAmount(getString(R.string.conductorPathaExpense), conductorPathaExpenseTextView);
@@ -569,9 +569,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
 
         busdailysummary.setDieselExpense(validatedAmounts.get(getString(R.string.dieselExpense)));
-        busdailysummary.setOilExpense(validatedAmounts.get(getString(R.string.oilExpense)));
-        busdailysummary.setWaterExpense(validatedAmounts.get(getString(R.string.waterExpense)));
-        busdailysummary.setDriverPathaExpense(validatedAmounts.get(getString(R.string.waterExpense)));
+        busdailysummary.setDieselLitres(validatedAmounts.get(getString(R.string.dieselLitres)));
+        busdailysummary.setGreaseExpense(validatedAmounts.get(getString(R.string.greaseExpense)));
+        busdailysummary.setDriverPathaExpense(validatedAmounts.get(getString(R.string.greaseExpense)));
         busdailysummary.setDriverSalaryAllowanceExpense(validatedAmounts.get(getString(R.string.driverSalaryAllowanceExpense)));
         busdailysummary.setConductorPathaExpense(validatedAmounts.get(getString(R.string.conductorPathaExpense)));
         busdailysummary.setConductorSalaryAllowanceExpense(validatedAmounts.get(getString(R.string.conductorSalaryAllowanceExpense)));

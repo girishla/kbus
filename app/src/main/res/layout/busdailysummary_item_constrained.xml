@@ -119,7 +119,7 @@
 
 
                 <TextView
-                    android:id="@+id/busdailysummary_item_default_conductor_name_label_view_id"
+                    android:id="@+id/busdailysummary_item_default_dieselLitres_label_view_id"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
@@ -133,7 +133,7 @@
                     android:textSize="@dimen/text_medium_small" />
 
                 <TextView
-                    android:id="@+id/busdailysummary_item_default_conductor_name_text_view_id"
+                    android:id="@+id/busdailysummary_item_default_dieselLitres_text_view_id"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
