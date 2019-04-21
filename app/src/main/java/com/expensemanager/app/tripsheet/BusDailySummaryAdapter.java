@@ -113,7 +113,7 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
 //         Set item click listener
-        viewHolder.viewDetailsButton.setOnClickListener(v -> {
+        viewHolder.dividerView.setOnClickListener(v -> {
             BusDailySummaryDetailActivity.newInstance(context, busdailysummaries.get(position).getId());
             ((Activity) getContext()).overridePendingTransition(R.anim.right_in, R.anim.stay);
         });
@@ -157,8 +157,8 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         @BindView(R.id.busdailysummary_item_default_approved_color_image_view_id)
         CircleImageView approvedColorImageView;
 
-        @BindView(R.id.busdailysummary_item_view_trip_details_button)
-        Button viewDetailsButton;
+//        @BindView(R.id.busdailysummary_item_view_trip_details_button)
+//        Button viewDetailsButton;
 
 
         private View itemView;

@@ -775,7 +775,7 @@ public class RequestTemplateCreator {
         params.put(Group.WEEKLY_BUDGET_JSON_KEY, String.valueOf(group.getWeeklyBudget()));
         params.put(Group.MONTHLY_BUDGET_JSON_KEY, String.valueOf(group.getMonthlyBudget()));
 
-        return new RequestTemplate(PUT, url, params);
+        return new RequestTemplate(PATCH, url, params);
     }
 
     public static RequestTemplate deleteGroup(String groupId) {

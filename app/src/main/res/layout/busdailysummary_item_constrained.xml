@@ -24,10 +24,10 @@
             android:layout_width="307dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="14dp"
             android:layout_marginEnd="16dp"
             android:text="@string/tripSheetDate"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/grey_600"
             app:layout_constraintBottom_toTopOf="@+id/busdailysummary_item_tableLayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +42,7 @@
             android:layout_height="@dimen/category_color_width_small"
             android:layout_below="@+id/busdailysummary_item_default_spent_at_text_view_id"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/space_medium"
             android:layout_marginRight="@dimen/space_medium"
             android:layout_marginBottom="@dimen/space_medium"
             app:layout_constraintBottom_toTopOf="@+id/busdailysummary_item_tableLayout"
@@ -72,7 +73,6 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:stretchColumns="0"
-            app:layout_constraintBottom_toTopOf="@+id/busdailysummary_item_view_trip_details_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/busdailysummary_item_default_spent_at_text_view_id">
@@ -91,11 +91,11 @@
                     android:id="@+id/busdailysummary_item_default_amount_label_view_id"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/collections"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_medium_small"
                     android:textStyle="bold" />
@@ -122,13 +122,13 @@
                     android:id="@+id/busdailysummary_item_default_dieselLitres_label_view_id"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/dieselLitres"
                     android:textStyle="bold"
 
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_medium_small" />
 
@@ -146,7 +146,7 @@
         </TableLayout>
 
 
-        <Button
+       <!-- <Button
             android:id="@+id/busdailysummary_item_view_trip_details_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
             android:textColor="@color/blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/busdailysummary_item_tableLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/busdailysummary_item_tableLayout" />-->
 
         <!--<Button-->
             <!--android:id="@+id/busdailysummary_item_approve_button"-->
