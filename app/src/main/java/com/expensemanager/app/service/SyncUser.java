@@ -210,6 +210,8 @@ public class SyncUser {
         return networkRequest.send();
     }
 
+
+
     public static Task<JSONObject> getAllUsers() {
         TaskCompletionSource<JSONObject> taskCompletionSource = new TaskCompletionSource<>();
         RequestTemplate requestTemplate = RequestTemplateCreator.getAllUsers();

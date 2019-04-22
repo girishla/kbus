@@ -30,9 +30,9 @@ public class UserPickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private ArrayList<User> users;
     private Context context;
 
-    public UserPickerAdapter(Context context, ArrayList<User> conductors) {
+    public UserPickerAdapter(Context context, ArrayList<User> users) {
         this.context = context;
-        this.users = conductors;
+        this.users = users;
     }
 
     private Context getContext() {

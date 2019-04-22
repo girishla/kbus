@@ -620,6 +620,7 @@ public class MainActivity extends BaseActivity {
                 // Sync all members of current group
                 SyncMember.getMembersByGroupId(groupId);
                 SyncBusDailySummary.getAllBusDailySummariesByGroupId(groupId);
+                SyncUser.getAllUsers();
             }
 
             return null;

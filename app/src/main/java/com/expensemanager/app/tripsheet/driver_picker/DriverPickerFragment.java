@@ -90,7 +90,8 @@ public class DriverPickerFragment extends DialogFragment {
         // Add no driver option
         userPickerAdapter.add(null);
         // Add all categories
-        userPickerAdapter.addAll(User.getAllUsersByGroupId(groupId));
+//        userPickerAdapter.addAll(User.getAllUsersByGroupId(groupId));
+        userPickerAdapter.addAll(User.getAllUsers());
     }
 
     private void setupRecyclerView() {
