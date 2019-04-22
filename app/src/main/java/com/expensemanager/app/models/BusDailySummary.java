@@ -76,6 +76,7 @@ public class BusDailySummary implements RealmModel {
 
     // Property name key
     public static final String ID_KEY = "id";
+    public static final String ID_KEY_FK = "busSummaryId";
 
 
     private Long dateId;

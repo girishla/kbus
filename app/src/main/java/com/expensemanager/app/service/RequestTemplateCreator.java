@@ -387,7 +387,7 @@ public class RequestTemplateCreator {
         String url = BASE_URL + "busdailysummaries/" + busDailySummaryId;
         Map<String, String> params = new HashMap<>();
 
-        params.put(BusDailySummary.ID_KEY, busDailySummaryId);
+        params.put(BusDailySummary.ID_KEY_FK, busDailySummaryId);
         params.put(BusDailySummary.IS_APPROVED_KEY, "true");
 
         return new RequestTemplate(PATCH, url, params);
