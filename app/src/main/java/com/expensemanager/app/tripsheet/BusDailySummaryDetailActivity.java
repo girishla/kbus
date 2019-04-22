@@ -36,6 +36,7 @@ import com.expensemanager.app.models.User;
 import com.expensemanager.app.service.SyncBusDailySummary;
 import com.expensemanager.app.service.enums.EIcon;
 import com.expensemanager.app.tripsheet.conductor_picker.ConductorPickerFragment;
+import com.expensemanager.app.tripsheet.driver_picker.DriverPickerFragment;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -135,6 +136,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     EditText driverSalaryAllowanceExpenseTextView;
     @BindView(R.id.busdailysummary_detail_activity_conductorPathaExpense_text_view_id)
     EditText conductorPathaExpenseTextView;
+
+
+
     @BindView(R.id.busdailysummary_detail_activity_conductorSalaryAllowanceExpense_text_view_id)
     EditText conductorSalaryAllowanceExpenseTextView;
     @BindView(R.id.busdailysummary_detail_activity_checkingPathaExpense_text_view_id)
@@ -155,14 +159,29 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     ProgressBar progressBar;
     @BindView(R.id.busdailysummary_detail_activity_conductor_hint_text_view_id)
     TextView conductorHintTextView;
+
+    @BindView(R.id.busdailysummary_detail_activity_driver_hint_text_view_id)
+    TextView driverHintTextView;
+
+
     @BindView(R.id.busdailysummary_detail_activity_conductor_relative_layout_id)
     RelativeLayout conductorRelativeLayout;
     @BindView(R.id.busdailysummary_detail_activity_conductor_color_image_view_id)
     CircleImageView conductorColorImageView;
+
+    @BindView(R.id.busdailysummary_detail_activity_driver_relative_layout_id)
+    RelativeLayout driverRelativeLayout;
+    @BindView(R.id.busdailysummary_detail_activity_driver_color_image_view_id)
+    CircleImageView driverColorImageView;
+
+
     @BindView(R.id.busdailysummary_detail_activity_icon_image_view_id)
     ImageView iconImageView;
     @BindView(R.id.busdailysummary_detail_activity_conductor_name_text_view_id)
     TextView conductorNameTextView;
+
+    @BindView(R.id.busdailysummary_detail_activity_driver_name_text_view_id)
+    TextView driverNameTextView;
 
     @BindView(R.id.busdailysummary_detail_activity_busdailysummary_date_text_view_id)
     TextView busdailysummaryDateTextView;
@@ -242,6 +261,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
 
         setupConductor();
+        setupDriver();
 
 
         approveButton.setOnClickListener(v -> approve());
@@ -344,17 +364,29 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     }
 
     private void setupConductor() {
-        loadUser(conductor);
+        loadConductor(conductor);
 
         conductorHintTextView.setOnClickListener(v -> {
-            selectUser();
+            selectConductor();
         });
         conductorRelativeLayout.setOnClickListener(v -> {
-            selectUser();
+            selectConductor();
         });
     }
 
-    private void selectUser() {
+    private void setupDriver() {
+        loadDriver(driver);
+
+        driverHintTextView.setOnClickListener(v -> {
+            selectDriver();
+        });
+        driverRelativeLayout.setOnClickListener(v -> {
+            selectDriver();
+        });
+    }
+
+
+    private void selectConductor() {
         if (isEditable) {
             ConductorPickerFragment conductorPickerFragment = ConductorPickerFragment
                     .newInstance();
@@ -363,15 +395,32 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
     }
 
+    private void selectDriver() {
+        if (isEditable) {
+            DriverPickerFragment driverPickerFragment = DriverPickerFragment
+                    .newInstance();
+            driverPickerFragment.setListener(driverPickerListener);
+            driverPickerFragment.show(getSupportFragmentManager(), DriverPickerFragment.class.getSimpleName());
+        }
+    }
+
     private ConductorPickerFragment.ConductorPickerListener conductorPickerListener = new ConductorPickerFragment.ConductorPickerListener() {
         @Override
         public void onFinishTripSheetConductorDialog(User conductor) {
-            loadUser(conductor);
+            loadConductor(conductor);
         }
 
     };
 
-    private void loadUser(User conductor) {
+    private DriverPickerFragment.DriverPickerListener driverPickerListener = new DriverPickerFragment.DriverPickerListener() {
+        @Override
+        public void onFinishTripSheetDriverDialog(User driver) {
+            loadDriver(driver);
+        }
+
+    };
+
+    private void loadConductor(User conductor) {
         if (conductor == null) {
             // Show conductor hint
             conductorHintTextView.setVisibility(View.VISIBLE);
@@ -395,6 +444,32 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
         // Update conductor
         this.conductor = conductor;
+    }
+
+    private void loadDriver(User driver) {
+        if (driver == null) {
+            // Show driver hint
+            driverHintTextView.setVisibility(View.VISIBLE);
+            driverRelativeLayout.setVisibility(View.INVISIBLE);
+        } else {
+            // Hide driver hint
+            driverHintTextView.setVisibility(View.INVISIBLE);
+            driverRelativeLayout.setVisibility(View.VISIBLE);
+
+            ColorDrawable colorDrawable = new ColorDrawable(Color.BLACK);
+            driverColorImageView.setImageDrawable(colorDrawable);
+            driverNameTextView.setText(driver.getFullname());
+
+            EIcon eIcon = EIcon.instanceFromName("face");
+            if (eIcon != null) {
+                iconImageView.setImageResource(eIcon.getValueRes());
+                iconImageView.setVisibility(View.VISIBLE);
+            } else {
+                iconImageView.setVisibility(View.INVISIBLE);
+            }
+        }
+        // Update driver
+        this.driver = driver;
     }
 
     private void setupEditableViews(boolean isEditable) {
@@ -467,10 +542,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     private void setEditMode(boolean isEditable) {
         this.isEditable = isEditable;
         invalidateViews();
-//        conductorNameTextView.requestFocus();
-
         mainScrollView.fullScroll(ScrollView.FOCUS_UP);
-
         busdailysummaryDateTextView.setEnabled(false);
 
     }
@@ -592,6 +664,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         busdailysummary.setCleanerExpense(validatedAmounts.get(getString(R.string.cleanerExpense)));
 
         busdailysummary.setConductorId(conductor != null ? conductor.getId() : null);
+        busdailysummary.setDriverId(driver != null ? driver.getId() : null);
         busdailysummary.setGroupId(groupId);
 //        busdailysummary.setSummaryDate(calendar.getTime());
         busdailysummary.setSynced(false);
