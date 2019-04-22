@@ -190,6 +190,27 @@ public class User implements RealmModel{
         return users;
     }
 
+    public static void mapFromJSONArray(JSONArray jsonArray) {
+        RealmList<User> users = new RealmList<>();
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                JSONObject userJson = jsonArray.getJSONObject(i);
+                User user = new User();
+                user.mapFromJSON(userJson);
+                users.add(user);
+            } catch (JSONException e) {
+                Log.e(TAG, "Error in parsing expense.", e);
+            }
+        }
+        realm.copyToRealmOrUpdate(users);
+        realm.commitTransaction();
+        realm.close();
+    }
+
     /**
      * @param id
      * @return User object if exist, otherwise return null.

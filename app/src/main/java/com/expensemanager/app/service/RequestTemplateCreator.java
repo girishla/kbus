@@ -29,9 +29,9 @@ import java.util.TimeZone;
 public class RequestTemplateCreator {
     private static final String TAG = RequestTemplateCreator.class.getSimpleName();
 
-    //        private static final String BASE_URL = "http://10.0.2.2:8080/";
+            private static final String BASE_URL = "http://10.0.2.2:8080/";
 //    private static final String BASE_URL = "http://192.168.56.38:8080/";
-    private static final String BASE_URL = "http://192.168.1.150:8080/";
+//    private static final String BASE_URL = "http://192.168.1.150:8080/";
 //    private static final String BASE_URL = "http://172.20.10.14:8080/";
 
     public static final String GET = "GET";

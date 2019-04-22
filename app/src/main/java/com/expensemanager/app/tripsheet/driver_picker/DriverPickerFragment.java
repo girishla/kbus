@@ -4,8 +4,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +18,14 @@ import com.expensemanager.app.R;
 import com.expensemanager.app.helpers.ItemClickSupport;
 import com.expensemanager.app.models.Group;
 import com.expensemanager.app.models.User;
+import com.expensemanager.app.service.SyncBusDailySummary;
+import com.expensemanager.app.service.SyncUser;
 import com.expensemanager.app.tripsheet.UserPickerAdapter;
 
 import java.util.ArrayList;
 
+import bolts.Continuation;
+import bolts.Task;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,8 +39,12 @@ public class DriverPickerFragment extends DialogFragment {
     private UserPickerAdapter userPickerAdapter;
     private String groupId;
 
-    @BindView(R.id.expense_category_fragment_close_image_view_id) ImageView closeImageView;
-    @BindView(R.id.expense_category_fragment_recycler_view_id) RecyclerView driverRecyclerView;
+    @BindView(R.id.busdailysummary_driver_fragment_close_image_view_id)
+    public ImageView closeImageView;
+    @BindView(R.id.busdailysummary_driver_fragment_recycler_view_id)
+    public RecyclerView driverRecyclerView;
+    @BindView(R.id.swipeContainer_id) SwipeRefreshLayout swipeContainer;
+
 
     public DriverPickerFragment() {}
 
@@ -56,7 +66,7 @@ public class DriverPickerFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.expense_category_filter_fragment, container);
+        View view = inflater.inflate(R.layout.busdailysummary_driver_picker_fragment, container);
         unbinder = ButterKnife.bind(this, view);
 
         return view;
@@ -82,8 +92,36 @@ public class DriverPickerFragment extends DialogFragment {
 
         closeImageView.setOnClickListener(v -> dismiss());
         setupRecyclerView();
+        setupSwipeToRefresh();
+
         invalidateViews();
     }
+
+    private void setupSwipeToRefresh() {
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                SyncUser.getAllUsers().continueWith(onGetUsersFinished, Task.UI_THREAD_EXECUTOR);
+            }
+        });
+
+        swipeContainer.setColorSchemeResources(R.color.colorPrimary);
+    }
+
+    private Continuation<Void, Void> onGetUsersFinished = new Continuation<Void, Void>() {
+        @Override
+        public Void then(Task<Void> task) throws Exception {
+            if (task.isFaulted()) {
+                Log.e(TAG, "Error:", task.getError());
+            }
+
+            if (swipeContainer != null) {
+                swipeContainer.setRefreshing(false);
+            }
+
+            return null;
+        }
+    };
 
     private void invalidateViews() {
         userPickerAdapter.clear();

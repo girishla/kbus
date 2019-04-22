@@ -11,6 +11,8 @@ import com.expensemanager.app.main.EApplication;
 import com.expensemanager.app.models.Group;
 import com.expensemanager.app.models.User;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
@@ -206,20 +208,48 @@ public class SyncUser {
 
         NetworkRequest networkRequest = new NetworkRequest(requestTemplate, taskCompletionSource);
 
+
         Log.d(TAG, "Start downloading users by user fullname");
         return networkRequest.send();
     }
 
 
 
-    public static Task<JSONObject> getAllUsers() {
+    public static Task<Void> getAllUsers() {
         TaskCompletionSource<JSONObject> taskCompletionSource = new TaskCompletionSource<>();
         RequestTemplate requestTemplate = RequestTemplateCreator.getAllUsers();
 
         NetworkRequest networkRequest = new NetworkRequest(requestTemplate, taskCompletionSource);
 
+        Continuation<JSONObject, Void> saveUser = new Continuation<JSONObject, Void>() {
+            @Override
+            public Void then(Task<JSONObject> task) throws Exception {
+                if (task.isFaulted()) {
+                    Exception exception = task.getError();
+                    Log.e(TAG, "Error in downloading all users.", exception);
+                    throw  exception;
+                }
+
+                JSONObject users = task.getResult();
+                if (users == null) {
+                    throw new Exception("Empty response.");
+                }
+
+                Log.d(TAG, "Users: \n" + users);
+
+                try {
+                    JSONArray userArray = users.getJSONObject("_embedded").getJSONArray("users");
+                    User.mapFromJSONArray(userArray);
+                } catch (JSONException e) {
+                    Log.e(TAG, "Error in getting users JSONArray.", e);
+                }
+
+                return null;
+            }
+        };
+
         Log.d(TAG, "Start downloading allusers");
-        return networkRequest.send();
+        return networkRequest.send().continueWith(saveUser);
     }
 
     public static Task<JSONObject> getAllUsersByUserEmail(String userEmail) {
@@ -260,7 +290,7 @@ public class SyncUser {
             public JSONObject then(Task<JSONObject> task) throws Exception {
                 if (task.isFaulted()) {
                     Exception exception = task.getError();
-                    Log.e(TAG, "Error in creating expense.", exception);
+                    Log.e(TAG, "Error in creating user.", exception);
                     throw exception;
                 }
 
