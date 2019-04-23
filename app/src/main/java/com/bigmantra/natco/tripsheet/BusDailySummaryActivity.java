@@ -25,6 +25,7 @@ import com.bigmantra.natco.models.BusDailySummary;
 import com.bigmantra.natco.helpers.Helpers;
 import com.bigmantra.natco.main.Analytics;
 import com.bigmantra.natco.main.BaseActivity;
+import com.bigmantra.natco.models.Group;
 import com.bigmantra.natco.models.User;
 import com.bigmantra.natco.models.Member;
 import com.bigmantra.natco.models.User;
@@ -64,13 +65,17 @@ public class BusDailySummaryActivity extends BaseActivity {
     private String groupId;
     private long syncTimeInMillis;
     private String syncTimeKey;
+    private Group group;
+
 
     private BusDailySummaryAdapter busdailysummaryAdapter;
+
 
     @BindView(R.id.toolbar_id) Toolbar toolbar;
     @BindView(R.id.toolbar_back_image_view_id) ImageView backImageView;
     @BindView(R.id.toolbar_extra_image_view_id) ImageView extraImageView;
     @BindView(R.id.toolbar_title_text_view_id) TextView titleTextView;
+
     @BindView(R.id.busdailysummary_activity_recycler_view_id) RecyclerView recyclerView;
     @BindView(R.id.swipeContainer_id) SwipeRefreshLayout swipeContainer;
 
@@ -147,6 +152,9 @@ public class BusDailySummaryActivity extends BaseActivity {
             syncTimeInMillis = Calendar.getInstance().getTimeInMillis();
             Helpers.saveSyncTime(this, syncTimeKey, syncTimeInMillis);
         }
+
+        group = Group.getGroupById(groupId);
+
     }
 
     private void setupToolbar() {

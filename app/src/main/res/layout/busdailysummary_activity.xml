@@ -10,6 +10,7 @@
 
     <include layout="@layout/toolbar" />
 
+
     <android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipeContainer_id"
@@ -23,7 +24,12 @@
             android:layout_height="wrap_content"
 
             android:paddingTop="@dimen/space_really_small"
-            android:paddingBottom="@dimen/space_really_small"/>
+            android:paddingBottom="@dimen/space_really_small">
+
+
+
+
+        </android.support.v7.widget.RecyclerView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

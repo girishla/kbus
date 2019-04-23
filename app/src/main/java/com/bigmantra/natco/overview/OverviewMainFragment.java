@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.bigmantra.natco.R;
 import com.bigmantra.natco.helpers.Helpers;
 import com.bigmantra.natco.models.BusDailySummary;
+import com.bigmantra.natco.models.Group;
 import com.bigmantra.natco.models.Member;
 
 import java.util.ArrayList;
@@ -39,10 +40,14 @@ public class OverviewMainFragment extends Fragment {
     public static int SLEEP_LENGTH = 1200;
 
     private String groupId;
+    private Group group;
+
     private ArrayList<BusDailySummary> summaries;
     private OverviewAdapter overviewAdapter;
     private OverviewFragmentAdapter overviewFragmentAdapter;
     private boolean isPersonal = false;
+    @BindView(R.id.overview_title_view)
+    TextView titleView;
 
     @BindView(R.id.overview_fragment_scroll_view_id) ScrollView scrollView;
     @BindView(R.id.overview_fragment_view_pager_id) ViewPager viewPager;
@@ -56,6 +61,9 @@ public class OverviewMainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
     }
 
     @Override
@@ -77,6 +85,7 @@ public class OverviewMainFragment extends Fragment {
 
     public void invalidateViews() {
         groupId = Helpers.getCurrentGroupId();
+        group = Group.getGroupById(groupId);
 
         overviewAdapter.clear();
 
@@ -91,6 +100,14 @@ public class OverviewMainFragment extends Fragment {
         overviewAdapter.addAll(BusDailySummary.getAllBusDailySummariesByGroupId(groupId));
         setupRecyclerView();
         scrollView.fullScroll(ScrollView.FOCUS_UP);
+        if(group!=null){
+            titleView.setText(group.getName()+"-" + group.getAbout());
+        }
+        else{
+            titleView.setText("Group Not Set");
+
+        }
+
     }
 
     private void setupToolbar() {

@@ -102,6 +102,8 @@ public class MainActivity extends BaseActivity {
     private boolean isSignOut = false;
     private boolean isNotification = false;
     private boolean isFirstTime;
+    private Group group;
+
 
     @BindView(R.id.main_activity_drawer_layout_id) DrawerLayout drawerLayout;
     @BindView(R.id.main_activity_toolbar_id) Toolbar toolbar;
@@ -130,6 +132,9 @@ public class MainActivity extends BaseActivity {
 
         loginUserId = Helpers.getLoginUserId();
         groupId = Helpers.getCurrentGroupId();
+        group = Group.getGroupById(groupId);
+
+
 
         syncTimeKey = Helpers.getSyncTimeKey(TAG, groupId);
         syncTimeInMillis = Helpers.getSyncTimeInMillis(syncTimeKey);
@@ -292,7 +297,8 @@ public class MainActivity extends BaseActivity {
                         .replace(R.id.main_activity_frame_layout_id, BusDailySummaryFragment.newInstance())
                         .addToBackStack(BusDailySummaryFragment.class.getName())
                         .commit();
-                titleTextView.setText(getString(R.string.busdailysummary));
+                titleTextView.setText(getString(R.string.busdailysummary)+ ":"+ group.getAbout());
+
                 fab.hide();
 //                fab.setOnClickListener(v -> setupFab());
                 break;

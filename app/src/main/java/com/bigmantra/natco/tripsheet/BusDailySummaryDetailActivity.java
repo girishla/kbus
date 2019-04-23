@@ -99,6 +99,9 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     @BindView(R.id.toolbar_save_text_view_id)
     TextView saveTextView;
 
+    @BindView(R.id.busdailysummary_detail_activity_title_view)
+    TextView titleView;
+
     @BindView(R.id.busdailysummary_detail_activity_single1Collection_text_view_id)
     EditText single1CollectionTextView;
 
@@ -233,7 +236,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         }
         NumberFormat format = new DecimalFormat("0.#");
 
-
+        titleView.setText(group.getName()+"-" + group.getAbout());
         single1CollectionTextView.setText(format.format((busdailysummary.getSingle1Collection())));
         single2CollectionTextView.setText(format.format((busdailysummary.getSingle2Collection())));
         single3CollectionTextView.setText(format.format((busdailysummary.getSingle3Collection())));
@@ -265,11 +268,14 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         approveButton.setOnClickListener(v -> approve());
 
-        if (loginUserId.equals(busdailysummary.getSubmittedById()) || loginUserId.equals(group.getUserId())) {
-            editTextView.setVisibility(isEditable ? View.GONE : View.VISIBLE);
-        } else {
-            editTextView.setVisibility(View.GONE);
-        }
+//        if (loginUserId.equals(busdailysummary.getSubmittedById()) || loginUserId.equals(group.getUserId())) {
+//            editTextView.setVisibility(isEditable ? View.GONE : View.VISIBLE);
+//        } else {
+//            editTextView.setVisibility(View.GONE);
+//        }
+
+        editTextView.setVisibility(isEditable ? View.GONE : View.VISIBLE);
+
 
         saveTextView.setVisibility(isEditable ? View.VISIBLE : View.GONE);
         approveButton.setVisibility(View.VISIBLE);
@@ -668,7 +674,7 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         busdailysummary.setDieselExpense(validatedAmounts.get(getString(R.string.dieselExpense)));
         busdailysummary.setDieselLitres(validatedAmounts.get(getString(R.string.dieselLitres)));
         busdailysummary.setGreaseExpense(validatedAmounts.get(getString(R.string.greaseExpense)));
-        busdailysummary.setDriverPathaExpense(validatedAmounts.get(getString(R.string.greaseExpense)));
+        busdailysummary.setDriverPathaExpense(validatedAmounts.get(getString(R.string.driverPathaExpense)));
         busdailysummary.setDriverSalaryAllowanceExpense(validatedAmounts.get(getString(R.string.driverSalaryAllowanceExpense)));
         busdailysummary.setConductorPathaExpense(validatedAmounts.get(getString(R.string.conductorPathaExpense)));
         busdailysummary.setConductorSalaryAllowanceExpense(validatedAmounts.get(getString(R.string.conductorSalaryAllowanceExpense)));
