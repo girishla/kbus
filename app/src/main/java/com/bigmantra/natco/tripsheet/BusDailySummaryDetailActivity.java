@@ -138,7 +138,6 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
     EditText conductorPathaExpenseTextView;
 
 
-
     @BindView(R.id.busdailysummary_detail_activity_conductorSalaryAllowanceExpense_text_view_id)
     EditText conductorSalaryAllowanceExpenseTextView;
     @BindView(R.id.busdailysummary_detail_activity_checkingPathaExpense_text_view_id)
@@ -277,12 +276,12 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
 
         setupEditableViews(isEditable);
 
-        if(busdailysummary.isApproved()){
+        if (busdailysummary.isApproved()) {
             approveButton.setText(R.string.alreadyApproved);
             approveButton.setEnabled(false);
             approveButton.setBackgroundColor(Color.WHITE);
             approveButton.setTextColor(Color.LTGRAY);
-        }else{
+        } else {
             approveButton.setEnabled(true);
             approveButton.setText(R.string.approve);
 
@@ -342,25 +341,35 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         backImageView.setOnClickListener(v -> close());
 
 
-
-
         editTextView.setOnClickListener(v -> {
 
             if (busdailysummary.isApproved()) {
-                Toast toast=Toast.makeText(this, "Cannot edit approved Trip Sheet", Toast.LENGTH_SHORT);
-                TextView error = (TextView) toast.getView().findViewById(android.R.id.message);
-                error.setTextColor(Color.RED);
-                error.setBackgroundColor(Color.WHITE);
-                toast.show();
+                showErrorToast(this, "Cannot edit approved Trip Sheet");
 
                 return;
-            }else{
+            } else {
                 setEditMode(true);
 
             }
 
         });
         saveTextView.setOnClickListener(v -> save());
+    }
+
+    private void showErrorToast(Context context, String message) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        TextView error = (TextView) toast.getView().findViewById(android.R.id.message);
+        error.setTextColor(Color.RED);
+        error.setBackgroundColor(Color.WHITE);
+        toast.show();
+    }
+
+    private void showSuccessToast(Context context, String message) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        TextView error = (TextView) toast.getView().findViewById(android.R.id.message);
+        error.setTextColor(Color.RED);
+        error.setBackgroundColor(Color.WHITE);
+        toast.show();
     }
 
     private void setupConductor() {
@@ -544,6 +553,12 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
         invalidateViews();
         mainScrollView.fullScroll(ScrollView.FOCUS_UP);
         busdailysummaryDateTextView.setEnabled(false);
+        if (isEditable) {
+            approveButton.setVisibility(View.GONE);
+        } else {
+            approveButton.setVisibility(View.VISIBLE);
+
+        }
 
     }
 
@@ -688,7 +703,23 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
             progressBar.setVisibility(View.GONE);
             if (task.isFaulted()) {
                 Log.e(TAG, "Error in approving busdailysummary.", task.getError());
+                Toast toast = Toast.makeText(getApplicationContext(), "Error ProcessingApproval!!!", Toast.LENGTH_SHORT);
+                TextView error = (TextView) toast.getView().findViewById(android.R.id.message);
+                error.setTextColor(Color.RED);
+                error.setBackgroundColor(Color.WHITE);
+                toast.show();
+                return null;
+
             }
+
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            busdailysummary.setApproved(true);
+            realm.copyToRealmOrUpdate(busdailysummary);
+            realm.commitTransaction();
+            realm.close();
+            Toast toast = Toast.makeText(getApplicationContext(), "Approval Processed!", Toast.LENGTH_SHORT);
+            toast.show();
 
             Log.d(TAG, "Approve busdailysummary success.");
             return null;
@@ -710,14 +741,8 @@ public class BusDailySummaryDetailActivity extends BaseActivity {
                 .setMessage(R.string.approve_busdailysummary_message)
                 .setPositiveButton(R.string.approve, (DialogInterface dialog, int which) -> {
                     progressBar.setVisibility(View.VISIBLE);
-                    Realm realm = Realm.getDefaultInstance();
-                    realm.beginTransaction();
-                    busdailysummary.setApproved(true);
-
-                    realm.copyToRealmOrUpdate(busdailysummary);
-                    realm.commitTransaction();
-                    realm.close();
                     SyncBusDailySummary.approve(busdailysummary.getId()).continueWith(onApproveSuccess, Task.UI_THREAD_EXECUTOR);
+
                 })
                 .setNegativeButton(R.string.cancel, (DialogInterface dialog, int which) -> dialog.dismiss())
                 .show();
