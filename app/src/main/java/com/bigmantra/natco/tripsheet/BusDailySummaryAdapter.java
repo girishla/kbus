@@ -102,6 +102,7 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         viewHolder.spentAtTextView.setText(Helpers.formatCreateAt(busdailysummary.getSummaryDate()));
         viewHolder.amountTextView.setText(Helpers.doubleToCurrency(busdailysummary.getTotalCollection()));
         viewHolder.dieselLitresTextView.setText(String.valueOf(busdailysummary.getDieselLitres()).replace(".0","") + " Litres");
+        viewHolder.incomeTextView.setText(Helpers.doubleToCurrency(busdailysummary.getIncome()));
 
         if (busdailysummary.isApproved()) {
             ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#77dd77"));
@@ -153,6 +154,9 @@ public class BusDailySummaryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         View dividerView;
         @BindView(R.id.busdailysummary_item_default_dieselLitres_text_view_id)
         TextView dieselLitresTextView;
+
+        @BindView(R.id.busdailysummary_item_default_income_text_view_id)
+        TextView incomeTextView;
 
 
 //        @BindView(R.id.busdailysummary_item_default_card_view_id)

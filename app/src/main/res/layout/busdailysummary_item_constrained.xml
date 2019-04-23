@@ -71,7 +71,7 @@
         <TableLayout
             android:id="@+id/busdailysummary_item_tableLayout"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="110dp"
             android:stretchColumns="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,6 +114,35 @@
             </TableRow>
 
 
+            <TableRow>
+
+
+                <TextView
+                    android:id="@+id/busdailysummary_item_default_income_label_view_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/income"
+                    android:textStyle="bold"
+
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium_small" />
+
+                <TextView
+                    android:id="@+id/busdailysummary_item_default_income_text_view_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="60dp"
+                    android:text="dieselLts"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_medium_small" />
+
+            </TableRow>
+
 
             <TableRow>
 
@@ -143,6 +172,11 @@
                     android:textSize="@dimen/text_medium_small" />
 
             </TableRow>
+
+
+
+
+
         </TableLayout>
 
 

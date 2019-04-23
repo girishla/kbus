@@ -370,7 +370,7 @@ public class RequestTemplateCreator {
 //        String time2 = timezoneFormat2.format(busDailySummary.getSummaryDate());
 
         params.put(BusDailySummary.SUMMARY_DATE_KEY, time);
-        params.put(BusDailySummary.DATEID_JSON_KEY, busDailySummary.getId());
+        params.put(BusDailySummary.DATEID_JSON_KEY, String.valueOf(busDailySummary.getDateId()));
         params.put(BusDailySummary.ID_KEY, busDailySummary.getId());
 
 

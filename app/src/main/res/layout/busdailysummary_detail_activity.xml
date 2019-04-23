@@ -734,37 +734,6 @@
                         android:textSize="@dimen/text_medium_small" />
 
 
-                    <!-- dieselExpense label -->
-                    <TextView
-                        android:id="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_text_view_id"
-                        android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginTop="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
-                        android:layout_marginBottom="@dimen/space_medium"
-
-                        android:paddingLeft="@dimen/space_really_small"
-                        android:paddingRight="@dimen/space_really_small"
-                        android:text="@string/dieselExpense"
-                        android:textSize="@dimen/text_small" />
-
-                    <!-- dieselExpense -->
-                    <EditText
-                        android:id="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
-                        android:layout_marginLeft="@dimen/space_medium_large"
-                        android:layout_marginRight="@dimen/space_medium_large"
-                        android:background="@drawable/background_bottom_line_gray"
-
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:padding="@dimen/space_really_small"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_medium_small" />
 
 
                     <!-- dieselLitres label -->
@@ -772,7 +741,7 @@
                         android:id="@+id/busdailysummary_detail_activity_dieselLitres_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_single10Collection_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
@@ -801,13 +770,45 @@
 
 
 
+                    <!-- dieselExpense label -->
+                    <TextView
+                        android:id="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselLitres_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginTop="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:layout_marginBottom="@dimen/space_medium"
+
+                        android:paddingLeft="@dimen/space_really_small"
+                        android:paddingRight="@dimen/space_really_small"
+                        android:text="@string/dieselExpense"
+                        android:textSize="@dimen/text_small" />
+
+                    <!-- dieselExpense -->
+                    <EditText
+                        android:id="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_label_text_view_id"
+                        android:layout_marginLeft="@dimen/space_medium_large"
+                        android:layout_marginRight="@dimen/space_medium_large"
+                        android:background="@drawable/background_bottom_line_gray"
+
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:padding="@dimen/space_really_small"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_small" />
+
 
                     <!-- driverPathaExpense label -->
                     <TextView
                         android:id="@+id/busdailysummary_detail_activity_driverPathaExpense_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/busdailysummary_detail_activity_dieselLitres_text_view_id"
+                        android:layout_below="@+id/busdailysummary_detail_activity_dieselExpense_text_view_id"
                         android:layout_marginLeft="@dimen/space_medium_large"
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"

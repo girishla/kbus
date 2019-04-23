@@ -124,11 +124,33 @@ public class BusDailySummary implements RealmModel {
     public static final String GROUP_KEY = "groupId";
     public static final String SUMMARY_DATE_KEY = "summaryDate";
 
+
+    public double getTotalExpenses() {
+
+        return getDieselExpense()
+                + getGreaseExpense()
+                + getDriverPathaExpense()
+                + getDriverSalaryAllowanceExpense()
+                + getConductorPathaExpense()
+                + getConductorSalaryAllowanceExpense()
+                + getCheckingPathaExpense()
+                + getCommissionExpense()
+                + getOtherExpense()
+                + getUnionExpense()
+                + getCleanerExpense() ;
+    }
+
+    public double getIncome() {
+        return getTotalCollection() - getTotalExpenses();
+    }
+
     public double getTotalCollection() {
 
         return getSingle1Collection() + getSingle2Collection() + getSingle3Collection() + getSingle4Collection() + getSingle5Collection()
                 + getSingle6Collection() + getSingle7Collection()+ getSingle8Collection()+ getSingle9Collection()+ getSingle10Collection();
     }
+
+
 
     public String getId() {
         return id;
