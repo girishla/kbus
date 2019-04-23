@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/white"
-    tools:context="com.expensemanager.app.expense.NewExpenseActivity">
+    tools:context="com.bigmantra.natco.expense.NewExpenseActivity">
 
     <include layout="@layout/toolbar_light" />
 

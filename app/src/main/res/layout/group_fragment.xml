@@ -7,7 +7,7 @@
     android:background="@color/colorPrimaryDark"
 
     android:fitsSystemWindows="true"
-    tools:context="com.expensemanager.app.main.MainActivity">
+    tools:context="com.bigmantra.natco.main.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                         android:textSize="@dimen/text_medium_small" />
 
                     <!-- About label -->
-                    <com.expensemanager.app.helpers.ETextViewBold
+                    <com.bigmantra.natco.helpers.ETextViewBold
                         android:id="@+id/group_fragment_about_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                             android:padding="@dimen/space_small"/>
 
                         <!-- Created At -->
-                        <com.expensemanager.app.helpers.ETextView
+                        <com.bigmantra.natco.helpers.ETextView
                             android:id="@+id/group_fragment_created_at_text_view_id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                     android:paddingRight="@dimen/space_medium_large">
 
                     <!-- About label -->
-                    <com.expensemanager.app.helpers.ETextViewBold
+                    <com.bigmantra.natco.helpers.ETextViewBold
                         android:id="@+id/group_fragment_action_label_text_view_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

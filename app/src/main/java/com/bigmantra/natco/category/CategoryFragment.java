@@ -1,0 +1,144 @@
+package com.bigmantra.natco.category;
+
+import android.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
+
+import com.bigmantra.natco.R;
+import com.bigmantra.natco.helpers.Helpers;
+import com.bigmantra.natco.models.Category;
+import com.bigmantra.natco.service.SyncCategory;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import bolts.Continuation;
+import bolts.Task;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.realm.Realm;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
+/**
+ * Created by Girish Lakshmanan on 9/9/19.
+ */
+
+public class CategoryFragment extends Fragment {
+    private static final String TAG = CategoryFragment.class.getSimpleName();
+
+    private ArrayList<Category> categories;
+    private CategoryAdapter categoryAdapter;
+    private String groupId;
+    private long syncTimeInMillis;
+    private String syncTimeKey;
+
+    @BindView(R.id.category_activity_recycler_view_id) RecyclerView recyclerView;
+    @BindView(R.id.swipeContainer_id) SwipeRefreshLayout swipeContainer;
+
+    public static CategoryFragment newInstance() {
+        return new CategoryFragment();
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.category_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
+
+        groupId = Helpers.getCurrentGroupId();
+        syncTimeKey = Helpers.getSyncTimeKey(TAG, groupId);
+        syncTimeInMillis = Helpers.getSyncTimeInMillis(syncTimeKey);
+
+        categories = new ArrayList<>();
+        categoryAdapter = new CategoryAdapter(getActivity(), categories);
+
+        setupRecyclerView();
+        setupSwipeToRefresh();
+
+        setupWindowAnimations();
+    }
+
+    public void invalidateViews() {
+        categoryAdapter.clear();
+        categoryAdapter.addAll(Category.getAllCategoriesByGroupId(groupId));
+
+        if (Helpers.needToSync(syncTimeInMillis)) {
+            SyncCategory.getAllCategoriesByGroupId(groupId);
+            syncTimeInMillis = Calendar.getInstance().getTimeInMillis();
+            Helpers.saveSyncTime(getActivity(), syncTimeKey, syncTimeInMillis);
+        }
+    }
+
+    private void setupRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(categoryAdapter);
+//        recyclerView.setItemAnimator(new SlideInLeftAnimator());
+        recyclerView.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
+    }
+
+    private void setupSwipeToRefresh() {
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                SyncCategory.getAllCategoriesByGroupId(groupId).continueWith(onGetCategoryFinished, Task.UI_THREAD_EXECUTOR);
+            }
+        });
+
+        swipeContainer.setColorSchemeResources(R.color.colorPrimary);
+    }
+
+    private Continuation<Void, Void> onGetCategoryFinished = new Continuation<Void, Void>() {
+        @Override
+        public Void then(Task<Void> task) throws Exception {
+            if (task.isFaulted()) {
+                Log.e(TAG, "Error:", task.getError());
+            }
+
+            if (swipeContainer != null) {
+                swipeContainer.setRefreshing(false);
+            }
+
+            return null;
+        }
+    };
+
+    private void setupWindowAnimations() {
+//        // Re-enter transition is executed when returning to this activity
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            Slide slideTransition = new Slide();
+//            slideTransition.setSlideEdge(Gravity.LEFT);
+//            slideTransition.setDuration(500);
+//            getActivity().getWindow().setReenterTransition(slideTransition);
+//            getActivity().getWindow().setExitTransition(slideTransition);
+//        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Realm realm = Realm.getDefaultInstance();
+        realm.addChangeListener(v -> invalidateViews());
+
+        invalidateViews();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Realm realm = Realm.getDefaultInstance();
+        realm.removeAllChangeListeners();
+    }
+}

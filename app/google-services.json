@@ -1,43 +1,37 @@
 {
   "project_info": {
-    "project_number": "111003329098",
-    "firebase_url": "https://expense-manager-0816.firebaseio.com",
-    "project_id": "expense-manager-0816",
-    "storage_bucket": "expense-manager-0816.appspot.com"
+    "project_number": "1004708743895",
+    "firebase_url": "https://natco-4bb15.firebaseio.com",
+    "project_id": "natco-4bb15",
+    "storage_bucket": "natco-4bb15.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:111003329098:android:58cf08b48ee3cb92",
+        "mobilesdk_app_id": "1:1004708743895:android:b7fc20b0a388e72b",
         "android_client_info": {
-          "package_name": "com.expensemanager.app"
+          "package_name": "com.bigmantra.natco"
         }
       },
       "oauth_client": [
         {
-          "client_id": "111003329098-b18s5dlpsoaomf2tmbg8lf8fggf02io7.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "111003329098-p7k77je11a12h6a6s57ulfh25b563a4g.apps.googleusercontent.com",
+          "client_id": "1004708743895-jhu0s73ota4ufdjs3b5d9ioqdc2q442l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD7vEaRvjMLOAOhZDDrExtmRKbgqsSPphE"
+          "current_key": "AIzaSyC1zM07uHxqo4pC25BTBJarLkV5ivgYW5k"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004708743895-jhu0s73ota4ufdjs3b5d9ioqdc2q442l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

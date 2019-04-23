@@ -1,4 +1,4 @@
-package com.expensemanager.app;
+package com.bigmantra.natco;
 
 import org.junit.Test;
 

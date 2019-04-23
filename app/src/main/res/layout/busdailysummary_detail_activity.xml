@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/colorPrimaryDark"
-    tools:context="com.expensemanager.app.tripsheet.BusDailySummaryDetailActivity">
+    tools:context="com.bigmantra.natco.tripsheet.BusDailySummaryDetailActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_id"

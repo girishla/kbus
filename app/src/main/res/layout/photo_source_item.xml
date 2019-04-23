@@ -14,7 +14,7 @@
         android:tint="@color/gray"/>
 
     <!-- Title -->
-    <com.expensemanager.app.helpers.ETextView
+    <com.bigmantra.natco.helpers.ETextView
         android:id="@+id/photo_source_item_title_text_view_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -98,7 +98,7 @@
     <string name="single10Collection">Single 10 Collection</string>
 
 
-    <string name="dieselExpense">Diesel</string>
+    <string name="dieselExpense">Diesel Amount</string>
     <string name="greaseExpense">Grease</string>
     <string name="driverPathaExpense">Driver Patha</string>
     <string name="driverSalaryAllowanceExpense">Driver Salary Allowance</string>
@@ -114,7 +114,7 @@
     <string name="viewDetails">View</string>
     <string name="approve">Approve</string>
     <string name="alreadyApproved">Already Approved</string>
-    <string name="dieselLitres">Diesel</string>
+    <string name="dieselLitres">Diesel Lts.</string>
 
 
 

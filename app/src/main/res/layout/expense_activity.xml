@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.expensemanager.app.expense.ExpenseActivity">
+    tools:context="com.bigmantra.natco.expense.ExpenseActivity">
 
     <include layout="@layout/toolbar" />
 

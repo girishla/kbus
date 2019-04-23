@@ -6,7 +6,7 @@
     android:id="@+id/main_activity_drawer_layout_id"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".main.MainActivity"
+    tools:context="com.bigmantra.natco.main.MainActivity"
     tools:openDrawer="start">
 
     <LinearLayout

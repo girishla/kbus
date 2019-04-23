@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.expensemanager.app.group.member.MemberActivity">
+    tools:context="com.bigmantra.natco.group.member.MemberActivity">
 
     <include layout="@layout/toolbar" />
 

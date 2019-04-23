@@ -12,7 +12,7 @@
     android:fitsSystemWindows="true"
     android:layout_below="@+id/toolbar_id"
     android:elevation="6dp"
-    tools:context=".report.ReportDetailActivity">
+    tools:context="com.bigmantra.natco.report.ReportDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

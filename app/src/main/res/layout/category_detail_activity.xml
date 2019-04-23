@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/white"
-    tools:context="com.expensemanager.app.category.CategoryDetailActivity">
+    tools:context="com.bigmantra.natco.category.CategoryDetailActivity">
 
     <include layout="@layout/toolbar_light"></include>
 

@@ -5,7 +5,7 @@
     android:id="@+id/category_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.expensemanager.app.category.CategoryActivity">
+    tools:context="com.bigmantra.natco.category.CategoryActivity">
 
     <include layout="@layout/toolbar" />
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/colorPrimaryDark"
-    tools:context="com.expensemanager.app.expense.ExpenseDetailActivity">
+    tools:context="com.bigmantra.natco.expense.ExpenseDetailActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_id"
@@ -150,7 +150,7 @@
                         android:textSize="@dimen/text_small"
                         android:text="Girish Lakshmanan"/>
 
-                    <com.expensemanager.app.helpers.ETextView
+                    <com.bigmantra.natco.helpers.ETextView
                         android:id="@+id/expense_detail_activity_email_text_view_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

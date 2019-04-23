@@ -4,7 +4,7 @@
     android:id="@+id/notification_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.expensemanager.app.notifications.NotificationsActivity">
+    tools:context="com.bigmantra.natco.notifications.NotificationsActivity">
 
     <TextView
         android:id="@+id/notifications_activity_empty_state_text_view_id"

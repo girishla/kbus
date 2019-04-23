@@ -4,7 +4,7 @@
     android:id="@+id/group_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.expensemanager.app.group.GroupActivity">
+    tools:context="com.bigmantra.natco.group.GroupActivity">
 
     <include layout="@layout/toolbar" />
 

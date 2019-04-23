@@ -13,7 +13,7 @@
         android:paddingTop="120dp"
 
         android:background="@color/colorPrimaryDark"
-        tools:context="com.expensemanager.app.welcome.LoginActivity">
+        tools:context="com.bigmantra.natco.welcome.LoginActivity">
 
         <!-- Email -->
         <EditText

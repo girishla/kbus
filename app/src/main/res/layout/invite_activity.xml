@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
 
     android:background="@color/white"
-    tools:context="com.expensemanager.app.group.member.InviteActivity">
+    tools:context="com.bigmantra.natco.group.member.InviteActivity">
 
     <include layout="@layout/toolbar_light" />
 
