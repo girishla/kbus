@@ -137,7 +137,7 @@ public class BusDailySummary implements RealmModel {
                 + getCommissionExpense()
                 + getOtherExpense()
                 + getUnionExpense()
-                + getCleanerExpense() ;
+                + getCleanerExpense();
     }
 
     public double getIncome() {
@@ -146,10 +146,17 @@ public class BusDailySummary implements RealmModel {
 
     public double getTotalCollection() {
 
-        return getSingle1Collection() + getSingle2Collection() + getSingle3Collection() + getSingle4Collection() + getSingle5Collection()
-                + getSingle6Collection() + getSingle7Collection()+ getSingle8Collection()+ getSingle9Collection()+ getSingle10Collection();
+        return getSingle1Collection()
+                + getSingle2Collection()
+                + getSingle3Collection()
+                + getSingle4Collection()
+                + getSingle5Collection()
+                + getSingle6Collection()
+                + getSingle7Collection()
+                + getSingle8Collection()
+                + getSingle9Collection()
+                + getSingle10Collection();
     }
-
 
 
     public String getId() {
