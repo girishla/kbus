@@ -23,6 +23,8 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical|start"
             android:lines="1"
+            android:textColor="@color/grey_600"
+
             android:singleLine="true"
             android:textDirection="anyRtl"
             android:textSize="@dimen/drawer_item_primary_text"

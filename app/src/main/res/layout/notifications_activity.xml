@@ -4,6 +4,7 @@
     android:id="@+id/notification_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.bigmantra.natco.notifications.NotificationsActivity">
 
     <TextView
@@ -14,11 +15,11 @@
         android:layout_margin="@dimen/space_medium_large"
 
         android:text="@string/no_notifications"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/notifications_activity_recycler_view_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

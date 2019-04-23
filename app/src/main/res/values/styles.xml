@@ -11,6 +11,7 @@
         <item name="alertDialogTheme">@style/MyAlertDialogTheme</item>
         <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
         <item name="android:timePickerDialogTheme">@style/MyTimePickerDialogTheme</item>
+
     </style>
 
     <style name="MyAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -24,6 +25,10 @@
     <style name="AppTheme" parent="Base.AppTheme">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionMenuTextAppearance">@style/MenuTextAppearance</item>
+        <item name="android:textColor">@color/grey_600</item>
+        <item name="android:textColorPrimary">@color/grey_600</item>
+
+
     </style>
 
     <style name="MenuTextAppearance" parent="android:TextAppearance.Holo.Widget.ActionBar.Menu">

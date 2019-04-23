@@ -121,6 +121,7 @@
                 android:id="@+id/busdailysummary_detail_activity_card_view_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/CardView.Light"
                 android:layout_margin="@dimen/space_medium_small">
 
                 <RelativeLayout
@@ -151,7 +152,7 @@
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
                         android:layout_below="@+id/busdailysummary_detail_activity_title_view"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/busdailysummary_date"
@@ -199,7 +200,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/driver"
@@ -304,7 +305,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductor"
@@ -414,6 +415,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
+                        android:textColor="@color/grey_600"
 
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
@@ -447,7 +449,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single2Collection"
@@ -480,7 +482,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single3Collection"
@@ -513,7 +515,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single4Collection"
@@ -546,7 +548,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single5Collection"
@@ -579,7 +581,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single6Collection"
@@ -612,7 +614,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single7Collection"
@@ -645,7 +647,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single8Collection"
@@ -678,7 +680,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single9Collection"
@@ -711,7 +713,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/single10Collection"
@@ -746,7 +748,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/dieselLitres"
@@ -780,7 +782,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/dieselExpense"
@@ -813,7 +815,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/driverPathaExpense"
@@ -846,7 +848,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/driverSalaryAllowanceExpense"
@@ -879,7 +881,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductorPathaExpense"
@@ -912,7 +914,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/conductorSalaryAllowanceExpense"
@@ -945,7 +947,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/checkingPathaExpense"
@@ -978,7 +980,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/commissionExpense"
@@ -1011,7 +1013,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/otherExpense"
@@ -1044,7 +1046,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/unionExpense"
@@ -1077,7 +1079,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/cleanerExpense"
@@ -1110,7 +1112,7 @@
                         android:layout_marginTop="@dimen/space_medium_large"
                         android:layout_marginRight="@dimen/space_medium_large"
                         android:layout_marginBottom="@dimen/space_medium"
-
+                        android:textColor="@color/grey_600"
                         android:paddingLeft="@dimen/space_really_small"
                         android:paddingRight="@dimen/space_really_small"
                         android:text="@string/greaseExpense"

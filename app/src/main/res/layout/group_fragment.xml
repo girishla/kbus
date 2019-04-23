@@ -22,6 +22,8 @@
                 android:id="@+id/group_fragment_about_card_view_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/CardView.Light"
+
                 android:layout_margin="@dimen/space_medium_small">
 
                 <RelativeLayout
@@ -121,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/space_medium_small"
+                style="@style/CardView.Light"
                 android:layout_below="@+id/group_fragment_about_card_view_id">
 
                 <RelativeLayout
@@ -172,6 +175,7 @@
                             android:layout_toEndOf="@+id/group_fragment_invite_icon_image_view_id"
                             android:layout_marginStart="@dimen/space_medium"
                             android:layout_centerVertical="true"
+                            android:textColor="@color/grey_600"
 
                             android:text="@string/add_member"
                             android:textSize="@dimen/text_small" />
@@ -223,6 +227,7 @@
                             android:layout_toEndOf="@+id/group_fragment_member_icon_image_view_id"
                             android:layout_marginStart="@dimen/space_medium"
                             android:layout_centerVertical="true"
+                            android:textColor="@color/grey_600"
 
                             android:text="@string/member"
                             android:textSize="@dimen/text_small" />
@@ -236,6 +241,7 @@
                             android:layout_toStartOf="@+id/group_fragment_member_right_arrow_image_view_id"
                             android:layout_marginEnd="@dimen/space_really_large"
                             android:layout_centerVertical="true"
+                            android:textColor="@color/grey_600"
 
                             android:textSize="@dimen/text_small" />
 
@@ -286,6 +292,7 @@
                             android:layout_toEndOf="@+id/group_fragment_edit_icon_image_view_id"
                             android:layout_marginStart="@dimen/space_medium"
                             android:layout_centerVertical="true"
+                            android:textColor="@color/grey_600"
 
                             android:text="@string/edit"
                             android:textSize="@dimen/text_small" />
@@ -337,6 +344,7 @@
                             android:layout_toEndOf="@+id/group_fragment_leave_icon_image_view_id"
                             android:layout_marginStart="@dimen/space_medium"
                             android:layout_centerVertical="true"
+                            android:textColor="@color/grey_600"
 
                             android:text="@string/leave"
                             android:textSize="@dimen/text_small" />

@@ -168,6 +168,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/space_medium_small"
+                style="@style/CardView.Light"
+
                 android:layout_below="@+id/expense_detail_activity_user_info_relative_layout_id">
 
                 <RelativeLayout
