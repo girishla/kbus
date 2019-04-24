@@ -30,8 +30,8 @@ android {
         applicationId "com.bigmantra.natco"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 201904243
-        versionName "1.02"
+        versionCode 201904251
+        versionName "1.03"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
