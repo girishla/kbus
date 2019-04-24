@@ -24,7 +24,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/space_medium"
             android:textColor="@color/black"
-
+            android:textColorHint="@color/gray_light"
             android:padding="@dimen/space_medium"
             android:textSize="@dimen/text_really_small"
             android:hint="@string/email"
@@ -41,7 +41,7 @@
             android:layout_marginRight="@dimen/space_medium"
             android:layout_marginBottom="@dimen/space_medium"
             android:textColor="@color/black"
-
+            android:textColorHint="@color/gray_light"
             android:padding="@dimen/space_medium"
             android:textSize="@dimen/text_really_small"
             android:inputType="textPassword"
