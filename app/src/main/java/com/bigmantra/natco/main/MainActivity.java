@@ -297,7 +297,10 @@ public class MainActivity extends BaseActivity {
                         .replace(R.id.main_activity_frame_layout_id, BusDailySummaryFragment.newInstance())
                         .addToBackStack(BusDailySummaryFragment.class.getName())
                         .commit();
-                titleTextView.setText(getString(R.string.busdailysummary)+ ":"+ group.getAbout());
+
+                if(group!=null){
+                    titleTextView.setText(getString(R.string.busdailysummary)+ ":"+ group.getAbout());
+                }
 
                 fab.hide();
 //                fab.setOnClickListener(v -> setupFab());

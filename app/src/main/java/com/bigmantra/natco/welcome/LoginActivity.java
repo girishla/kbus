@@ -107,6 +107,7 @@ public class LoginActivity extends BaseActivity {
 
     private void invalidateViews() {
         loginButton.setEnabled(false);
+        signUpLinearLayout.setVisibility(View.GONE);
         loginButton.setOnClickListener(this::login);
         setupButton();
 
