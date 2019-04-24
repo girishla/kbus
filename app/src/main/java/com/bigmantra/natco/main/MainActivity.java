@@ -105,11 +105,16 @@ public class MainActivity extends BaseActivity {
     private Group group;
 
 
-    @BindView(R.id.main_activity_drawer_layout_id) DrawerLayout drawerLayout;
-    @BindView(R.id.main_activity_toolbar_id) Toolbar toolbar;
-    @BindView(R.id.main_activity_toolbar_title_text_view_id) TextView titleTextView;
-    @BindView(R.id.main_activity_drawer_recycler_view_id) RecyclerView drawRecyclerView;
-    @BindView(R.id.main_activity_fab_id) FloatingActionButton fab;
+    @BindView(R.id.main_activity_drawer_layout_id)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.main_activity_toolbar_id)
+    Toolbar toolbar;
+    @BindView(R.id.main_activity_toolbar_title_text_view_id)
+    TextView titleTextView;
+    @BindView(R.id.main_activity_drawer_recycler_view_id)
+    RecyclerView drawRecyclerView;
+    @BindView(R.id.main_activity_fab_id)
+    FloatingActionButton fab;
 
     public static void newInstance(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -133,7 +138,6 @@ public class MainActivity extends BaseActivity {
         loginUserId = Helpers.getLoginUserId();
         groupId = Helpers.getCurrentGroupId();
         group = Group.getGroupById(groupId);
-
 
 
         syncTimeKey = Helpers.getSyncTimeKey(TAG, groupId);
@@ -164,7 +168,7 @@ public class MainActivity extends BaseActivity {
             getFragmentManager().beginTransaction()
                     .replace(R.id.main_activity_frame_layout_id, OverviewMainFragment.newInstance())
                     .addToBackStack(OverviewMainFragment.class.getName())
-            .commit();
+                    .commit();
         } else if (isNotification) {
             currentPosition = NOTIFICATION_POSITION;
             removeAllBackStackFragment();
@@ -215,7 +219,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
-        return new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open,  R.string.drawer_close) {
+        return new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -251,7 +255,10 @@ public class MainActivity extends BaseActivity {
     }
 
     private void selectItem(int position) {
-        switch(position) {
+
+        group = Group.getGroupById(groupId);
+
+        switch (position) {
             case 0:
                 setupGroupList();
                 break;
@@ -268,10 +275,10 @@ public class MainActivity extends BaseActivity {
 
                 removeAllBackStackFragment();
                 getFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
-                    .replace(R.id.main_activity_frame_layout_id, OverviewMainFragment.newInstance())
-                    .addToBackStack(OverviewMainFragment.class.getName())
-                    .commit();
+                        .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                        .replace(R.id.main_activity_frame_layout_id, OverviewMainFragment.newInstance())
+                        .addToBackStack(OverviewMainFragment.class.getName())
+                        .commit();
                 fab.show();
                 fab.setOnClickListener(va -> setupFab());
 
@@ -298,8 +305,8 @@ public class MainActivity extends BaseActivity {
                         .addToBackStack(BusDailySummaryFragment.class.getName())
                         .commit();
 
-                if(group!=null){
-                    titleTextView.setText(getString(R.string.busdailysummary)+ ":"+ group.getAbout());
+                if (group != null) {
+                    titleTextView.setText(getString(R.string.busdailysummary) + ":" + group.getAbout());
                 }
 
                 fab.hide();
@@ -322,10 +329,10 @@ public class MainActivity extends BaseActivity {
 
                 removeAllBackStackFragment();
                 getFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
-                    .replace(R.id.main_activity_frame_layout_id, ExpenseFragment.newInstance())
-                    .addToBackStack(ExpenseFragment.class.getName())
-                    .commit();
+                        .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                        .replace(R.id.main_activity_frame_layout_id, ExpenseFragment.newInstance())
+                        .addToBackStack(ExpenseFragment.class.getName())
+                        .commit();
                 titleTextView.setText(getString(R.string.expense));
                 fab.show();
                 fab.setOnClickListener(v -> setupFab());
@@ -347,10 +354,10 @@ public class MainActivity extends BaseActivity {
 
                 removeAllBackStackFragment();
                 getFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
-                    .replace(R.id.main_activity_frame_layout_id, ReportMainFragment.newInstance())
-                    .addToBackStack(ReportMainFragment.class.getName())
-                    .commit();
+                        .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                        .replace(R.id.main_activity_frame_layout_id, ReportMainFragment.newInstance())
+                        .addToBackStack(ReportMainFragment.class.getName())
+                        .commit();
                 titleTextView.setText(getString(R.string.report));
                 fab.hide();
                 break;
@@ -371,10 +378,10 @@ public class MainActivity extends BaseActivity {
 
                 removeAllBackStackFragment();
                 getFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
-                    .replace(R.id.main_activity_frame_layout_id, GroupFragment.newInstance())
-                    .addToBackStack(ReportMainFragment.class.getName())
-                    .commit();
+                        .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                        .replace(R.id.main_activity_frame_layout_id, GroupFragment.newInstance())
+                        .addToBackStack(ReportMainFragment.class.getName())
+                        .commit();
                 titleTextView.setText(getString(R.string.group));
                 fab.hide();
                 break;
@@ -392,10 +399,10 @@ public class MainActivity extends BaseActivity {
                 removeAllBackStackFragment();
 
                 getFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
-                    .replace(R.id.main_activity_frame_layout_id, NotificationFragment.newInstance())
-                    .addToBackStack(NotificationFragment.class.getName())
-                    .commit();
+                        .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                        .replace(R.id.main_activity_frame_layout_id, NotificationFragment.newInstance())
+                        .addToBackStack(NotificationFragment.class.getName())
+                        .commit();
                 titleTextView.setText(getString(R.string.notification));
                 fab.hide();
                 break;
@@ -457,18 +464,17 @@ public class MainActivity extends BaseActivity {
 
         drawerSubItems.clear();
         drawerSubItems.add(new DrawerSubItem().setTitle(getString(R.string.sign_out)));
-    //    drawerSubItems.add(new DrawerSubItem().setTitle(getString(R.string.nav_about)));
+        //    drawerSubItems.add(new DrawerSubItem().setTitle(getString(R.string.nav_about)));
     }
 
     private void setupGroupListItems(GroupDrawerAdapter groupDrawerAdapter) {
-
 
 
         groupDrawerAdapter.clear();
         List<Member> newMembers = Member.getAllMembersByUserId(loginUserId);
 
         // Not accepted -> accepted, group name A -> Z
-        Collections.sort(newMembers, new Comparator<Member>(){
+        Collections.sort(newMembers, new Comparator<Member>() {
             @Override
             public int compare(Member m1, Member m2) {
                 if (m1.isAccepted() != m2.isAccepted()) {
@@ -480,7 +486,7 @@ public class MainActivity extends BaseActivity {
 
         if (groupId == null && newMembers.size() > 0) {
 
-            Log.d(TAG,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>setupGroupListItems Group Id is NULL");
+            Log.d(TAG, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>setupGroupListItems Group Id is NULL");
 
             int index = getFirstAcceptedGroup(newMembers, 0, newMembers.size() - 1);
             if (index != -1) {
@@ -518,7 +524,7 @@ public class MainActivity extends BaseActivity {
     private void setupGroupList() {
 
 
-        Log.d(TAG,"Setup Groups for " + groupId);
+        Log.d(TAG, "Setup Groups for " + groupId);
 
         setupGroupListItems(groupDrawerAdapter);
         drawRecyclerView.setAdapter(groupDrawerAdapter);
@@ -575,10 +581,10 @@ public class MainActivity extends BaseActivity {
             OverviewMainFragment.SLEEP_LENGTH = 300;
 
             getFragmentManager().beginTransaction()
-                .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
-                .replace(R.id.main_activity_frame_layout_id, OverviewMainFragment.newInstance())
-                .addToBackStack(OverviewMainFragment.class.getName())
-                .commit();
+                    .setCustomAnimations(R.animator.right_in, R.animator.left_out, 0, R.animator.left_out)
+                    .replace(R.id.main_activity_frame_layout_id, OverviewMainFragment.newInstance())
+                    .addToBackStack(OverviewMainFragment.class.getName())
+                    .commit();
             fab.setOnClickListener(v -> setupFab());
         } else {
             Toast.makeText(getApplicationContext(), R.string.select_group_hint, Toast.LENGTH_SHORT).show();
@@ -587,7 +593,7 @@ public class MainActivity extends BaseActivity {
 
     private void saveGroupId() {
 
-        Log.d(TAG,">>>>>>>>>>>>>>>> Attempting to save Group Id " + groupId);
+        Log.d(TAG, ">>>>>>>>>>>>>>>> Attempting to save Group Id " + groupId);
 
         SharedPreferences.Editor sharedPreferencesEditor = getSharedPreferences(getString(R.string.shared_preferences_session_key), 0).edit();
         sharedPreferencesEditor.putString(Group.GROUP_ID_KEY, groupId);
@@ -638,10 +644,10 @@ public class MainActivity extends BaseActivity {
 
     private void signOut() {
         new AlertDialog.Builder(this)
-            .setMessage(R.string.sign_out_message)
-            .setPositiveButton(R.string.sign_out, (DialogInterface dialog, int which) -> SyncUser.logout().continueWith(logoutOnSuccess))
-            .setNegativeButton(R.string.cancel, (DialogInterface dialog, int which) -> dialog.dismiss())
-            .show();
+                .setMessage(R.string.sign_out_message)
+                .setPositiveButton(R.string.sign_out, (DialogInterface dialog, int which) -> SyncUser.logout().continueWith(logoutOnSuccess))
+                .setNegativeButton(R.string.cancel, (DialogInterface dialog, int which) -> dialog.dismiss())
+                .show();
     }
 
     private Continuation<Void, Void> logoutOnSuccess = new Continuation<Void, Void>() {
